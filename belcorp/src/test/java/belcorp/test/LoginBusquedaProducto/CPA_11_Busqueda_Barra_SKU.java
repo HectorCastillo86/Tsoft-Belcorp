@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import belcorp.pages.LoginPage;
 import belcorp.pages.SearchPage;
-import belcorp.test.T01_LoginBelcorp;
+import belcorp.test.RegistroLogin.CPA_01_Login_usuario_existente;
 import belcorp.utils.BrowserFactory;
 
 public class CPA_11_Busqueda_Barra_SKU {
@@ -21,7 +21,7 @@ public class CPA_11_Busqueda_Barra_SKU {
 		
 		LoginPage login_page = PageFactory.initElements(driver, LoginPage.class);
 		
-		login_page.loginBelcorp(T01_LoginBelcorp.user, T01_LoginBelcorp.pass);
+		login_page.loginBelcorp(CPA_01_Login_usuario_existente.user, CPA_01_Login_usuario_existente.pass);
 		
 		String[ ] valorBuscar = {"mascara", "pelo","shampoo","uñas","cara","accesorios"};
 		String SubCat_Aleatoria = valorBuscar[ new Random().nextInt(4)];

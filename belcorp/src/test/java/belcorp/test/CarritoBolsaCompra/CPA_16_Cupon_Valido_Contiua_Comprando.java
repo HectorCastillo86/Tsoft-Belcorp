@@ -3,7 +3,7 @@ package belcorp.test.CarritoBolsaCompra;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import belcorp.pages.LoginPage;
-import belcorp.test.T01_LoginBelcorp;
+import belcorp.test.RegistroLogin.CPA_01_Login_usuario_existente;
 
 import org.testng.annotations.Test;
 
@@ -12,8 +12,8 @@ import belcorp.utils.BrowserFactory;
 
 public class CPA_16_Cupon_Valido_Contiua_Comprando {
 	
-	String usuario=T01_LoginBelcorp.user;
-	String clave=T01_LoginBelcorp.pass;
+	String usuario=CPA_01_Login_usuario_existente.user;
+	String clave=CPA_01_Login_usuario_existente.pass;
 
 	@Test
 	public void CPA_16()

@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import belcorp.pages.BolsaCompraPage;
 import belcorp.pages.CheckOutPage;
 import belcorp.pages.LoginPage;
-import belcorp.test.T01_LoginBelcorp;
+import belcorp.test.RegistroLogin.CPA_01_Login_usuario_existente;
 import belcorp.utils.BrowserFactory;
 
 public class CPA_020_Registrar_AgregarNuevaDireccion_Comprar {
@@ -20,7 +20,7 @@ public class CPA_020_Registrar_AgregarNuevaDireccion_Comprar {
 		BolsaCompraPage AgregarABolsa = PageFactory.initElements(driver, BolsaCompraPage.class);
 		CheckOutPage CheckOutPagar = PageFactory.initElements(driver, CheckOutPage.class);
 		
-		login_page.loginBelcorp(T01_LoginBelcorp.user, T01_LoginBelcorp.pass);
+		login_page.loginBelcorp(CPA_01_Login_usuario_existente.user, CPA_01_Login_usuario_existente.pass);
 		AgregarABolsa.irABolsaCompra();
 		AgregarABolsa.BotonIrAPagar();
 		CheckOutPagar.presionarAgregarDireccion();

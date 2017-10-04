@@ -16,7 +16,7 @@ public class TakeScreenShot {
 	public static void takeScreenShot(WebDriver driver, String imageName) {
 	    
 		  Calendar calendar = Calendar.getInstance();
-	      SimpleDateFormat formater = new SimpleDateFormat("ddMMyyyy_hhmmss");
+	      SimpleDateFormat formater = new SimpleDateFormat("ddMMyyyy_HHmmss");
 	      imageName = (String)imageName+formater.format(calendar.getTime());
 		
 		  //Directorio donde quedaran las imagenes guardadas

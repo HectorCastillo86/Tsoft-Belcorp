@@ -1,4 +1,4 @@
-package belcorp.test;
+package belcorp.test.RegistroLogin;
 
 import org.testng.annotations.Test;
 import belcorp.utils.TakeScreenShot;

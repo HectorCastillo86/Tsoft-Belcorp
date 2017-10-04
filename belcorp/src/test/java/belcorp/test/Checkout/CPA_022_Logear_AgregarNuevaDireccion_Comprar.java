@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import belcorp.pages.BolsaCompraPage;
 import belcorp.pages.CheckOutPage;
 import belcorp.pages.LoginPage;
-import belcorp.test.T01_LoginBelcorp;
+import belcorp.test.RegistroLogin.CPA_01_Login_usuario_existente;
 import belcorp.utils.BrowserFactory;
 
 

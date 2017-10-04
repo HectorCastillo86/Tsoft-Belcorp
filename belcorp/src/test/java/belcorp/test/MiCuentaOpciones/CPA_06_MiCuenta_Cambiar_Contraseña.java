@@ -2,16 +2,17 @@ package belcorp.test.MiCuentaOpciones;
 
 import org.testng.annotations.Test;
 import belcorp.pages.MiCuentaCambiarContraseñaPage;
-import belcorp.test.T01_LoginBelcorp;
+import belcorp.test.RegistroLogin.CPA_01_Login_usuario_existente;
 import belcorp.utils.BrowserFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+
 import belcorp.pages.LoginPage;
 
 public class CPA_06_MiCuenta_Cambiar_Contraseña {
 
-	String usuario=T01_LoginBelcorp.user;
-	String clave=T01_LoginBelcorp.pass;
+	String usuario=CPA_01_Login_usuario_existente.user;
+	String clave=CPA_01_Login_usuario_existente.pass;
 	public static String nuevaContraseña="Hola123";
 	String repetirConraseña="Hola123";
 	

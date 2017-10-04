@@ -161,6 +161,7 @@ public class SearchPage {
 				act.moveToElement(cat_maquillaje).perform();
 				act.moveToElement(subCat_Aleatoria).perform();
 				subCat_Aleatoria.click();
+				System.out.println("SubCategoria utilizada en ejecucion: " + subCat_Aleatoria);
 				Thread.sleep(500);
 				break;
 			case "perfume":
@@ -171,6 +172,7 @@ public class SearchPage {
 				act.moveToElement(cat_perfume).perform();
 				act.moveToElement(subCat_AleatoriaB).perform();
 				subCat_AleatoriaB.click();
+				System.out.println("SubCategoria utilizada en ejecucion: " + subCat_AleatoriaB);
 				Thread.sleep(500);
 				break;
 			case "piel":
@@ -181,6 +183,7 @@ public class SearchPage {
 				act.moveToElement(cat_piel).perform();
 				act.moveToElement(subCat_AleatoriaC).perform();
 				subCat_AleatoriaC.click();
+				System.out.println("SubCategoria utilizada en ejecucion: " + subCat_AleatoriaC);
 				Thread.sleep(500);
 				break;
 			case "cuidado":
@@ -191,6 +194,7 @@ public class SearchPage {
 				act.moveToElement(cat_cuidado).perform();
 				act.moveToElement(subCat_AleatoriaD).perform();
 				subCat_AleatoriaD.click();
+				System.out.println("SubCategoria utilizada en ejecucion: " + subCat_AleatoriaD);
 				Thread.sleep(500);
 				break;
 			case "":
