@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import belcorp.pages.LoginPage;
 import belcorp.utils.BrowserFactory;
 import belcorp.utils.TakeScreenShot;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
