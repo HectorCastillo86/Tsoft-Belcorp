@@ -64,7 +64,7 @@ public class RegistroPage {
 	@CacheLookup
 	WebElement checkNumeroDocumento;
 	
-	@FindBy(how= How.ID, using =".//*[@id='registerForm']/div[13]/button")
+	@FindBy(how= How.ID, using ="registerForm")
 	@CacheLookup
 	WebElement btnCrearCuenta;
 	
@@ -72,6 +72,7 @@ public class RegistroPage {
 			String pwd, String tipoDoc,
 			String checkNumDoc)
 	{
+
 		loginButtonNav.click();
 		btnRegistrate.click();
 		firstName.sendKeys(nombre);
@@ -85,6 +86,38 @@ public class RegistroPage {
 		btnCrearCuenta.submit();
 								
 	}
+	
+	public void NuevoRegistro (String nombre, String apellido, String email, 
+			String pwd, String tipoDoc,
+			String checkNumDoc)
+	{
+		try {
+			firstName.sendKeys(nombre);
+			Thread.sleep(300);
+			lastName.sendKeys(apellido);
+			Thread.sleep(300);
+			emailR.sendKeys(email);
+			Thread.sleep(300);
+			checkEmailR.sendKeys(email);
+			Thread.sleep(300);
+			pass.sendKeys(pwd);
+			Thread.sleep(300);
+			checkPass.sendKeys(pwd);
+			Thread.sleep(300);
+			driver.findElement(By.id("register.docType")).sendKeys(tipoDoc);
+			Thread.sleep(300);
+			checkNumeroDocumento.sendKeys(checkNumDoc);
+			Thread.sleep(300);
+			btnCrearCuenta.submit();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+								
+	}
+	
+	
 	
 	public void close()
 	{

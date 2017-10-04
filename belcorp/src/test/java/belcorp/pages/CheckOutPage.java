@@ -114,13 +114,17 @@ public class CheckOutPage {
 	@CacheLookup
 	WebElement btnReturnMethodPay;
 
-	@FindBy(how=How.XPATH, using="Terms1")
+	@FindBy(how=How.CSS, using=".checkbox>label")
 	@CacheLookup
 	WebElement optionTermns;
 	
 	@FindBy(how=How.ID, using="btnPlaceOrder")
 	@CacheLookup
 	WebElement btnEndShop;
+	
+	@FindBy(how=How.XPATH, using=".//*[@id='cashPaymentForm']/div[2]/ul/li[2]/label")
+	@CacheLookup
+	WebElement pagoEfectivo;	
 	
 	@FindBy (how = How.CSS, using="#cboxLoadedContent > form:nth-child(3) > button:nth-child(7)")
 	@CacheLookup
@@ -130,6 +134,9 @@ public class CheckOutPage {
 	@CacheLookup
 	WebElement direccion;
 	
+	@FindBy (how = How.ID, using="addressSubmit")
+	@CacheLookup
+	WebElement btnContinuarEnvio;
 	
 	
 	
@@ -147,6 +154,7 @@ public class CheckOutPage {
 	public void IngresarDireccionEnvio(String pais, String depar, String ciudad, String direccion, String nrodep, String infoAdicional, String telefono) {
 		Actions act = new Actions(driver);
 		try {
+			Thread.sleep(500);
 			dListCountry.submit();
 			Thread.sleep(500);
 			Select dropdown = new Select(driver.findElement(By.id("address.regionIsoParent1")));
@@ -166,6 +174,38 @@ public class CheckOutPage {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void DireccionCheckOut(String pais, String depar, String ciudad, String direccion, String nrodep, String infoAdicional, String telefono)
+	{
+		Actions act = new Actions(driver);
+		try {
+			
+			Thread.sleep(2000);
+			driver.navigate().refresh();
+			dListCountry.submit();
+			Thread.sleep(500);
+			Select dropdown = new Select(driver.findElement(By.id("address.regionIsoParent1")));
+			dropdown.selectByVisibleText("BOLIVAR");
+			Thread.sleep(500);
+			Select dropdownB = new Select(driver.findElement(By.id("address.regionIso")));
+			dropdownB.selectByVisibleText("CALAMAR");
+			Thread.sleep(500);
+			txtAdress.sendKeys(direccion);
+			Thread.sleep(500);
+			txtStreet.sendKeys(nrodep);
+			Thread.sleep(500);
+			txtMoreInfo.sendKeys(infoAdicional);
+			Thread.sleep(500);
+			txtPhone.sendKeys(telefono);
+			Thread.sleep(500);
+			act.moveToElement(btnContinuarEnvio).perform();
+			btnContinuarEnvio.click();
+			Thread.sleep(500);
+			
+		}catch(InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/*
@@ -188,13 +228,18 @@ public class CheckOutPage {
 	 * Método tipo void que después de elegir el tipo de envío, elige Método de pago.
 	 * @param formaPago Tipo String que se refiere a opciones de pago en efectivo que se muestran en la página.
 	 */
-	public void MetodoPagoEfectivo(String formaPago) {
+	public void MetodoPagoEfectivo() {
 		try {
-			//Entre las opciones de RadioButton se elegirá la que ingrese el cliente.
-			/*
-			 * Se espera la habilitación del Pago en Efectivo para implementar estas lineas.
-			 */
+			Thread.sleep(500);
+			dListAgency.click();
+			Thread.sleep(500);
+			pagoEfectivo.click();
 			Thread.sleep(300);
+			btnReviewOrder.click();
+			Thread.sleep(500);
+			optionTermns.click();
+			Thread.sleep(300);
+			btnEndShop.click();
 		}catch(InterruptedException e) {
 			e.printStackTrace();
 		}

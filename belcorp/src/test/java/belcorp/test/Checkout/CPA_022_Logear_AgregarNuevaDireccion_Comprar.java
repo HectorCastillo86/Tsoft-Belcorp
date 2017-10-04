@@ -38,6 +38,7 @@ public class CPA_022_Logear_AgregarNuevaDireccion_Comprar {
 		CkeckOutPagar.IngresarDireccionEnvio(pais, depar, ciudad, direccion, nrodep, infoAdicional, telefono);
 		CkeckOutPagar.ContinuarOpcionesEnvio();
 		CkeckOutPagar.ContinuarMetodoPago();
+		CkeckOutPagar.MetodoPagoEfectivo();
 	}
 
 }

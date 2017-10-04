@@ -20,9 +20,9 @@ public class CPA_02_Registro_nuevo_usuario_belcorp {
     	RegistroPage registro = PageFactory.initElements(driver, RegistroPage.class);
     	
     	// DATOS CPA
-    	String nombre = "juan";
+    	String nombre = "carlos";
     	String apellido= "juanes";
-    	String email = "juan.juanes2@yopmail.com";
+    	String email = "juan.juanes3@yopmail.com";
     	String pwd = "Tsoft123";
     	String tipoDoc = "Cédula de extranjería"; // valores "Cédula de identidad" ; "Cédula de extranjería"; "NIT" ; "Pasaporte"
     	String checkNumDoc= "154372002";

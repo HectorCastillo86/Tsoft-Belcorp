@@ -3,6 +3,7 @@
  */
 package belcorp.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -123,6 +124,7 @@ public class ProcedToCheckOutPage {
 			e.printStackTrace();
 		}
 	}
+	
 	
 	/*
 	 * Método tipo void que permite ingresar datos de usuario básico y permite continuar con la compra sin logearse o registrarse.

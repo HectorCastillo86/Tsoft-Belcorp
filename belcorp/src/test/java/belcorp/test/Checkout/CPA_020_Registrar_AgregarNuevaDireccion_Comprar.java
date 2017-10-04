@@ -36,6 +36,7 @@ public class CPA_020_Registrar_AgregarNuevaDireccion_Comprar {
 		CheckOutPagar.IngresarDireccionEnvio(pais, depar, ciudad, direccion, nrodep, infoAdicional, telefono);
 		CheckOutPagar.ContinuarOpcionesEnvio();
 		CheckOutPagar.ContinuarMetodoPago();
+		CheckOutPagar.MetodoPagoEfectivo();
 	}
 
 }
