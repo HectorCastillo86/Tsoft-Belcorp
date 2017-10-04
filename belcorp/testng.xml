@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Prueba Automatizacion Belcorp">
+  <test name="Test Set - Regresion - 03102017">
+    <classes>
+       <class name="belcorp.test.RegistroLogin.CPA_01_Login_usuario_existente"/>
+       <class name="belcorp.test.LoginBusquedaProducto.CPA_09_Busqueda_Categoria"/>
+       <class name="belcorp.test.LoginBusquedaProducto.CPA_10_Busqueda_Cat_SubCategoria"/>
+    </classes>
+  </test>
+</suite>
