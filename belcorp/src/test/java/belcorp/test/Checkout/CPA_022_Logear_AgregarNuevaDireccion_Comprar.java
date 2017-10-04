@@ -23,10 +23,21 @@ public class CPA_022_Logear_AgregarNuevaDireccion_Comprar {
 		CheckOutPage CkeckOutPagar = PageFactory.initElements(driver, CheckOutPage.class);
 		
 		AgregarABolsa.agregarUnArticulo();
-		AgregarABolsa.irABolsaCompra();
 		AgregarABolsa.BotonIrAPagar();
+		login_page.loginCheckOut(CPA_01_Login_usuario_existente.user, CPA_01_Login_usuario_existente.pass);
+		CkeckOutPagar.presionarAgregarDireccion();
 		
+		String ciudad = "BOGOTA";
+		String pais = "Colombia";
+		String depar = "BOGOTA";
+		String direccion = "Las perdices";
+		String nrodep = "1604-B";
+		String infoAdicional = "Metro Tobalaba";
+		String telefono = "091919191";
 		
+		CkeckOutPagar.IngresarDireccionEnvio(pais, depar, ciudad, direccion, nrodep, infoAdicional, telefono);
+		CkeckOutPagar.ContinuarOpcionesEnvio();
+		CkeckOutPagar.ContinuarMetodoPago();
 	}
 
 }

@@ -39,6 +39,12 @@ public class LoginPage {
 	@CacheLookup
 	WebElement loginButton;
 	
+	@FindBy(how= How.XPATH, using =".//*[@id='loginForm']/div[3]/button")
+	@CacheLookup
+	WebElement loginButtonCheckOut;
+	
+	
+	
 	@FindBy (how = How.ID, using ="loginFB")
 	@CacheLookup
 	WebElement faceButton;
@@ -56,6 +62,20 @@ public class LoginPage {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void loginCheckOut (String username, String password)
+	{
+		try {
+			Thread.sleep(500); 
+			user.sendKeys(username);
+			pass.sendKeys(password);
+			loginButtonCheckOut.click();
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void loginFacebook(String username, String password)

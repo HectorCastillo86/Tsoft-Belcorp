@@ -132,6 +132,7 @@ public class CheckOutPage {
 	
 	
 	
+	
 
 	/*
 	 * Método tipo void que Ingresa la dirección de envío para un cliente
@@ -294,7 +295,8 @@ public class CheckOutPage {
 	public void presionarAgregarDireccion()
 	{
 		try {
-			Thread.sleep(500);
+			driver.navigate().refresh();
+			Thread.sleep(1000);
 			btnNewAddress.click();
 			Thread.sleep(500);
 		} catch (InterruptedException e) {

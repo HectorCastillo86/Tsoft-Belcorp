@@ -188,12 +188,14 @@ public class BolsaCompraPage {
 			act.moveToElement(btnPagarCompra).perform();
 			Thread.sleep(500);
 			btnPagarCompra.click();
+			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 		
 	}
+	
 	
 	public void CuponValido()
 	{
