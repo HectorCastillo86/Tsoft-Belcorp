@@ -19,7 +19,7 @@ public class CPA_05_MiCuenta_Mis_Pedidos_Realizados {
 	  public static final String pass = "Hola123";
 	
 	@Test
-	public void CPA_01() throws InterruptedException {
+	public void MiCuenta_Mis_Pedidos_Realizados() throws InterruptedException {
 		
 		WebDriver driver = BrowserFactory.startBrowser("firefox","https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
 		MiCuentaMisPedidosPage misPedidos = PageFactory.initElements(driver, MiCuentaMisPedidosPage.class);
