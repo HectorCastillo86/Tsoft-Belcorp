@@ -15,9 +15,15 @@ import belcorp.utils.BrowserFactory;
 import belcorp.utils.TakeScreenShot;
 
 public class CPA_10_Busqueda_Cat_SubCategoria {
+	
+	// Data para Ejecucion
+	//Ingreso de Datos CPA_10
+		  public static final String user = "tsoft@yopmail.com";
+		  public static final String pass = "Hola123";
+		  public static final String categoria_unica = "cuidado"; // Categorias : "maquillaje", "perfume","piel","cuidado"
 
 	@Test
-	public void CPA_10()
+	public void Busqueda_Cat_SubCategoria()
 	{
 		try {
 		WebDriver driver = BrowserFactory.startBrowser("firefox","https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
@@ -25,7 +31,7 @@ public class CPA_10_Busqueda_Cat_SubCategoria {
 		
 		LoginPage login_page = PageFactory.initElements(driver, LoginPage.class);
 		
-		login_page.loginBelcorp(CPA_01_Login_usuario_existente.user, CPA_01_Login_usuario_existente.pass);
+		login_page.loginBelcorp(user, pass);
 		
 		//************** VALIDACION:  verificar nick de usuario logeado*****************
 				//Posicionarse en icono de usuario
@@ -47,10 +53,23 @@ public class CPA_10_Busqueda_Cat_SubCategoria {
 		
 		
 		String[ ] Categoria = {"maquillaje", "perfume","piel","cuidado","oferta"};
-		String Cat_Aleatoria = Categoria[ new Random().nextInt(4)];
-		System.out.println("CPA_10: Categoria utilizada en ejecucion: " + Cat_Aleatoria);
-		BusquedaProd.BuscarSubCategoria(Cat_Aleatoria);
-	
+		//String Cat_Aleatoria = Categoria[ new Random().nextInt(4)];
+		System.out.println("CPA_10: Categoria utilizada en ejecucion: " + categoria_unica);
+		BusquedaProd.BuscarSubCategoria(categoria_unica);
+		
+		////************** VALIDACION 2 :  Verificar Carga de categoria Seleccionada*****************
+		
+		String val2 = driver.getCurrentUrl();
+		//System.out.println(val2);		
+		//Assert.assertEquals("https://aws-esika.esika.com:9002/co/perfumes/c/esika-02",val2);
+		System.out.println("CPA_10: Se valida Url de Subcategoria Seleccionada URL: "+val2);
+	    //Esperar 2 Seg
+		Thread.sleep(2000);
+		// Validacion Visual
+		TakeScreenShot.takeScreenShot(driver, "CPA_10_val2_evidencia_OK_");
+		
+		driver.close();
+			
 		} 
 		catch (InterruptedException e)
 		{

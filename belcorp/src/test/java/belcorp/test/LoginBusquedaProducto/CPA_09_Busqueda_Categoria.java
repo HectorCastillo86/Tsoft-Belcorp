@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import belcorp.pages.LoginPage;
@@ -17,12 +18,14 @@ import java.util.Random;
 public class CPA_09_Busqueda_Categoria {
 	
 	 // Data para Ejecucion
-	 // Categoria : "maquillaje", "perfume","piel","cuidado","oferta"
-	
-	String categoria_unica = "perfume";
+	 
+	//Ingreso de Datos CPA_09
+	  public static final String user = "tsoft@yopmail.com";
+	  public static final String pass = "Hola123";
+	  public static final String categoria_unica = "maquillaje"; // Categorias : "maquillaje", "perfume","piel","cuidado"
 	
 	@Test
-	public void CPA_09()
+	public void Busqueda_Categoria()
 	{
 		try {
 		WebDriver driver = BrowserFactory.startBrowser("firefox","https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
@@ -30,7 +33,7 @@ public class CPA_09_Busqueda_Categoria {
 		LoginPage login_page = PageFactory.initElements(driver, LoginPage.class);
 		
 		//Metodo Login
-		login_page.loginBelcorp(CPA_01_Login_usuario_existente.user, CPA_01_Login_usuario_existente.pass);
+		login_page.loginBelcorp(user, pass);
 		
 		
 		//************** VALIDACION:  verificar nick de usuario logeado*****************
@@ -56,10 +59,19 @@ public class CPA_09_Busqueda_Categoria {
 		//String Cat_Aleatoria = Categoria[ new Random().nextInt(4)];
 		System.out.println("CPA_09: Categoria utilizada en ejecucion: " + categoria_unica);
 		BusquedaProd.BuscarCategoria(categoria_unica);
-		//Validacion 2
-		//Esperar 1.5 Seg
-		Thread.sleep(1500);
+		
+		//************** VALIDACION 2 :  Verificar Carga de categoria Seleccionada*****************
+		
+		String val2 = driver.getCurrentUrl();
+		//System.out.println(val2);		
+		//Assert.assertEquals("https://aws-esika.esika.com:9002/co/perfumes/c/esika-02",val2);
+		System.out.println("CPA_09: Se valida Url de categoria: " + categoria_unica + ". URL: "+val2);
+	    //Esperar 2 Seg
+		Thread.sleep(2000);
+		// Validacion Visual
 		TakeScreenShot.takeScreenShot(driver, "CPA_09_val2_evidencia_OK_");
+	
+		driver.close();
 		
 		} 
 		catch (InterruptedException e)
