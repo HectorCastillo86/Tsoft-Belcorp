@@ -3,16 +3,7 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test verbose="2" name="Default test">
     <classes>
-      <class name="belcorp.test.CarritoBolsaCompra.CPA_16_Cupon_Valido_Contiua_Comprando"/>
+      <class name="belcorp.test.Checkout.CPA_024_Registrar_AgregarNuevaDireccion_Comprar"/>
     </classes>
   </test> <!-- Default test -->
-  <test name="Default test(failed)">
-    <classes>
-      <class name="belcorp.test.CarritoBolsaCompra.CPA_16_Cupon_Valido_Contiua_Comprando">
-        <methods>
-          <include name="CPA_16"/>
-        </methods>
-      </class> <!-- belcorp.test.CarritoBolsaCompra.CPA_16_Cupon_Valido_Contiua_Comprando -->
-    </classes>
-  </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
