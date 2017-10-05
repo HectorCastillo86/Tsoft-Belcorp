@@ -57,7 +57,7 @@ public class CPA_05_MiCuenta_Mis_Pedidos_Realizados {
 		Thread.sleep(1500);
 		TakeScreenShot.takeScreenShot(driver, "CPA_05_val2_evidencia_");
 		Assert.assertEquals("Order History | Belcorp Site Colombia", val2);
-		
+		driver.close();
 		
 	}
 }

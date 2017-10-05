@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Prueba Automatizacion Belcorp">
-  <test name="Test Set - Regresion - 03102017">
+  <test name="Test Set - RegistroLogin - 03102017">
     <classes>
        <class name="belcorp.test.RegistroLogin.CPA_01_Login_usuario_existente"/>
        <class name="belcorp.test.RegistroLogin.CPA_02_Registro_nuevo_usuario_belcorp"/>
@@ -11,4 +11,10 @@
        
     </classes>
   </test>
+  <test name="Test Set - MiCuentaOpciones - 04102017">
+    <classes>
+       <class name="belcorp.test.MiCuentaOpciones.CPA_05_MiCuenta_Mis_Pedidos_Realizados"/>
+    </classes>
+  </test>
+  
 </suite>
