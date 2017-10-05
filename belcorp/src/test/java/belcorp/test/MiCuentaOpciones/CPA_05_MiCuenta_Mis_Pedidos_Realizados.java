@@ -52,8 +52,11 @@ public class CPA_05_MiCuenta_Mis_Pedidos_Realizados {
 		//Validacion 2 : verificar que hemos accedido a la página "Mis pedidos realizados" mediante el title de ésta.
 		String val2;
 		val2 = driver.getTitle();
-		System.out.println(val2);
-		Assert.assertEquals("Order History | Belcorp Site Colombi", val2);
+		System.out.println("CPA_05: Titulo de Pagina Mis Pedidos: "+val2);
+		//Esperar 1.5 Seg
+		Thread.sleep(1500);
+		TakeScreenShot.takeScreenShot(driver, "CPA_05_val2_evidencia_");
+		Assert.assertEquals("Order History | Belcorp Site Colombia", val2);
 		
 		
 	}
