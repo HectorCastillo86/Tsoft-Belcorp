@@ -29,7 +29,7 @@ public class AgregarDireccionPage {
 		
 	}
 	
-	@FindBy(how= How.XPATH, using ="html/body/main/div[2]/div[4]/div/div[2]/div[1]/div[1]/div")
+	@FindBy(how= How.XPATH, using ="//a[@class='btn addAddress hiddenMobile' and contains(text(), 'NUEVA')]")
 	@CacheLookup
 	WebElement btnAgregarNewDireccion;
 				
@@ -66,8 +66,9 @@ public class AgregarDireccionPage {
 	{
 		try {
 				loginButtonNav.click();
-				Thread.sleep(300);
+				Thread.sleep(1000);
 				driver.navigate().to("https://aws-esika.esika.com:9002/co/my-account/address-book");
+				driver.navigate().refresh();
 				Thread.sleep(1000);
 				btnAgregarNewDireccion.click();
 				driver.findElement(By.id("address.country")).click();
