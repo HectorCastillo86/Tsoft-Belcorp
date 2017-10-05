@@ -44,7 +44,7 @@ public class MiCuentaMisPedidosPage {
 			Thread.sleep(300);
 			driver.navigate().to("https://aws-esika.esika.com:9002/co/my-account/orders");
 			Thread.sleep(1000);
-			logoutButtonNav.click();
+			//logoutButtonNav.click();
 			
 			
 		} catch (InterruptedException e) {
