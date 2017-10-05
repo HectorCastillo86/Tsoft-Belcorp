@@ -11,6 +11,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author eduardo.araya
@@ -19,6 +21,7 @@ import org.openqa.selenium.support.How;
 public class SearchPage {
 	
 	WebDriver driver;
+	//WebDriverWait wait = new WebDriverWait(driver, 10);
 	
 	public SearchPage (WebDriver ldriver)
 	{
@@ -27,8 +30,8 @@ public class SearchPage {
 	}
 	
 	//Barra Busqueda
-	@FindBy (how = How.XPATH, using =".//*[@id='js-site-search-input']")
-	@CacheLookup
+	@FindBy (how = How.ID, using ="js-site-search-input")
+	//@CacheLookup
 	WebElement barra_busqueda;
 	
 	//Boton Barra Busqueda
@@ -204,6 +207,23 @@ public class SearchPage {
 				break;
 			}
 			Thread.sleep(500);
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void BarraBusquedaSKU(String valor) 
+	{
+		try {
+			    //driver.manage().deleteAllCookies();
+				Thread.sleep(2000);
+				barra_busqueda.click();
+				barra_busqueda.sendKeys(valor);
+				search_button.click();
+				Thread.sleep(1000);
 			
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

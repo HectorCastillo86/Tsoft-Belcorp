@@ -24,6 +24,7 @@ public class BolsaCompraPage {
 	
 	WebDriver driver;
 	String url="https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03";
+	
 
 	public BolsaCompraPage (WebDriver ldriver)
 	{
@@ -51,7 +52,7 @@ public class BolsaCompraPage {
 	@CacheLookup
 	WebElement btnContinuarComprando;
 	
-	@FindBy(how= How.XPATH, using=".//a[contains(text(),'Continuar comprando')]")
+	@FindBy(how= How.XPATH, using=".//*[@id='addToCartLayer'] // a[contains(text(),'Continuar comprando')]")
 	@CacheLookup
 	WebElement btnContComprandoPopUp;
 	
@@ -71,8 +72,8 @@ public class BolsaCompraPage {
 	@CacheLookup
 	WebElement btnBuscar;
 	
-	@FindBy(how= How.XPATH, using=".//*[@id='js-site-search-input']")
-	@CacheLookup
+	@FindBy(how= How.XPATH, using="(//*[@class='js-site-search-input ui-autocomplete-input'])[2]")
+	//@CacheLookup
 	WebElement agregarSKU;
 	
 	@FindBy(how= How.CLASS_NAME, using="btn-search-box")
@@ -99,6 +100,11 @@ public class BolsaCompraPage {
 	@CacheLookup
 	WebElement btnEliminarProd;
 	
+	@FindBy(how= How.ID, using ="releaseVoucherButton")
+	@CacheLookup
+	WebElement BorrarCupon;
+	
+	
 	
 	public void agregarUnArticulo()
 	{
@@ -114,26 +120,24 @@ public class BolsaCompraPage {
 			}
 	}
 	
-	public void agregarVariosArticulos()
-	{
+	public void AgregarArticuloPorSKU(String sku) throws InterruptedException {
 		try {
-			int[] SKU = new int[] {200086396,200083436,200078916,200085864,200086403,200084602,200088132,200089311,200079595};
-			
-			for (int i=0; i<SKU.length; i++)
+			Thread.sleep(1000);
+			agregarSKU.sendKeys(sku);
+			agregarSKU.submit();
+			if (!driver.findElement(By.cssSelector(".headline")).isDisplayed())
 			{
-				String valor= Integer.toString(SKU[i]);
-				Thread.sleep(1000);
-				//agregarSKU.click();
-				agregarSKU.sendKeys(valor);
-				buscarSKU.click();
+			
 				Actions act = new Actions(driver);
 				act.moveToElement(ImagenProd).perform();
 				Thread.sleep(500);
 				btnAgregarItem.submit();
-				Thread.sleep(1000);
-				driver.navigate().back();
-				agregarSKU.clear();
+			
 			}
+			Thread.sleep(1000);
+			driver.navigate().back();
+			agregarSKU.clear();
+
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -218,14 +222,20 @@ public class BolsaCompraPage {
 	public void CuponContinuaComprando()
 	{
 		try {
-				
+			Thread.sleep(1000);
 			btnCuponDescuento.click();
+			while (BorrarCupon.isDisplayed())
+			{
+				BorrarCupon.click();
+				btnCuponDescuento.click();
+			}
 			Thread.sleep(500);
 			txtCupon.click();
 			txtCupon.sendKeys("VPR-T38H-MAC8-C3F4-S");
 			btnCupon.click();
 			Thread.sleep(500);
-			btnContinuarComprando.click();
+			btnContinuarComprando.click();			
+
 		} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 			e.printStackTrace();
