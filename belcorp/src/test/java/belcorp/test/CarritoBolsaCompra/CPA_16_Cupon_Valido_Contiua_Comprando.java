@@ -26,7 +26,8 @@ public class CPA_16_Cupon_Valido_Contiua_Comprando {
 		AgregarABolsa.agregarUnArticulo();
 		AgregarABolsa.CuponContinuaComprando();
 		
-		
+		// CERRAR DRIVER 
+		driver.close();
 	}
 
 

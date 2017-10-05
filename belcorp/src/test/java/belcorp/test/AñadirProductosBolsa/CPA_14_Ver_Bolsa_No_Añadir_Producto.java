@@ -15,7 +15,9 @@ public class CPA_14_Ver_Bolsa_No_Añadir_Producto {
 		BolsaCompraPage AgregarABolsa = PageFactory.initElements(driver, BolsaCompraPage.class);
 		
 		AgregarABolsa.NoAgregarArticulo();
+		
+		// CERRAR DRIVER 
+		driver.close();
 	}
-
-
+	
 }

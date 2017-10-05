@@ -26,6 +26,9 @@ public class CPA_023_Logear_DireccionDefecto_Comprar {
 		CkeckOutPagar.ContinuarOpcionesEnvio();
 		CkeckOutPagar.ContinuarMetodoPago();
 		CkeckOutPagar.MetodoPagoEfectivo();
+		
+		// CERRAR DRIVER 
+		driver.close();
 	}
 
 }

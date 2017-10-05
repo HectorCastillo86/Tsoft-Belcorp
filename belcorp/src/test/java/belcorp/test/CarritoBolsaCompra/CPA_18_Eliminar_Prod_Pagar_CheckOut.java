@@ -26,7 +26,8 @@ public class CPA_18_Eliminar_Prod_Pagar_CheckOut {
 		AgregarABolsa.agregarUnArticulo();
 		AgregarABolsa.EliminaProdContComprando();
 		
-		
+		// CERRAR DRIVER 
+		driver.close();
 	}
 
 

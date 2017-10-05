@@ -37,6 +37,9 @@ public class CPA_020_Registrar_AgregarNuevaDireccion_Comprar {
 		CheckOutPagar.ContinuarOpcionesEnvio();
 		CheckOutPagar.ContinuarMetodoPago();
 		CheckOutPagar.MetodoPagoEfectivo();
+		
+		// CERRAR DRIVER 
+		driver.close();
 	}
 
 }

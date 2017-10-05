@@ -230,9 +230,9 @@ public class CheckOutPage {
 	 */
 	public void MetodoPagoEfectivo() {
 		try {
-			Thread.sleep(500);
+			Thread.sleep(300);
 			dListAgency.click();
-			Thread.sleep(500);
+			Thread.sleep(300);
 			pagoEfectivo.click();
 			Thread.sleep(300);
 			btnReviewOrder.click();

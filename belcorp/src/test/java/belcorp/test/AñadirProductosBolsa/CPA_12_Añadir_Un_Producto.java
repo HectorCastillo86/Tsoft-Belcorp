@@ -16,6 +16,9 @@ public class CPA_12_Añadir_Un_Producto {
 		BolsaCompraPage AgregarABolsa = PageFactory.initElements(driver, BolsaCompraPage.class);
 		
 		AgregarABolsa.agregarUnArticulo();
+		
+		// CERRAR DRIVER 
+		driver.close();
 	}
 
 

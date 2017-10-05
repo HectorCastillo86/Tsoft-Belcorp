@@ -26,6 +26,8 @@ public class CPA_15_Cupon_Valido_Bolsa_Productos {
 		AgregarABolsa.agregarUnArticulo();
 		AgregarABolsa.CuponValido();
 		
+		// CERRAR DRIVER 
+		driver.close();
 		
 	}
 

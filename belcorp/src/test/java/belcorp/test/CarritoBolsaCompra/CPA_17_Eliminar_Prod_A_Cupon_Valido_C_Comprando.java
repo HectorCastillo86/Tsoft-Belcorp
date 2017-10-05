@@ -26,7 +26,8 @@ public class CPA_17_Eliminar_Prod_A_Cupon_Valido_C_Comprando {
 		AgregarABolsa.agregarUnArticulo();
 		AgregarABolsa.EliminarProductoBolsa();
 		
-		
+		// CERRAR DRIVER 
+		driver.close();
 	}
 
 

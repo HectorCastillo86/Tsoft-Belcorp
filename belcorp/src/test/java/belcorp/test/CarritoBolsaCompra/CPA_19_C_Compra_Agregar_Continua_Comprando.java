@@ -17,6 +17,9 @@ public class CPA_19_C_Compra_Agregar_Continua_Comprando {
 		
 		AgregarABolsa.UbicadoBolsaDeCompra();
 		
+		
+		// CERRAR DRIVER 
+		driver.close();
 	}
 
 

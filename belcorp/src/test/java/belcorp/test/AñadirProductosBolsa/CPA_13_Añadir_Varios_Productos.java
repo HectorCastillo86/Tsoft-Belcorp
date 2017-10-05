@@ -32,6 +32,9 @@ public class CPA_13_Añadir_Varios_Productos {
                  BolsaCompraPage AgregarABolsa = PageFactory.initElements(driver, BolsaCompraPage.class);
                  AgregarABolsa.AgregarArticuloPorSKU(sku);
           }
+          
+  		// CERRAR DRIVER 
+  		driver.close();
 
     }
 

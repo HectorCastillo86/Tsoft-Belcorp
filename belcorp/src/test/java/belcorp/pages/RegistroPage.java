@@ -92,6 +92,7 @@ public class RegistroPage {
 			String checkNumDoc)
 	{
 		try {
+			Thread.sleep(500);
 			firstName.sendKeys(nombre);
 			Thread.sleep(300);
 			lastName.sendKeys(apellido);

@@ -29,10 +29,10 @@ public class CPA_024_Registrar_AgregarNuevaDireccion_Comprar {
     	// DATOS CPA
     	String nombre = "juan";
     	String apellido= "juanes";
-    	String email = "carlos.juanes9@yopmail.com";
+    	String email = "carlos.juanes10@yopmail.com";
     	String pwd = "Tsoft123";
     	String tipoDoc = "Cédula de extranjería"; // valores "Cédula de identidad" ; "Cédula de extranjería"; "NIT" ; "Pasaporte"
-    	String checkNumDoc= "174372008";
+    	String checkNumDoc= "174372009";
     	
 		registro.NuevoRegistro(nombre, apellido, email, pwd, tipoDoc, checkNumDoc);
 		
@@ -47,6 +47,9 @@ public class CPA_024_Registrar_AgregarNuevaDireccion_Comprar {
 		CkeckOutPagar.DireccionCheckOut(pais, depar, ciudad, direccion, nrodep, infoAdicional, telefono);
 		CkeckOutPagar.ContinuarMetodoPago();
 		CkeckOutPagar.MetodoPagoEfectivo();
+		
+		// CERRAR DRIVER 
+		driver.close();
 	}
 
 }

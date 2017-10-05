@@ -28,6 +28,9 @@ public class CPA_021_Registrar_DireccionDefecto_Comprar {
 	CheckOutPagar.ContinuarOpcionesEnvio();
 	CheckOutPagar.ContinuarMetodoPago();
 	CheckOutPagar.MetodoPagoEfectivo();
+	
+	// CERRAR DRIVER 
+	driver.close();
 		
 	}
 

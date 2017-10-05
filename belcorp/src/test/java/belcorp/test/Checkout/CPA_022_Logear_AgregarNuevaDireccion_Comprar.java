@@ -39,6 +39,9 @@ public class CPA_022_Logear_AgregarNuevaDireccion_Comprar {
 		CkeckOutPagar.ContinuarOpcionesEnvio();
 		CkeckOutPagar.ContinuarMetodoPago();
 		CkeckOutPagar.MetodoPagoEfectivo();
+		
+		// CERRAR DRIVER 
+		driver.close();
 	}
 
 }

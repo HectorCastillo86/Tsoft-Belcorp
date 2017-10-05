@@ -100,7 +100,7 @@ public class BolsaCompraPage {
 	@CacheLookup
 	WebElement btnEliminarProd;
 	
-	@FindBy(how= How.ID, using ="releaseVoucherButton")
+	@FindBy(how= How.XPATH, using =".//*[@id='releaseVoucherButton']")
 	@CacheLookup
 	WebElement BorrarCupon;
 	
@@ -122,7 +122,7 @@ public class BolsaCompraPage {
 	
 	public void AgregarArticuloPorSKU(String sku) throws InterruptedException {
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 			agregarSKU.sendKeys(sku);
 			agregarSKU.submit();
 			if (!driver.findElement(By.cssSelector(".headline")).isDisplayed())
@@ -222,19 +222,26 @@ public class BolsaCompraPage {
 	public void CuponContinuaComprando()
 	{
 		try {
-			Thread.sleep(1000);
-			btnCuponDescuento.click();
-			while (BorrarCupon.isDisplayed())
+			
+			Thread.sleep(2000);
+			if(driver.findElement(By.xpath(".//*[@id='releaseVoucherButton']")).isDisplayed())
 			{
 				BorrarCupon.click();
-				btnCuponDescuento.click();
+				Thread.sleep(2000);
+				txtCupon.click();
+				txtCupon.sendKeys("VPR-T38H-MAC8-C3F4-S");
+				btnCupon.click();
+				Thread.sleep(500);
+				btnContinuarComprando.click();
+			}else 
+			{
+				txtCupon.click();
+				txtCupon.sendKeys("VPR-T38H-MAC8-C3F4-S");
+				btnCupon.click();
+				Thread.sleep(500);
+				btnContinuarComprando.click();
 			}
-			Thread.sleep(500);
-			txtCupon.click();
-			txtCupon.sendKeys("VPR-T38H-MAC8-C3F4-S");
-			btnCupon.click();
-			Thread.sleep(500);
-			btnContinuarComprando.click();			
+				
 
 		} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
@@ -248,13 +255,24 @@ public class BolsaCompraPage {
 		try {
 			Thread.sleep(500);
 			btnEliminarProd.click();
-			btnCuponDescuento.click();
-			Thread.sleep(500);
-			txtCupon.click();
-			txtCupon.sendKeys("VPR-T38H-MAC8-C3F4-S");
-			btnCupon.click();
-			Thread.sleep(500);
-			btnContinuarComprando.click();
+			Thread.sleep(2000);
+			if(driver.findElement(By.xpath(".//*[@id='releaseVoucherButton']")).isDisplayed())
+			{
+				BorrarCupon.click();
+				Thread.sleep(2000);
+				txtCupon.click();
+				txtCupon.sendKeys("VPR-T38H-MAC8-C3F4-S");
+				btnCupon.click();
+				Thread.sleep(500);
+				btnContinuarComprando.click();
+			}else 
+			{
+				txtCupon.click();
+				txtCupon.sendKeys("VPR-T38H-MAC8-C3F4-S");
+				btnCupon.click();
+				Thread.sleep(500);
+				btnContinuarComprando.click();
+			}
 		} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 			e.printStackTrace();
