@@ -52,12 +52,12 @@ public class MiCuentaCambiarContraseñaPage {
 	{
 		try {
 			loginButtonNav.click();
-			Thread.sleep(300);
+			Thread.sleep(500);
 			driver.navigate().to("https://aws-esika.esika.com:9002/co/my-account/update-password");
 			passActual.sendKeys(contraseñaActual);
 			newPass.sendKeys(nuevaContraseña);
 			checkNewPass.sendKeys(repetirConraseña);
-			Thread.sleep(500);
+			Thread.sleep(1000);
 			btnUpdatePass.click();
 			
 		} catch (InterruptedException e) {
