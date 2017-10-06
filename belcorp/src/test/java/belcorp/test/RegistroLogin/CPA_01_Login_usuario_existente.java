@@ -17,7 +17,8 @@ public class CPA_01_Login_usuario_existente {
   public static final String user = "tsoft@yopmail.com";
   public static final String pass = "Hola123";
   
- 
+  String nombreClase= getClass().getSimpleName();
+  LogResult logResult=new LogResult();
   
 
 @Test
@@ -27,6 +28,9 @@ public class CPA_01_Login_usuario_existente {
     System.out.println("CPA_01: Datos para Ejecucion Usuario: " +user+" , Password : "+pass);
 			
 	try {
+		
+		//Instancia declarada para que Desde aqui se considera tiempo de ejecución reflejado en el Reporte Log
+		logResult.InicioScript(driver);	
 	
 	  WebDriver driver = BrowserFactory.startBrowser("firefox","https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
 	  LoginPage login_page = PageFactory.initElements(driver, LoginPage.class);
@@ -45,6 +49,8 @@ public class CPA_01_Login_usuario_existente {
 		  String username = driver.findElement(By.xpath("//span[@class='accountName']")).getText();
 		  System.out.println("CPA_01: Usuario logeado en Sistema para Ejecucion: " +username);		 
 		  TakeScreenShot.takeScreenShot(driver, "CPA_01_val1_evidencia_OK_");
+		  
+		  logResult.passLog("CPA_01: Usuario logeado en Sistema para Ejecucion: " +username,"Se detecto correctamente'",driver);
 	  }	 
 	  else {
 		  TakeScreenShot.takeScreenShot(driver, "CPA_01_val1_evidencia_NOK_");
