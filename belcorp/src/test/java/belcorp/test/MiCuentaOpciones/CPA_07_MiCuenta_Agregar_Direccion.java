@@ -15,18 +15,16 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CPA_07_MiCuenta_Agregar_Direccion {
 
+	//Datos CPA_07
+			String user="tsoft@yopmail.com";
+			String pass="Hola123";
+			String direccion = "Las Condes Calle N°1";
+			String deptoDetalle = "Block 4-B";
+			String infoDireccion = "Cercano al metro Tobalaba";
+			String numTelefono = "012345678";
 	@Test
 	public void MiCuenta_Agregar_Direccion() throws InterruptedException
 	{
-		
-        //Declaracion de Variables para CPA_07
-		String user="tsoft@yopmail.com";
-		String pass="Hola123";
-		String direccion = "Las Condes Calle N°1";
-		String deptoDetalle = "Block 4-B";
-		String infoDireccion = "Cercano al metro Tobalaba";
-		String numTelefono = "012345678";
-		
 		//Mostrar en Consola Datos de Ejecucion de Prueba
 		System.out.println("CPA_07: Datos para Ejecucion Usuario: " +user+" , Password: "+pass+" , direccion: "+direccion+" , deptoDetalle: "+deptoDetalle+" , infoDireccion: "+infoDireccion+" , numTelefono: "+numTelefono);
 		

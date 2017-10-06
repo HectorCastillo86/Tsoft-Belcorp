@@ -17,8 +17,8 @@ import belcorp.pages.LoginPage;
 public class CPA_06_MiCuenta_Cambiar_Contraseña {
 
 	//Datos CPA_06
-	String user=CPA_01_Login_usuario_existente.user;
-	String pass=CPA_01_Login_usuario_existente.pass;
+	String user="tsoft@yopmail.com";
+	String pass="Hola123";
 	public static String nuevaContraseña="Hola123";
 	String repetirConraseña="Hola123";
 	

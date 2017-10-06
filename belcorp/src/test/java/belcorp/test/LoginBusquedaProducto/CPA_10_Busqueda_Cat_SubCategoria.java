@@ -25,6 +25,9 @@ public class CPA_10_Busqueda_Cat_SubCategoria {
 	@Test
 	public void Busqueda_Cat_SubCategoria()
 	{
+		//Mostrar en Consola Datos de Ejecucion de Prueba
+		System.out.println("CPA_10: Datos para Ejecucion Usuario: " +user+" , Password: "+pass+" , Categoria: "+categoria_unica);
+
 		try {
 		WebDriver driver = BrowserFactory.startBrowser("firefox","https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
 		SearchPage BusquedaProd = PageFactory.initElements(driver, SearchPage.class);

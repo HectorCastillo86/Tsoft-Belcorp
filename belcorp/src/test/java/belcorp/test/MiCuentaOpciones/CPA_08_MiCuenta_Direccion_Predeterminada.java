@@ -15,13 +15,14 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CPA_08_MiCuenta_Direccion_Predeterminada {
 	
+	//DATOS CPA_08
+	String user="tsoft@yopmail.com";
+	String pass="Hola123";
+	
 	@Test
 	public void MiCuenta_Direccion_Predeterminada() throws InterruptedException
 	{
-		 //Declaracion de Variables para CPA_07
-		String user="tsoft@yopmail.com";
-		String pass="Hola123";
-		
+		 
 		//Mostrar en Consola Datos de Ejecucion de Prueba
 		System.out.println("CPA_08: Datos para Ejecucion Usuario: " +user+" , Password: "+pass);
 		

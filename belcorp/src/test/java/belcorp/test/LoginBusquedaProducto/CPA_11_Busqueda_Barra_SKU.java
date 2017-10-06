@@ -25,6 +25,10 @@ public class CPA_11_Busqueda_Barra_SKU {
 	@Test
 	public void Busqueda_Barra_SKU() throws InterruptedException
 	{
+		//Mostrar en Consola Datos de Ejecucion de Prueba
+		System.out.println("CPA_11: Datos para Ejecucion Usuario: " +user+" , Password: "+pass+" , Frase Busqueda: "+busqueda_unica);
+
+		
 		WebDriver driver = BrowserFactory.startBrowser("firefox","https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
 		SearchPage BusquedaProd = PageFactory.initElements(driver, SearchPage.class);
 		
@@ -43,7 +47,7 @@ public class CPA_11_Busqueda_Barra_SKU {
 		  if (val1) {
 			  String username = driver.findElement(By.xpath("//span[@class='accountName']")).getText();
 			  System.out.println("CPA_11: Usuario logeado en Sistema para Ejecucion: " +username);		 
-			  TakeScreenShot.takeScreenShot(driver, "CPA_10_val1_evidencia_OK_");
+			  TakeScreenShot.takeScreenShot(driver, "CPA_11_val1_evidencia_OK_");
 		  }	 
 		  else {
 			  TakeScreenShot.takeScreenShot(driver, "CPA_11_val1_evidencia_NOK_");

@@ -14,51 +14,54 @@ import org.openqa.selenium.support.PageFactory;
 
 
 public class CPA_03_Registro_nuevo_usuario_no_belcorp {
+
+	// DATOS CPA_03
+	String nombre = "ADOS";
+	String apellido= "ADOS";
+	String email = "Auno_02@yopmail.com";
+	String pwd = "Tsoft123";
+	String tipoDoc = "Cédula de extranjería"; // valores "Cédula de identidad" ; "Cédula de extranjería"; "NIT" ; "Pasaporte"
+	String checkNumDoc= "154440002";
   
   @Test
   public void Registro_nuevo_usuario_no_belcorp() throws IOException 
   {
+	 
+	//Mostrar en Consola Datos de Ejecucion de Prueba
+	System.out.println("CPA_03: Datos para Ejecucion Nombre: " +nombre+" , apellido: "+apellido+" , email: "+email+" , Password: "+pwd+" , Tipo Documento: "+tipoDoc+" , Id Documento: "+checkNumDoc);
+			
 	// Inicializar Driver y Page
 	WebDriver driver = BrowserFactory.startBrowser("firefox","https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
   	RegistroPage registro = PageFactory.initElements(driver, RegistroPage.class);
 	
     try {    	
-    	
-    	// DATOS CPA
-    	String nombre = "Jose";
-    	String apellido= "juanes";
-    	String email = "juan.juanes7@yopmail.com";
-    	String pwd = "Tsoft123";
-    	String tipoDoc = "Cédula de extranjería"; // valores "Cédula de identidad" ; "Cédula de extranjería"; "NIT" ; "Pasaporte"
-    	String checkNumDoc= "154372005";
-    	
-    	
     	// FUNCION CPA
     	registro.RegistroBelcorp(nombre, apellido, email, pwd, tipoDoc, checkNumDoc);
-		
-    	//VALIDACION REGISTRO EXITOSO
+    	//Esperar 2 Seg
+	  	Thread.sleep(2000);
+	  	  
+	  	//*******************VALIDACION 1: verificar nick de usuario logeado****************
 		//Validar si existe AccountName Nombre de usuario Registrado
-      boolean val1 = !(driver.findElements(By.xpath("//span[@class='accountName']")).size() == 0);
-  	  //System.out.println(val1);
-  	  if (val1 == true) {
-  		  //Posicionarse en icono de usuario
-  	  	  Actions act1 = new Actions(driver);
-  	  	  act1.moveToElement(driver.findElement(By.xpath(".//*[@class='accountLi']"))).perform();
-  	  	  //Esperar 2 Seg
-  	  	  Thread.sleep(2000);
-  		  String username = driver.findElement(By.xpath("//span[@class='accountName']")).getText();
-  		  System.out.println("CPA_03: Usuario logeado en Sistema para Ejecucion: " +username);		 
-  		  TakeScreenShot.takeScreenShot(driver, "CPA_03_val1_evidencia_OK_");
-  	  }	 
-  	  else {
-  		  //Esperar 2 Seg
-  	  	  Thread.sleep(2000);
-  		  TakeScreenShot.takeScreenShot(driver, "CPA_03_val1_evidencia_NOK_");
-  		  System.out.println("CPA_03: Problema de Creacion de Usuario con los siguientes datos: " +nombre+" , "+apellido+" , "+email+" , "+pwd+" , "+tipoDoc+" , "+checkNumDoc+".");
-  		  registro.close();
-  		  Assert.assertTrue(val1, "Problema con Creacion de Usuario");
-  			
-  	  }  
+        boolean val1 = !(driver.findElements(By.xpath("//span[@class='accountName']")).size() == 0);
+  	  
+	  	  if (val1 == true) {
+	  		  //Posicionarse en icono de usuario
+	  	  	  Actions act1 = new Actions(driver);
+	  	  	  act1.moveToElement(driver.findElement(By.xpath(".//*[@class='accountLi']"))).perform();
+	  	  	  //Esperar 2 Seg
+	  	  	  Thread.sleep(2000);
+	  		  String username = driver.findElement(By.xpath("//span[@class='accountName']")).getText();
+	  		  System.out.println("CPA_03: Usuario logeado en Sistema para Ejecucion: " +username);		 
+	  		  TakeScreenShot.takeScreenShot(driver, "CPA_03_val1_evidencia_OK_");
+	  	  }	 
+	  	  else {
+	  		  //Esperar 2 Seg
+	  	  	  Thread.sleep(2000);
+	  	  	  System.out.println("CPA_03: Problema de Creacion de Usuario con los siguientes datos: " +nombre+" , "+apellido+" , "+email+" , "+pwd+" , "+tipoDoc+" , "+checkNumDoc+".");
+	  		  TakeScreenShot.takeScreenShot(driver, "CPA_03_val1_evidencia_NOK_");
+	  		  registro.close();
+	  		  Assert.assertTrue(val1, "CPA_03: Problema con Creacion de Usuario");
+	  	  }  
 						
 		// CERRAR DRIVER 
 		registro.close();
@@ -72,4 +75,4 @@ public class CPA_03_Registro_nuevo_usuario_no_belcorp {
   }
   
 
-}
+  }

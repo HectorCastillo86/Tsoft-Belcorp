@@ -17,9 +17,7 @@ import java.util.Random;
 
 public class CPA_09_Busqueda_Categoria {
 	
-	 // Data para Ejecucion
-	 
-	//Ingreso de Datos CPA_09
+	// Datos CPA_09
 	  public static final String user = "tsoft@yopmail.com";
 	  public static final String pass = "Hola123";
 	  public static final String categoria_unica = "maquillaje"; // Categorias : "maquillaje", "perfume","piel","cuidado"
@@ -27,6 +25,9 @@ public class CPA_09_Busqueda_Categoria {
 	@Test
 	public void Busqueda_Categoria()
 	{
+		//Mostrar en Consola Datos de Ejecucion de Prueba
+		System.out.println("CPA_09: Datos para Ejecucion Usuario: " +user+" , Password: "+pass+" , Categoria: "+categoria_unica);
+
 		try {
 		WebDriver driver = BrowserFactory.startBrowser("firefox","https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
 		SearchPage BusquedaProd = PageFactory.initElements(driver, SearchPage.class);

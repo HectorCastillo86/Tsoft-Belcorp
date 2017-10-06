@@ -13,15 +13,19 @@ import org.openqa.selenium.support.PageFactory;
 public class CPA_01_Login_usuario_existente {
 	
 	
-  //Ingreso de Datos CPA_01
+  //DATOS CPA_01
   public static final String user = "tsoft@yopmail.com";
   public static final String pass = "Hola123";
   
+ 
   
 
 @Test
   public void Login_usuario_existente() 
   {
+	//Mostrar en Consola Datos de Ejecucion de Prueba
+    System.out.println("CPA_01: Datos para Ejecucion Usuario: " +user+" , Password : "+pass);
+			
 	try {
 	
 	  WebDriver driver = BrowserFactory.startBrowser("firefox","https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
@@ -29,17 +33,15 @@ public class CPA_01_Login_usuario_existente {
 	  
 	  login_page.loginBelcorp(user,pass);
 	  
-	  //Validacion verificar nick de usuario logeado
-	  //Posicionarse en icono de usuario
+	  //*******************VALIDACION 1: verificar nick de usuario logeado****************	   
 	  
-	   
 	  //Validar si existe AccountName Nombre de usuario Registrado
-	  boolean val1 = !(driver.findElements(By.xpath("//span[@class='accountName']")).size() == 0);
+	  boolean val1 = !(driver.findElements(By.xpath("//span[@class='accountName']")).size() == 0); //Existe elemento?
 	  if (val1) {
 		  Actions act1 = new Actions(driver);
 		  act1.moveToElement(driver.findElement(By.xpath(".//*[@class='accountLi']"))).perform();
-		  //Esperar 1.5 Seg
-		  Thread.sleep(1500);
+		  //Esperar 2 Seg
+		  Thread.sleep(2000);
 		  String username = driver.findElement(By.xpath("//span[@class='accountName']")).getText();
 		  System.out.println("CPA_01: Usuario logeado en Sistema para Ejecucion: " +username);		 
 		  TakeScreenShot.takeScreenShot(driver, "CPA_01_val1_evidencia_OK_");

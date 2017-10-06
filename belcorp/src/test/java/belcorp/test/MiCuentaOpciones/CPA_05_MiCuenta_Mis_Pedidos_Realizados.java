@@ -20,7 +20,12 @@ public class CPA_05_MiCuenta_Mis_Pedidos_Realizados {
 	
 	@Test
 	public void MiCuenta_Mis_Pedidos_Realizados() throws InterruptedException {
+		  
+		//Mostrar en Consola Datos de Ejecucion de Prueba
+		System.out.println("CPA_05: Datos para Ejecucion User: " +user+" , Password: "+pass);
 		
+		
+		//Inicializar Page y WebDriver
 		WebDriver driver = BrowserFactory.startBrowser("firefox","https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
 		MiCuentaMisPedidosPage misPedidos = PageFactory.initElements(driver, MiCuentaMisPedidosPage.class);
 		LoginPage login_page = PageFactory.initElements(driver, LoginPage.class);

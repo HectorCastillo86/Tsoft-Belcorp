@@ -64,7 +64,7 @@ public class RegistroPage {
 	@CacheLookup
 	WebElement checkNumeroDocumento;
 	
-	@FindBy(how= How.ID, using ="registerForm")
+	@FindBy(how= How.XPATH, using =".//*[@id='registerForm']/div[13]/button")
 	@CacheLookup
 	WebElement btnCrearCuenta;
 	
@@ -84,6 +84,13 @@ public class RegistroPage {
 		driver.findElement(By.id("register.docType")).sendKeys(tipoDoc);
 		checkNumeroDocumento.sendKeys(checkNumDoc);
 		btnCrearCuenta.submit();
+		//Esperar 5 Seg
+	  	  try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 								
 	}
 	

@@ -67,12 +67,12 @@ public class LoginPage {
 	public void loginBelcorp (String username, String password)
 	{
 		try {
-			Thread.sleep(500); 
+			Thread.sleep(2000); 
 			loginButtonNav.click();
 			user.sendKeys(username);
 			pass.sendKeys(password);
 			loginButton.click();
-			Thread.sleep(1500);
+			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
