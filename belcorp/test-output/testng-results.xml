@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="57682" started-at="2017-10-04T19:18:33Z" finished-at="2017-10-04T19:19:31Z">
+  <suite name="Default suite" duration-ms="19262" started-at="2017-10-06T21:26:19Z" finished-at="2017-10-06T21:26:38Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="57682" started-at="2017-10-04T19:18:33Z" finished-at="2017-10-04T19:19:31Z">
-      <class name="belcorp.test.Checkout.CPA_022_Logear_AgregarNuevaDireccion_Comprar">
-        <test-method status="PASS" signature="CPA_022()[pri:0, instance:belcorp.test.Checkout.CPA_022_Logear_AgregarNuevaDireccion_Comprar@475530b9]" name="CPA_022" duration-ms="57666" started-at="2017-10-04T16:18:33Z" finished-at="2017-10-04T16:19:31Z">
+    <test name="Default test" duration-ms="19262" started-at="2017-10-06T21:26:19Z" finished-at="2017-10-06T21:26:38Z">
+      <class name="belcorp.test.RegistroLogin.CPA_01_Login_usuario_existente">
+        <test-method status="PASS" signature="Login_usuario_existente()[pri:0, instance:belcorp.test.RegistroLogin.CPA_01_Login_usuario_existente@1d057a39]" name="Login_usuario_existente" duration-ms="19247" started-at="2017-10-06T18:26:19Z" finished-at="2017-10-06T18:26:38Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- CPA_022 -->
-      </class> <!-- belcorp.test.Checkout.CPA_022_Logear_AgregarNuevaDireccion_Comprar -->
+        </test-method> <!-- Login_usuario_existente -->
+      </class> <!-- belcorp.test.RegistroLogin.CPA_01_Login_usuario_existente -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

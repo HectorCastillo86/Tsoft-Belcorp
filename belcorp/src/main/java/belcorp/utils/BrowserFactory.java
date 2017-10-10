@@ -33,7 +33,7 @@ public class BrowserFactory {
 			driver = new InternetExplorerDriver();
 		}
 		
-		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+		//driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
 		driver.get(url);

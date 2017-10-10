@@ -16,12 +16,12 @@ import org.openqa.selenium.support.PageFactory;
 public class CPA_02_Registro_nuevo_usuario_belcorp {
 	
 	// DATOS CPA_02
-	String nombre = "AUNO";
+	String nombre = "AUNOX";
 	String apellido= "Auno";
-	String email = "Auno_01@yopmail.com";
+	String email = "Auno_01X@yopmail.com";
 	String pwd = "Tsoft123";
 	String tipoDoc = "Cédula de extranjería"; // valores "Cédula de identidad" ; "Cédula de extranjería"; "NIT" ; "Pasaporte"
-	String checkNumDoc= "154440001";
+	String checkNumDoc= "154450002";
   
   @Test
   public void Registro_nuevo_usuario_belcorp() throws IOException 

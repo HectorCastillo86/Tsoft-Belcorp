@@ -1,4 +1,4 @@
-package test.resources;
+package belcorp.utils;
 
 import java.awt.AWTException;
 import java.awt.Desktop;
@@ -31,8 +31,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
- * Clase p�blica que contiene un log en HTML de forma personalizada para la empresa
- * Testgroup S.A.
+ * Clase publica que contiene un log en HTML de forma personalizada para la empresa
+ * TSOFT S.A.
  */
 
 public class LogResult {
@@ -89,22 +89,22 @@ public class LogResult {
 	
 		
 	/**
-	   * M�todo utilizado para almacenar en un ArrayList informaci�n(Nombre de VP, Descripci�n, Evidencia)
-	   * de los puntos de verificaci�n que se han ejecutado de forma exitosa.
+	   * Metodo utilizado para almacenar en un ArrayList informacion(Nombre de VP, Descripcion, Evidencia)
+	   * de los puntos de verificacion que se han ejecutado de forma exitosa.
 	   * @param NombreVP (no puede ser nulo y contiene el nombre del caso a utlizar dentro del log).
 	   * @param Mensaje (no puede ser nulo y contiene el mensaje que se vera detallado en el log).
 	   * @param driver (no puede ser nulo y contiene el conector del explorador a conectar).
 	   */
 	public void passLog(String NombreVP, String Mensaje, WebDriver driver){
 		
-		String Evidencia = capturaEvidencia(driver, "VP - "+NombreVP);
+		String Evidencia = capturaEvidencia(driver, "VP-"+NombreVP);
 		
-		//Se guardan la informaci�n del VP en el ArrayList
+		//Se guardan la informacion del VP en el ArrayList
 		passlist.add(NombreVP);
 		passlist.add(Mensaje);
 		passlist.add(Evidencia);
 		
-		//Ingresar Nombre del punto de verificaci�n en el textarea ubicado al lado izquierdo del index
+		//Ingresar Nombre del punto de verificacion en el textarea ubicado al lado izquierdo del index
 		if(passLogVP.length()==0){
 			passLogVP.append(NombreVP);
 		}else{
@@ -115,22 +115,22 @@ public class LogResult {
 	}
 	
 	/**
-	   * M�todo utilizado para almacenar en un ArrayList informaci�n(Nombre de VP, Descripci�n, Evidencia)
-	   * de los puntos de verificaci�n que se han ejecutado y han sido rechazados.
+	   * Metodo utilizado para almacenar en un ArrayList informacion(Nombre de VP, Descripci�n, Evidencia)
+	   * de los puntos de verificacion que se han ejecutado y han sido rechazados.
 	   * @param NombreVP (no puede ser nulo y contiene el nombre del caso a utlizar dentro del log).
 	   * @param Mensaje (no puede ser nulo y contiene el mensaje que se vera detallado en el log).
 	   * @param driver (no puede ser nulo y contiene el conector del explorador a conectar).
 	   */
 	public void errorLog(String NombreVP, String Mensaje, WebDriver driver){
 
-		String Evidencia = capturaEvidencia(driver, "VP - "+NombreVP);
+		String Evidencia = capturaEvidencia(driver, "VP-"+NombreVP);
 
-		//Se guardan la informaci�n del VP en el ArrayList
+		//Se guardan la informacion del VP en el ArrayList
 		errorlist.add(NombreVP);
 		errorlist.add(Mensaje);
 		errorlist.add(Evidencia);
 
-		//Ingresar Nombre del punto de verificaci�n en el textarea ubicado al lado izquierdo del index		
+		//Ingresar Nombre del punto de verificacion en el textarea ubicado al lado izquierdo del index		
 		if(errorLogVP.length()==0){
 			errorLogVP.append(NombreVP);
 		}else{
@@ -142,7 +142,7 @@ public class LogResult {
 	}
 		
 	/**
-	   * M�todo utilizado para almacenar en un ArrayList informaci�n(Nombre Alerta, Descripci�n, Evidencia)
+	   * Metodo utilizado para almacenar en un ArrayList informacion(Nombre Alerta, Descripci�n, Evidencia)
 	   * de las alertas arrojadas por el sistema.
 	   * @param NombreVP (no puede ser nulo y contiene el nombre del caso a utlizar dentro del log).
 	   * @param Mensaje (no puede ser nulo y contiene el mensaje que se vera detallado en el log).
@@ -152,12 +152,12 @@ public class LogResult {
 		
 		String Evidencia = capturaEvidencia(driver, "VP - "+NombreVP);
 		
-		//Se guardan la informaci�n de la alerta en el ArrayList
+		//Se guardan la informacion de la alerta en el ArrayList
 		warninglist.add(NombreVP);
 		warninglist.add(Mensaje);
 		warninglist.add(Evidencia);
 		
-		//Ingresar Nombre del punto de verificaci�n en el textarea ubicado al lado izquierdo del index				
+		//Ingresar Nombre del punto de verificacion en el textarea ubicado al lado izquierdo del index				
 		if(warningLog.length()==0){
 			warningLog.append(NombreVP);
 		}else{
@@ -168,9 +168,9 @@ public class LogResult {
 	}
 	
 	/**
-	   * M�todo utilizado para tomar una captura de la pantalla y porteriormente guardarla en un 
-	   * directorio dentro del workspace (Ejecuci�nxxx/Evidencia), junto con todas las otras capturas
-	   * obtenidas una vez finalizada la ejecuci�n del script.
+	   * Metodo utilizado para tomar una captura de la pantalla y porteriormente guardarla en un 
+	   * directorio dentro del workspace (Ejecucionxxx/Evidencia), junto con todas las otras capturas
+	   * obtenidas una vez finalizada la ejecucion del script.
 	   * @return Retorna el Path final de la imagen.
 	   * @param driver (no puede ser nulo y contiene el conector del explorador).
 	   * @param imageName (no puede ser nulo y contiene el nombre de la imagen).
@@ -195,7 +195,7 @@ public class LogResult {
 		    String fecha_hora = formatter.format(today2);
 		    
 		  //Directorio donde quedaran las imagenes guardadas
-		  File directory = new File(curDir+"\\log\\Ejecución"+ fecha_hora_Ejecucion +"\\Evidencia");
+		  File directory = new File(curDir+"\\log\\Ejecucion"+ fecha_hora_Ejecucion +"\\Evidencia");
 		
 		  try {
 			  	if (!directory.exists()) {
@@ -216,9 +216,9 @@ public class LogResult {
 	  }
 	  
 	  /**
-	   * M�todo utilizado para cargar todos los archivos (CSS, Imagenes, Javascript y HTML)
+	   * Metodo utilizado para cargar todos los archivos (CSS, Imagenes, Javascript y HTML)
 	   * que son necesarios para cargar el log con un formato personalizado en HTML.
-	   * Adem�s de invocar otros procesos necesarios para la creaci�n del Log.
+	   * Adem�s de invocar otros procesos necesarios para la creacion del Log.
 	   */
 	public void copiarCssImagenes(String ruta) throws IOException {
 		  //Se crean los directorios donde se guardaran los archivos necesarios
@@ -294,7 +294,7 @@ public class LogResult {
 }
 
 	  /**
-	   * M�todo utilizado para crear copia identica de dos archivos en los rutas especificas. 
+	   * Metodo utilizado para crear copia identica de dos archivos en los rutas especificas. 
 	   * @param sourceFile (no puede ser nulo y contiene el path completo del archivo original).
 	   * @param destinationFile (no puede ser nulo y contiene el path completo del archivo de destino).
 	   */
@@ -318,13 +318,13 @@ public class LogResult {
 		}
 	 
       /**
-	   * M�todo utilizado para reemplazar variables en archivo resumen.html. 
+	   * Metodo utilizado para reemplazar variables en archivo resumen.html. 
 	   */
 	  public void sustitucionResumen() throws IOException { 
-		  	String file = curDir+"\\log\\Ejecución"+fecha_hora_Ejecucion+"\\resumen.html";
+		  	String file = curDir+"\\log\\Ejecucion"+fecha_hora_Ejecucion+"\\resumen.html";
 		  	//Se crea un objeto File usando el constructor que recibe la ruta(String)
 		    File archivo = new File (file);
-		    //Usamos estos 2 objetos porque BufferedReader contiene un m�todo sencilo
+		    //Usamos estos 2 objetos porque BufferedReader contiene un Metodo sencilo
 		    //Para leer el archivo por linea
 		    //FileReader fileReader;
 		    
@@ -390,12 +390,12 @@ public class LogResult {
 					InputStreamReader is = new InputStreamReader(fis, "utf8");
 					BufferedReader buffReader = new BufferedReader(is);
 				
-			    //Aqu� guardaremos cada l�nea del archivo por vez
+			    //aqui guardaremos cada linea del archivo por vez
 			    String linea=null;
-			    //Aqu� acumularemos todas las l�neas
+			    //aqui acumularemos todas las lineas
 			    String contenido="";
 			    int cont=0;
-			    //Cada que se invoca el m�todo readLine() se busca una linea y el cursor
+			    //Cada que se invoca el Metodo readLine() se busca una linea y el cursor
 			    //pasa a la siguiente linea cuando no hay mas lineas regresa null
 					while((linea=buffReader.readLine())!=null){
 					   
@@ -455,14 +455,14 @@ public class LogResult {
 		  }
 	  
       /**
-	   * M�todo utilizado para reemplazar variables en archivo index.html. 
+	   * Metodo utilizado para reemplazar variables en archivo index.html. 
 	   */
 	  public void sustitucionIndex() throws IOException { 
-		  	String file = curDir+"\\log\\Ejecución"+fecha_hora_Ejecucion+"\\index.html";
+		  	String file = curDir+"\\log\\Ejecucion"+fecha_hora_Ejecucion+"\\index.html";
 		  	//Se crea un objeto File usando el constructor que recibe la ruta(String)
 		    File archivo = new File (file);
 		    
-		    //Usamos estos 2 objetos porque BufferedReader contiene un m�todo sencilo
+		    //Usamos estos 2 objetos porque BufferedReader contiene un Metodo sencilo
 		    //Para leer el archivo por linea
 		    //FileReader fileReader;
 			try {
@@ -471,12 +471,12 @@ public class LogResult {
 					InputStreamReader is = new InputStreamReader(fis, "utf8");
 					BufferedReader buffReader = new BufferedReader(is);
 				
-			    //Aqu� guardaremos cada l�nea del archivo por vez
+			    //aqui guardaremos cada linea del archivo por vez
 			    String linea=null;
-			    //Aqu� acumularemos todas las l�neas
+			    //aqui acumularemos todas las lineas
 			    String contenido="";
 			    int cont=0;
-			    //Cada que se invoca el m�todo readLine() se busca una linea y el cursor
+			    //Cada que se invoca el Metodo readLine() se busca una linea y el cursor
 			    //pasa a la siguiente linea cuando no hay mas lineas regresa null
 					while((linea=buffReader.readLine())!=null){
 					   
@@ -537,13 +537,13 @@ public class LogResult {
 		  }
 	  
       /**
-	   * M�todo utilizado para reemplazar variables en archivo vp_exitosos.html. 
+	   * Metodo utilizado para reemplazar variables en archivo vp_exitosos.html. 
 	   */	  
 	  public void sustitucionExitosos() throws IOException { 
-		  	String file = curDir+"\\log\\Ejecución"+fecha_hora_Ejecucion+"\\vp_exitosos.html";
+		  	String file = curDir+"\\log\\Ejecucion"+fecha_hora_Ejecucion+"\\vp_exitosos.html";
 		  	//Se crea un objeto File usando el constructor que recibe la ruta(String)
 		    File archivo = new File (file);
-		    //Usamos estos 2 objetos porque BufferedReader contiene un m�todo sencilo
+		    //Usamos estos 2 objetos porque BufferedReader contiene un Metodo sencilo
 		    //Para leer el archivo por linea
 		    //FileReader fileReader;
 			try {
@@ -552,12 +552,12 @@ public class LogResult {
 					InputStreamReader is = new InputStreamReader(fis, "utf8");
 					BufferedReader buffReader = new BufferedReader(is);
 				
-			    //Aqu� guardaremos cada l�nea del archivo por vez
+			    //aqui guardaremos cada linea del archivo por vez
 			    String linea=null;
-			    //Aqu� acumularemos todas las l�neas
+			    //aqui acumularemos todas las lineas
 			    String contenido="";
 			    int cont=0;
-			    //Cada que se invoca el m�todo readLine() se busca una linea y el cursor
+			    //Cada que se invoca el Metodo readLine() se busca una linea y el cursor
 			    //pasa a la siguiente linea cuando no hay mas lineas regresa null
 					while((linea=buffReader.readLine())!=null){
 					   
@@ -591,25 +591,25 @@ public class LogResult {
 		  }
 	  
       /**
-	   * M�todo utilizado para reemplazar variables en archivo vp_rechazados.html. 
+	   * Metodo utilizado para reemplazar variables en archivo vp_rechazados.html. 
 	   */	  	  
 	  public void sustitucionRechazados() throws IOException { 
-		  	String file = curDir+"\\log\\Ejecución"+fecha_hora_Ejecucion+"\\vp_rechazados.html";
+		  	String file = curDir+"\\log\\Ejecucion"+fecha_hora_Ejecucion+"\\vp_rechazados.html";
 		  	//Se crea un objeto File usando el constructor que recibe la ruta(String)
 		    File archivo = new File (file);
-		    //Usamos estos 2 objetos porque BufferedReader contiene un m�todo sencilo
+		    //Usamos estos 2 objetos porque BufferedReader contiene un Metodo sencilo
 		    //Para leer el archivo por linea
 			try {
 					FileInputStream fis = new FileInputStream(archivo);
 					InputStreamReader is = new InputStreamReader(fis, "utf8");
 					BufferedReader buffReader = new BufferedReader(is);
 				
-			    //Aqu� guardaremos cada l�nea del archivo por vez
+			    //aqui guardaremos cada linea del archivo por vez
 			    String linea=null;
-			    //Aqu� acumularemos todas las l�neas
+			    //aqui acumularemos todas las lineas
 			    String contenido="";
 			    int cont=0;
-			    //Cada que se invoca el m�todo readLine() se busca una linea y el cursor
+			    //Cada que se invoca el Metodo readLine() se busca una linea y el cursor
 			    //pasa a la siguiente linea cuando no hay mas lineas regresa null
 					while((linea=buffReader.readLine())!=null){
 					   
@@ -643,13 +643,13 @@ public class LogResult {
 }
 	  
       /**
-	   * M�todo utilizado para reemplazar variables en archivo alertas.html. 
+	   * Metodo utilizado para reemplazar variables en archivo alertas.html. 
 	   */	  	  	  
 	  public void sustitucionAlertas() throws IOException { 
-		  	String file = curDir+"\\log\\Ejecución"+fecha_hora_Ejecucion+"\\alertas.html";
+		  	String file = curDir+"\\log\\Ejecucion"+fecha_hora_Ejecucion+"\\alertas.html";
 		  	//Se crea un objeto File usando el constructor que recibe la ruta(String)
 		    File archivo = new File (file);
-		    //Usamos estos 2 objetos porque BufferedReader contiene un m�todo sencilo
+		    //Usamos estos 2 objetos porque BufferedReader contiene un Metodo sencilo
 		    //Para leer el archivo por linea
 		    //FileReader fileReader;
 			try {
@@ -657,12 +657,12 @@ public class LogResult {
 					InputStreamReader is = new InputStreamReader(fis, "utf8");
 					BufferedReader buffReader = new BufferedReader(is);
 				
-			    //Aqu� guardaremos cada l�nea del archivo por vez
+			    //aqui guardaremos cada linea del archivo por vez
 			    String linea=null;
-			    //Aqu� acumularemos todas las l�neas
+			    //aqui acumularemos todas las lineas
 			    String contenido="";
 			    int cont=0;
-			    //Cada que se invoca el m�todo readLine() se busca una linea y el cursor
+			    //Cada que se invoca el Metodo readLine() se busca una linea y el cursor
 			    //pasa a la siguiente linea cuando no hay mas lineas regresa null
 					while((linea=buffReader.readLine())!=null){
 					   
@@ -696,7 +696,7 @@ public class LogResult {
 	}	 
 	  
       /**
-	   * M�todo para obtener Hora y Fecha del inicio de la ejecuci�n. 
+	   * Metodo para obtener Hora y Fecha del inicio de la ejecucion. 
 	   */	  	  	  	  
 	  public void InicioScript(WebDriver drive){
 		  java.util.Date today = Calendar.getInstance().getTime();
@@ -710,7 +710,7 @@ public class LogResult {
 }
 	  
       /**
-	   * M�todo para obtener Hora y Fecha del fin de ejecuci�n. 
+	   * Metodo para obtener Hora y Fecha del fin de ejecucion. 
 	   */	  	  	  	  	  
 	  public void FinScript(){
 		  java.util.Date today = Calendar.getInstance().getTime();
@@ -721,7 +721,7 @@ public class LogResult {
  }
 	  
       /**
-	   * M�todo para crear tabla con el detalle de cada VP ya sea exitoso o rechazado,
+	   * Metodo para crear tabla con el detalle de cada VP ya sea exitoso o rechazado,
 	   * y tambi�n de cada alerta generada por el sistema. 
 	   */	  	  	  	  	  
 	  public void CrearTablaVP(int vptotales, ArrayList <String> lista)
@@ -760,7 +760,7 @@ public class LogResult {
 	  }
 
       /**
-	   * M�todo para crear la tabla del metodo anterior, en caso que el numero total de VP
+	   * Metodo para crear la tabla del metodo anterior, en caso que el numero total de VP
 	   * o alertas sea par. 
 	   */	  	  	  	  	  	
 	  public void CreacionPares(int vptot, ArrayList <String> lista){
@@ -798,7 +798,7 @@ public class LogResult {
 	  }
 	 
       /**
-	   * M�todo para crear la tabla del metodo anterior, en caso que el numero total de VP
+	   * Metodo para crear la tabla del metodo anterior, en caso que el numero total de VP
 	   * o alertas sea impar. 
 	   */	  	  	  	  	   
 	  public void CreacionImPares(ArrayList <String> lista){
@@ -829,13 +829,13 @@ public class LogResult {
 }
 	  
       /**
-	   * M�todo para crear tabla de progreso ubicada en el costado izquierdo del index
+	   * Metodo para crear tabla de progreso ubicada en el costado izquierdo del index
 	   */	  	  	  	  	  	  
 	  public void sustitucionColores() throws IOException { 
-		  	String file = curDir+"\\log\\Ejecución"+fecha_hora_Ejecucion+"\\index.html";
+		  	String file = curDir+"\\log\\Ejecucion"+fecha_hora_Ejecucion+"\\index.html";
 		  	//Se crea un objeto File usando el constructor que recibe la ruta(String)
 		    File archivo = new File (file);		    
-		    //Usamos estos 2 objetos porque BufferedReader contiene un m�todo sencilo
+		    //Usamos estos 2 objetos porque BufferedReader contiene un Metodo sencilo
 		    //Para leer el archivo por linea
 		    //FileReader fileReader;
 			try {
@@ -843,12 +843,12 @@ public class LogResult {
 					InputStreamReader is = new InputStreamReader(fis, "utf8");
 					BufferedReader buffReader = new BufferedReader(is);
 				
-			    //Aqu� guardaremos cada l�nea del archivo por vez
+			    //aqui guardaremos cada linea del archivo por vez
 			    String linea=null;
-			    //Aqu� acumularemos todas las l�neas
+			    //aqui acumularemos todas las lineas
 			    String contenido="";
 			    int cont=0;
-			    //Cada que se invoca el m�todo readLine() se busca una linea y el cursor
+			    //Cada que se invoca el Metodo readLine() se busca una linea y el cursor
 			    //pasa a la siguiente linea cuando no hay mas lineas regresa null
 					while((linea=buffReader.readLine())!=null){
 					   
@@ -887,7 +887,7 @@ public class LogResult {
 }
 	  
       /**
-	   * M�todo para crear tabla de progreso ubicada en el costado izquierdo del index
+	   * Metodo para crear tabla de progreso ubicada en el costado izquierdo del index
 	   */	  	  	  	  	  	  	  
 	  public void calcularPorcentajes(int passTotales, int errorTotales, int warningTotales)
 	  {
@@ -917,7 +917,7 @@ public class LogResult {
 	}
 
       /**
-	   * M�todo para crear tabla de progreso ubicada en el costado izquierdo del index
+	   * Metodo para crear tabla de progreso ubicada en el costado izquierdo del index
 	   */	  	  	  	  	  	  	  	  
 	  public String rellenarProgreso(String color, int porcentaje){
 		String variable = "";  
@@ -1113,7 +1113,7 @@ public class LogResult {
 	}
 	  
       /**
-	   * M�todo para crear redondear porcentajes
+	   * Metodo para crear redondear porcentajes
 	   */		  
 	  public static double redondear(double numero) {
 			int numeroDecimales=0;
@@ -1122,7 +1122,7 @@ public class LogResult {
 			return resultado;
 			}
 	  /**
-	   * M�todo utilizado para la creaci�n del log invocando otros metodos y las variables globales
+	   * Metodo utilizado para la creacion del log invocando otros metodos y las variables globales
 	*/
 		/**
 		 * @param nombreSistema
@@ -1134,7 +1134,7 @@ public class LogResult {
 			
 			//Directorio donde quedaran las imagenes guardadas
 			  File directory = new File(curDir+"\\log"); 
-			  File directoryEjecucion = new File(curDir+"\\log\\Ejecución"+fecha_hora_Ejecucion);	
+			  File directoryEjecucion = new File(curDir+"\\log\\Ejecucion"+fecha_hora_Ejecucion);	
 			  File f = new File(directoryEjecucion+"\\index.html");
 			 // System.out.println(directoryEjecucion);
 			//Escritura
@@ -1162,7 +1162,7 @@ public class LogResult {
 		        }	        	
 		        }
 		        else{ 
-		        	warningLog("Apertura Navegador", "Lo sentimos,no se puede abrir el archivo; �sta Maquina no soporta la API Desktop", driverwarning);
+		        	warningLog("Apertura Navegador", "Lo sentimos,no se puede abrir el archivo; esta Maquina no soporta la API Desktop", driverwarning);
 		        }
 				
 				}catch(IOException e){
