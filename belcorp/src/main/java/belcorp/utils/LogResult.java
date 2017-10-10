@@ -115,6 +115,33 @@ public class LogResult {
 	}
 	
 	/**
+	   * Metodo utilizado para almacenar en un ArrayList informacion(Nombre de VP, Descripcion, Evidencia)
+	   * de los puntos de verificacion que se han ejecutado de forma exitosa.
+	   * @param NombreVP (no puede ser nulo y contiene el nombre del caso a utlizar dentro del log).
+	   * @param Mensaje (no puede ser nulo y contiene el mensaje que se vera detallado en el log).
+	   * @param driver (no puede ser nulo y contiene el conector del explorador a conectar).
+	   */
+	public void passLog(String NombreVP, String Mensaje, WebDriver driver,String namecase){
+		
+		String nombreCaso = namecase;
+		String Evidencia = capturaEvidencia(driver, "VP-"+NombreVP,nombreCaso);
+		
+		//Se guardan la informacion del VP en el ArrayList
+		passlist.add(NombreVP);
+		passlist.add(Mensaje);
+		passlist.add(Evidencia);
+		
+		//Ingresar Nombre del punto de verificacion en el textarea ubicado al lado izquierdo del index
+		if(passLogVP.length()==0){
+			passLogVP.append(NombreVP);
+		}else{
+			passLogVP.append("\\n"+NombreVP);//Agrega un salto de linea en el textarea de VP exitosos
+		}
+
+		passLogVPTotales.append("1");//Se suma 1 al StringBuffer con el total de VP Exitosos
+	}
+	
+	/**
 	   * Metodo utilizado para almacenar en un ArrayList informacion(Nombre de VP, Descripci�n, Evidencia)
 	   * de los puntos de verificacion que se han ejecutado y han sido rechazados.
 	   * @param NombreVP (no puede ser nulo y contiene el nombre del caso a utlizar dentro del log).
@@ -124,6 +151,35 @@ public class LogResult {
 	public void errorLog(String NombreVP, String Mensaje, WebDriver driver){
 
 		String Evidencia = capturaEvidencia(driver, "VP-"+NombreVP);
+
+		//Se guardan la informacion del VP en el ArrayList
+		errorlist.add(NombreVP);
+		errorlist.add(Mensaje);
+		errorlist.add(Evidencia);
+
+		//Ingresar Nombre del punto de verificacion en el textarea ubicado al lado izquierdo del index		
+		if(errorLogVP.length()==0){
+			errorLogVP.append(NombreVP);
+		}else{
+			errorLogVP.append("\\n"+NombreVP);//Agrega un salto de linea en el textarea de VP rechazados
+		}
+
+		errorLogVPTotales.append("1");//Se suma 1 al StringBuffer con el total de VP Rechazados
+
+	}
+	
+	/**
+	   * Metodo utilizado para almacenar en un ArrayList informacion(Nombre de VP, Descripci�n, Evidencia)
+	   * de los puntos de verificacion que se han ejecutado y han sido rechazados.
+	   * @param NombreVP (no puede ser nulo y contiene el nombre del caso a utlizar dentro del log).
+	   * @param Mensaje (no puede ser nulo y contiene el mensaje que se vera detallado en el log).
+	   * @param driver (no puede ser nulo y contiene el conector del explorador a conectar).
+	   */
+	public void errorLog(String NombreVP, String Mensaje, WebDriver driver, String namecase){
+		
+		String nombreCaso = namecase;
+
+		String Evidencia = capturaEvidencia(driver, "VP-"+NombreVP,nombreCaso);
 
 		//Se guardan la informacion del VP en el ArrayList
 		errorlist.add(NombreVP);
@@ -151,6 +207,32 @@ public class LogResult {
 	public void warningLog(String NombreVP, String Mensaje, WebDriver driver){
 		
 		String Evidencia = capturaEvidencia(driver, "VP - "+NombreVP);
+		
+		//Se guardan la informacion de la alerta en el ArrayList
+		warninglist.add(NombreVP);
+		warninglist.add(Mensaje);
+		warninglist.add(Evidencia);
+		
+		//Ingresar Nombre del punto de verificacion en el textarea ubicado al lado izquierdo del index				
+		if(warningLog.length()==0){
+			warningLog.append(NombreVP);
+		}else{
+			warningLog.append("\\n"+NombreVP);//Agrega un salto de linea en el textarea de Alertas
+		}
+		
+		warningLogVPTotales.append("1");//Se suma 1 al StringBuffer con el total de Alertas	
+	}
+	
+	/**
+	   * Metodo utilizado para almacenar en un ArrayList informacion(Nombre Alerta, Descripci�n, Evidencia)
+	   * de las alertas arrojadas por el sistema.
+	   * @param NombreVP (no puede ser nulo y contiene el nombre del caso a utlizar dentro del log).
+	   * @param Mensaje (no puede ser nulo y contiene el mensaje que se vera detallado en el log).
+	   * @param driver (no puede ser nulo y contiene el conector del explorador a conectar).
+	   */
+	public void warningLog(String NombreVP, String Mensaje, WebDriver driver, String namecase){
+		
+		String Evidencia = capturaEvidencia(driver, "VP - "+NombreVP,namecase);
 		
 		//Se guardan la informacion de la alerta en el ArrayList
 		warninglist.add(NombreVP);
@@ -214,6 +296,33 @@ public class LogResult {
 		      return null;
 		  }
 	  }
+	
+	public static String capturaEvidencia(WebDriver driver, String imageName, String namecase) {
+		  
+		java.util.Date today2 = Calendar.getInstance().getTime();
+	    SimpleDateFormat formatter = new SimpleDateFormat("_dd_MM_yyyy_MM_dd-hh_mm_ss");
+	    String fecha_hora = formatter.format(today2);
+	    
+	  //Directorio donde quedaran las imagenes guardadas
+	  File directory = new File(curDir+"\\log\\Ejecucion_"+namecase+ fecha_hora_Ejecucion +"\\Evidencia");
+	
+	  try {
+		  	if (!directory.exists()) {
+		  		directory.mkdir();
+		  	}
+	  
+		  	//Toma la captura de imagen 
+		  	File imagen = (File) ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		  	//Mueve el archivo a la carga especificada con el respectivo nombre
+		  	FileUtils.copyFile(imagen, new File(directory.getAbsolutePath() + "\\" + imageName + fecha_hora +".png"));
+		  	String Imagen = "Evidencia/"+imageName + fecha_hora +".png";
+		  	return Imagen;
+	  } catch (IOException e) {
+		  //Impresion de Excepciones 
+	      System.out.println(e);
+	      return null;
+	  }
+  }
 	  
 	  /**
 	   * Metodo utilizado para cargar todos los archivos (CSS, Imagenes, Javascript y HTML)
@@ -292,6 +401,85 @@ public class LogResult {
 		colores3= rellenarProgreso("284177", porcentajewarning);	
 		sustitucionColores();//Metodo que crea 
 }
+	
+	
+	  /**
+	   * Metodo utilizado para cargar todos los archivos (CSS, Imagenes, Javascript y HTML)
+	   * que son necesarios para cargar el log con un formato personalizado en HTML.
+	   * Adem�s de invocar otros procesos necesarios para la creacion del Log.
+	   */
+	public void copiarCssImagenes(String ruta, String nameCase) throws IOException {
+		  //Se crean los directorios donde se guardaran los archivos necesarios
+		  String directorioPadre = ruta;
+		  File directory1 = new File(directorioPadre+"\\Formato");		
+		  if (!directory1.exists()) {
+			directory1.mkdir();  
+		  }
+		  File directory2 = new File(directorioPadre+"\\Formato\\images");
+		  if (!directory2.exists()) {
+			directory2.mkdir();
+		  }
+		  File directory3 = new File(directorioPadre+"\\Formato\\js");		
+		  if (!directory3.exists()) {
+			directory3.mkdir();
+		 }
+		 File directory4 = new File(directorioPadre+"\\Formato\\css");		
+		  if (!directory4.exists()) {
+			directory4.mkdir();
+		}
+		  	  
+				
+		//Se copian las imagenes en la Ruta correspondiente
+		FileCopy(curDir+"\\MaquetacionLog\\html\\images\\favicon.ico", directory2.toString()+"\\favicon.ico");
+		FileCopy(curDir+"\\MaquetacionLog\\html\\images\\logo2.png", directory2.toString()+"\\logo2.png");
+		FileCopy(curDir+"\\MaquetacionLog\\html\\images\\btnatras.png", directory2.toString()+"\\btnatras.png");
+		FileCopy(curDir+"\\MaquetacionLog\\html\\images\\Camera.png", directory2.toString()+"\\Camera.png");
+		FileCopy(curDir+"\\MaquetacionLog\\html\\images\\cerrar.png", directory2.toString()+"\\cerrar.png");
+		FileCopy(curDir+"\\MaquetacionLog\\html\\images\\detalle.png", directory2.toString()+"\\detalle.png");	
+		FileCopy(curDir+"\\MaquetacionLog\\html\\images\\detalle.png", directory2.toString()+"\\Home.png");		
+		
+		//Se copian los archivos javascript en la Ruta correspondiente
+		FileCopy(curDir+"\\MaquetacionLog\\html\\js\\bgstretcher.js", directory3.toString()+"\\bgstretcher.js");
+		FileCopy(curDir+"\\MaquetacionLog\\html\\js\\jquery.elastislide.js", directory3.toString()+"\\jquery.elastislide.js");
+		FileCopy(curDir+"\\MaquetacionLog\\html\\js\\jquery.fancybox.pack.js", directory3.toString()+"\\jquery.fancybox.pack.js");
+		FileCopy(curDir+"\\MaquetacionLog\\html\\js\\jquery.js", directory3.toString()+"\\jquery.js");
+		FileCopy(curDir+"\\MaquetacionLog\\html\\js\\jquery-migrate-1.1.1.js", directory3.toString()+"\\jquery-migrate-1.1.1.js");   
+		
+		//Se copian los archivos CSS en la Ruta correspondiente
+		FileCopy(curDir+"\\MaquetacionLog\\html\\css\\estilo.css", directory4.toString()+"\\estilo.css");
+		FileCopy(curDir+"\\MaquetacionLog\\html\\css\\jquery.fancybox.css", directory4.toString()+"\\jquery.fancybox.css");
+		
+		//Se copian los archivos HTML en la Ruta correspondiente
+		FileCopy(curDir+"\\MaquetacionLog\\html\\cuerpo\\index.html", directorioPadre+"\\index.html");
+		FileCopy(curDir+"\\MaquetacionLog\\html\\cuerpo\\resumen.html", directorioPadre+"\\resumen.html");
+		FileCopy(curDir+"\\MaquetacionLog\\html\\cuerpo\\alertas.html", directorioPadre+"\\alertas.html");
+		FileCopy(curDir+"\\MaquetacionLog\\html\\cuerpo\\vp_exitosos.html", directorioPadre+"\\vp_exitosos.html");
+		FileCopy(curDir+"\\MaquetacionLog\\html\\cuerpo\\vp_rechazados.html", directorioPadre+"\\vp_rechazados.html");		
+		
+		/**
+		 * Se invocan los metodos para crear las paginas vp_exitosos.html, vp_rechazados.html y alertas.html
+		 * las que contendran el detalle de cada VP ejecutado al igual que las alertas obtenidas.
+		*/
+		CrearTablaVP(passLogVPTotales.length(), passlist);
+		sustitucionExitosos(nameCase);
+		CrearTablaVP(errorLogVPTotales.length(), errorlist);
+		sustitucionRechazados(nameCase);
+		CrearTablaVP(warningLogVPTotales.length(), warninglist);
+		sustitucionAlertas(nameCase);
+		
+		//Se invoca metodo para calcular los porcentanjes de VP exitosos, rechazados y alertas
+		calcularPorcentajes(passLogVPTotales.length(), errorLogVPTotales.length(), warningLogVPTotales.length());
+
+		//Se invocan metodos para crear index.html y resumen.html con parametros dinamicos
+		sustitucionIndex(nameCase);
+		sustitucionResumen(nameCase);
+		
+		//Se cambiar valor a parametros para completar tabla de progreso al lado izquierdo del index
+		colores1= rellenarProgreso("009c63", porcentajepass);
+		colores2= rellenarProgreso("CC2D30", porcentajeerror);
+		colores3= rellenarProgreso("284177", porcentajewarning);	
+		sustitucionColores(nameCase);//Metodo que crea 
+}
 
 	  /**
 	   * Metodo utilizado para crear copia identica de dos archivos en los rutas especificas. 
@@ -322,6 +510,143 @@ public class LogResult {
 	   */
 	  public void sustitucionResumen() throws IOException { 
 		  	String file = curDir+"\\log\\Ejecucion"+fecha_hora_Ejecucion+"\\resumen.html";
+		  	//Se crea un objeto File usando el constructor que recibe la ruta(String)
+		    File archivo = new File (file);
+		    //Usamos estos 2 objetos porque BufferedReader contiene un Metodo sencilo
+		    //Para leer el archivo por linea
+		    //FileReader fileReader;
+		    
+		    
+		    
+		    /**** HORA INICIO *****/    
+		    //HORA
+		    String v_horaInicio=Hora_Ini.substring(0, 2);			
+			//MINUTOS
+			String v_minutoInicio=Hora_Ini.substring(3, 5);			
+			//segundos
+			String v_segundosInicio=Hora_Ini.substring(6, 8);
+		
+			
+	/***** HORA Termino *****/   	
+			 //HORA
+		    String v_horaFin=Hora_Fin.substring(0, 2);			
+			//MINUTOS
+			String v_minutoFin=Hora_Fin.substring(3, 5);			
+			//segundos
+			String v_segundosFin=Hora_Fin.substring(6, 8);
+			
+			
+			//Parseo hora INICIO
+			int horaInicioEjecucion = Integer.parseInt(v_horaInicio.toString());
+			int minutoInicioEjecucion = Integer.parseInt(v_minutoInicio.toString());
+			int segundosInicioEjecucion =Integer.parseInt(v_segundosInicio.toString());
+			
+			//Parseo hora FIN
+			int horaFinEjecucion = Integer.parseInt(v_horaFin.toString());
+			int minutoFinEjecucion = Integer.parseInt(v_minutoFin.toString());
+			int segundosFinEjecucion = Integer.parseInt(v_segundosFin.toString());
+			
+			
+			int diferenciaHoras= horaFinEjecucion - horaInicioEjecucion;
+			int diferenciaMinutos = minutoFinEjecucion - minutoInicioEjecucion;
+			int diferenciaSegundos = segundosFinEjecucion - segundosInicioEjecucion;
+			
+					
+			
+			int contenedorDiferenciaSegundoFinal=0;
+			String labelTiempoEjecucion="";
+			
+			if(diferenciaSegundos>0){
+				System.out.println("El tiempo de ejecucion fue de: "+ diferenciaHoras +":"+ diferenciaMinutos + ":"+ diferenciaSegundos );
+				contenedorDiferenciaSegundoFinal = diferenciaSegundos;
+				labelTiempoEjecucion= diferenciaHoras +":"+ diferenciaMinutos + ":"+ diferenciaSegundos + "  (hh:mm:ss)";
+			}
+			else if(diferenciaSegundos<0){
+				int diferenciaSegundoFormateado=diferenciaSegundos*-1;
+				System.out.println("Segundos formateado a positivo: "+ diferenciaSegundoFormateado);
+				System.out.println("El tiempo de ejecucion fue de (segundos negativo): "+ diferenciaHoras +":"+ diferenciaMinutos + ":"+ diferenciaSegundoFormateado );
+				
+				contenedorDiferenciaSegundoFinal=diferenciaSegundoFormateado;
+				labelTiempoEjecucion = diferenciaHoras +":"+ diferenciaMinutos + ":"+ contenedorDiferenciaSegundoFinal + "  (hh:mm:ss)";
+			}
+
+		    
+		    
+			try {
+
+					FileInputStream fis = new FileInputStream(archivo);
+					InputStreamReader is = new InputStreamReader(fis, "utf8");
+					BufferedReader buffReader = new BufferedReader(is);
+				
+			    //aqui guardaremos cada linea del archivo por vez
+			    String linea=null;
+			    //aqui acumularemos todas las lineas
+			    String contenido="";
+			    int cont=0;
+			    //Cada que se invoca el Metodo readLine() se busca una linea y el cursor
+			    //pasa a la siguiente linea cuando no hay mas lineas regresa null
+					while((linea=buffReader.readLine())!=null){
+					   
+						switch (linea.trim()) {
+				            case "var hora_inicial_resumen = \"12:00\";":  
+			            		 	linea = "var hora_inicial_resumen = \""+Hora_Ini+"\";";
+			            		 	break;
+				            case "var fecha_inicial_resumen = \"30-06-2014\";":  
+			            		 	linea = "var fecha_inicial_resumen = \""+Fecha_Ini+"\";";
+			            		 	break;
+				            case "var hora_termino_resumen = \"13:00\";":  
+			            		 	linea = "var hora_termino_resumen = \""+Hora_Fin+"\";";
+			            		 	break;
+				            case "var fecha_termino_resumen = \"30-06-2014\";":  
+			            		 	linea = "var fecha_termino_resumen = \""+Fecha_Fin+"\";";
+			            		 	break;
+				            case "var tiempo_ejecucion = \"00:00\";":  
+		            		 		linea = "var tiempo_ejecucion = \""+ labelTiempoEjecucion +"\";";
+		            		 		break;	 	 	
+			            		 	
+			            		 	
+				            case "<a href=\"alertas.html\"><img src=\"Formato/images/detalle.png\" width=\"32px\" title=\"Mas detalles\" align=\"right\"/></a>":  
+		            		 	if(warningLogVPTotales.length()==0)
+		            		 	{linea = "<img src=\"Formato/images/detalle.png\" width=\"32px\" title=\"Mas detalles\" align=\"right\"/>";}
+		            		 	break;
+				            case "<a href=\"vp_exitosos.html\"><img src=\"Formato/images/detalle.png\" width=\"32px\" title=\"Mas detalles\" align=\"right\"/></a>":  
+		            		 	if(passLogVPTotales.length()==0)
+		            		 	{linea = "<img src=\"Formato/images/detalle.png\" width=\"32px\" title=\"Mas detalles\" align=\"right\"/>";}
+		            		 	break;
+				            case "<a href=\"vp_rechazados.html\"><img src=\"Formato/images/detalle.png\" width=\"32px\" title=\"Mas detalles\" align=\"right\"/></a>":  
+		            		 	if(errorLogVPTotales.length()==0)
+		            		 	{linea = "<img src=\"Formato/images/detalle.png\" width=\"32px\" title=\"Mas detalles\" align=\"right\"/>";}
+		            		 	break;	
+						}
+					   
+					   if(cont==0){
+						   contenido+="\n<!--";
+						   cont=1;
+						   
+					   }else{
+						   contenido+="\n"+linea;
+					   }
+					}
+			    
+			    //Se valida que no sea nulo y se cierra
+			    if( null != fis){
+						fis.close();
+						archivo.delete();
+						BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
+						 bw.write(contenido);
+						 bw.close();
+			    }
+			    
+			} catch (FileNotFoundException e) {				
+				System.out.println(e);
+			}		  
+		  }
+
+      /**
+	   * Metodo utilizado para reemplazar variables en archivo resumen.html. 
+	   */
+	  public void sustitucionResumen(String namecase) throws IOException { 
+		  	String file = curDir+"\\log\\Ejecucion_"+namecase+fecha_hora_Ejecucion+"\\resumen.html";
 		  	//Se crea un objeto File usando el constructor que recibe la ruta(String)
 		    File archivo = new File (file);
 		    //Usamos estos 2 objetos porque BufferedReader contiene un Metodo sencilo
@@ -536,11 +861,149 @@ public class LogResult {
 			}
 		  }
 	  
+	  /**
+	   * Metodo utilizado para reemplazar variables en archivo index.html. 
+	   */
+	  public void sustitucionIndex(String namecase) throws IOException { 
+		  	String file = curDir+"\\log\\Ejecucion_"+namecase+fecha_hora_Ejecucion+"\\index.html";
+		  	//Se crea un objeto File usando el constructor que recibe la ruta(String)
+		    File archivo = new File (file);
+		    
+		    //Usamos estos 2 objetos porque BufferedReader contiene un Metodo sencilo
+		    //Para leer el archivo por linea
+		    //FileReader fileReader;
+			try {
+
+					FileInputStream fis = new FileInputStream(archivo);
+					InputStreamReader is = new InputStreamReader(fis, "utf8");
+					BufferedReader buffReader = new BufferedReader(is);
+				
+			    //aqui guardaremos cada linea del archivo por vez
+			    String linea=null;
+			    //aqui acumularemos todas las lineas
+			    String contenido="";
+			    int cont=0;
+			    //Cada que se invoca el Metodo readLine() se busca una linea y el cursor
+			    //pasa a la siguiente linea cuando no hay mas lineas regresa null
+					while((linea=buffReader.readLine())!=null){
+					   
+						switch (linea.trim()) {
+				            case "var nombreCaso = \"PRUEBA CASO 22\";":  
+				            		linea = "var nombreCaso = \""+namecase+"\";";
+				                    break;
+				            case "var VP_Exitosos = \"VP_Prueba1\";":  
+			            		 	linea = "var VP_Exitosos = \""+passLogVP+"\";";
+			            		 	break;
+				            case "var VP_Rechazados = \"VP_Prueba2\";":  
+			            		 	linea = "var VP_Rechazados = \""+errorLogVP+"\";";
+			            		 	break;
+				            case "var VP_Alertas = \"VP_Prueba3\";":  
+			            		 	linea = "var VP_Alertas = \""+warningLog+"\";";
+			            		 	break;
+				            case "var Total_exitosos = \"0\";":  
+		            		 	linea = "var Total_exitosos = \""+passLogVPTotales.length()+"\";";
+			            		 	break;
+				            case "var Total_rechazados = \"0\";":  
+		            		 	linea = "var Total_rechazados = \""+errorLogVPTotales.length()+"\";";
+		            		 	break;
+				            case "var Total_alertas = \"0\";":  
+		            		 	linea = "var Total_alertas = \""+warningLogVPTotales.length()+"\";";
+		            		 	break;
+				            case "var porcentaje_exitosos = \"40%\";":  
+		            		 	linea = "var porcentaje_exitosos = \""+porcentajepass+"\";";
+		            		 	break;
+				            case "var porcentaje_rechazados = \"40%\";":  
+				            	linea = "var porcentaje_rechazados = \""+porcentajeerror+"\";";
+		            		 	break;
+				            case "var porcentaje_alertas = \"40%\";":   
+				            	linea = "var porcentaje_alertas = \""+porcentajewarning+"\";";
+				            	break;	 	
+						}
+						
+					   if(cont==0){
+						   contenido+="\n<!--";
+						   cont=1;
+						   
+					   }else{
+						   contenido+="\n"+linea;
+					   }
+					}
+			    
+			    //Se valida que no sea nulo y se cierra
+			    if( null != fis){
+						fis.close();
+						archivo.delete();
+						BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
+						 bw.write(contenido);
+						 bw.close();
+			    }
+			    
+			} catch (FileNotFoundException e) {
+				System.out.println(e);
+			}
+		  }
+	  
       /**
 	   * Metodo utilizado para reemplazar variables en archivo vp_exitosos.html. 
 	   */	  
 	  public void sustitucionExitosos() throws IOException { 
 		  	String file = curDir+"\\log\\Ejecucion"+fecha_hora_Ejecucion+"\\vp_exitosos.html";
+		  	//Se crea un objeto File usando el constructor que recibe la ruta(String)
+		    File archivo = new File (file);
+		    //Usamos estos 2 objetos porque BufferedReader contiene un Metodo sencilo
+		    //Para leer el archivo por linea
+		    //FileReader fileReader;
+			try {
+
+					FileInputStream fis = new FileInputStream(archivo);
+					InputStreamReader is = new InputStreamReader(fis, "utf8");
+					BufferedReader buffReader = new BufferedReader(is);
+				
+			    //aqui guardaremos cada linea del archivo por vez
+			    String linea=null;
+			    //aqui acumularemos todas las lineas
+			    String contenido="";
+			    int cont=0;
+			    //Cada que se invoca el Metodo readLine() se busca una linea y el cursor
+			    //pasa a la siguiente linea cuando no hay mas lineas regresa null
+					while((linea=buffReader.readLine())!=null){
+					   
+						switch (linea.trim()) {
+				            case "variablecreaciontabla1":  
+				            		linea = ""+create1+"";
+				                    break;
+						}
+					   
+					   if(cont==0){
+						   contenido+="\n<!--";
+						   cont=1;
+						   
+					   }else{
+						   contenido+="\n"+linea;
+					   }
+					}
+			    
+			    //Se valida que no sea nulo y se cierra
+			    if( null != fis){
+						fis.close();
+						archivo.delete();
+						BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
+						 bw.write(contenido);
+						 bw.close();
+			    }
+			    
+			} catch (FileNotFoundException e) {
+				System.out.println(e);
+			}
+		  }
+	  
+	  
+	  
+	  /**
+	   * Metodo utilizado para reemplazar variables en archivo vp_exitosos.html. 
+	   */	  
+	  public void sustitucionExitosos(String nombreClase) throws IOException { 
+		  	String file = curDir+"\\log\\Ejecucion_"+nombreClase+fecha_hora_Ejecucion+"\\vp_exitosos.html";
 		  	//Se crea un objeto File usando el constructor que recibe la ruta(String)
 		    File archivo = new File (file);
 		    //Usamos estos 2 objetos porque BufferedReader contiene un Metodo sencilo
@@ -642,11 +1105,118 @@ public class LogResult {
 			}
 }
 	  
+	  
+	  /**
+	   * Metodo utilizado para reemplazar variables en archivo vp_rechazados.html. 
+	   */	  	  
+	  public void sustitucionRechazados(String nombreClase) throws IOException { 
+		  	String file = curDir+"\\log\\Ejecucion_"+nombreClase+fecha_hora_Ejecucion+"\\vp_rechazados.html";
+		  	//Se crea un objeto File usando el constructor que recibe la ruta(String)
+		    File archivo = new File (file);
+		    //Usamos estos 2 objetos porque BufferedReader contiene un Metodo sencilo
+		    //Para leer el archivo por linea
+			try {
+					FileInputStream fis = new FileInputStream(archivo);
+					InputStreamReader is = new InputStreamReader(fis, "utf8");
+					BufferedReader buffReader = new BufferedReader(is);
+				
+			    //aqui guardaremos cada linea del archivo por vez
+			    String linea=null;
+			    //aqui acumularemos todas las lineas
+			    String contenido="";
+			    int cont=0;
+			    //Cada que se invoca el Metodo readLine() se busca una linea y el cursor
+			    //pasa a la siguiente linea cuando no hay mas lineas regresa null
+					while((linea=buffReader.readLine())!=null){
+					   
+						switch (linea.trim()) {
+				            case "variablecreaciontabla2":  
+				            		linea = ""+create1+"";
+				                    break;
+						}
+					   
+					   if(cont==0){
+						   contenido+="\n<!--";
+						   cont=1;
+						   
+					   }else{
+						   contenido+="\n"+linea;
+					   }
+					}
+			    
+			    //Se valida que no sea nulo y se cierra
+			    if( null != fis){
+						fis.close();
+						archivo.delete();
+						BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
+						 bw.write(contenido);
+						 bw.close();
+			    }
+			    
+			} catch (FileNotFoundException e) {
+				System.out.println(e);
+			}
+}
+	  
       /**
 	   * Metodo utilizado para reemplazar variables en archivo alertas.html. 
 	   */	  	  	  
 	  public void sustitucionAlertas() throws IOException { 
 		  	String file = curDir+"\\log\\Ejecucion"+fecha_hora_Ejecucion+"\\alertas.html";
+		  	//Se crea un objeto File usando el constructor que recibe la ruta(String)
+		    File archivo = new File (file);
+		    //Usamos estos 2 objetos porque BufferedReader contiene un Metodo sencilo
+		    //Para leer el archivo por linea
+		    //FileReader fileReader;
+			try {
+					FileInputStream fis = new FileInputStream(archivo);
+					InputStreamReader is = new InputStreamReader(fis, "utf8");
+					BufferedReader buffReader = new BufferedReader(is);
+				
+			    //aqui guardaremos cada linea del archivo por vez
+			    String linea=null;
+			    //aqui acumularemos todas las lineas
+			    String contenido="";
+			    int cont=0;
+			    //Cada que se invoca el Metodo readLine() se busca una linea y el cursor
+			    //pasa a la siguiente linea cuando no hay mas lineas regresa null
+					while((linea=buffReader.readLine())!=null){
+					   
+						switch (linea.trim()) {
+				            case "variablecreaciontabla3":  
+				            		linea = ""+create1+"";
+				                    break;
+						}
+					   
+					   if(cont==0){
+						   contenido+="\n<!--";
+						   cont=1;
+						   
+					   }else{
+						   contenido+="\n"+linea;
+					   }
+					}
+			    
+			    //Se valida que no sea nulo y se cierra
+			    if( null != fis){
+						fis.close();
+						archivo.delete();
+						BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
+						 bw.write(contenido);
+						 bw.close();
+			    }
+			    
+			} catch (FileNotFoundException e) {
+				System.out.println(e);
+			}
+	}	 
+	  
+	  
+	  /**
+	   * Metodo utilizado para reemplazar variables en archivo alertas.html. 
+	   */	  	  	  
+	  public void sustitucionAlertas(String nombreClase) throws IOException { 
+		  	String file = curDir+"\\log\\Ejecucion_"+nombreClase+fecha_hora_Ejecucion+"\\alertas.html";
 		  	//Se crea un objeto File usando el constructor que recibe la ruta(String)
 		    File archivo = new File (file);
 		    //Usamos estos 2 objetos porque BufferedReader contiene un Metodo sencilo
@@ -833,6 +1403,64 @@ public class LogResult {
 	   */	  	  	  	  	  	  
 	  public void sustitucionColores() throws IOException { 
 		  	String file = curDir+"\\log\\Ejecucion"+fecha_hora_Ejecucion+"\\index.html";
+		  	//Se crea un objeto File usando el constructor que recibe la ruta(String)
+		    File archivo = new File (file);		    
+		    //Usamos estos 2 objetos porque BufferedReader contiene un Metodo sencilo
+		    //Para leer el archivo por linea
+		    //FileReader fileReader;
+			try {
+					FileInputStream fis = new FileInputStream(archivo);
+					InputStreamReader is = new InputStreamReader(fis, "utf8");
+					BufferedReader buffReader = new BufferedReader(is);
+				
+			    //aqui guardaremos cada linea del archivo por vez
+			    String linea=null;
+			    //aqui acumularemos todas las lineas
+			    String contenido="";
+			    int cont=0;
+			    //Cada que se invoca el Metodo readLine() se busca una linea y el cursor
+			    //pasa a la siguiente linea cuando no hay mas lineas regresa null
+					while((linea=buffReader.readLine())!=null){
+					   
+						switch (linea.trim()) {
+							case "creartablaprogreso1":  
+		            		linea = ""+colores1+"";
+		                    break;
+				            case "creartablaprogreso2":  
+			            		linea = ""+colores2+"";
+			                    break;
+				            case "creartablaprogreso3":  
+			            		linea = ""+colores3+"";
+			                    break;
+						}
+					   
+					   if(cont==0){
+						   contenido+="\n<!--";
+						   cont=1;
+						   
+					   }else{
+						   contenido+="\n"+linea;
+					   }
+					}
+			    //Se valida que no sea nulo y se cierra
+			    if( null != fis){
+						fis.close();
+						archivo.delete();
+						BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
+						 bw.write(contenido);
+						 bw.close();
+			    }
+			    
+			} catch (FileNotFoundException e) {
+				System.out.println(e);
+			}
+}
+	  
+      /**
+	   * Metodo para crear tabla de progreso ubicada en el costado izquierdo del index
+	   */	  	  	  	  	  	  
+	  public void sustitucionColores(String namecase) throws IOException { 
+		  	String file = curDir+"\\log\\Ejecucion_"+namecase+fecha_hora_Ejecucion+"\\index.html";
 		  	//Se crea un objeto File usando el constructor que recibe la ruta(String)
 		    File archivo = new File (file);		    
 		    //Usamos estos 2 objetos porque BufferedReader contiene un Metodo sencilo
@@ -1134,7 +1762,7 @@ public class LogResult {
 			
 			//Directorio donde quedaran las imagenes guardadas
 			  File directory = new File(curDir+"\\log"); 
-			  File directoryEjecucion = new File(curDir+"\\log\\Ejecucion"+fecha_hora_Ejecucion);	
+			  File directoryEjecucion = new File(curDir+"\\log\\Ejecucion_"+namecase+fecha_hora_Ejecucion);	
 			  File f = new File(directoryEjecucion+"\\index.html");
 			 // System.out.println(directoryEjecucion);
 			//Escritura
@@ -1149,9 +1777,9 @@ public class LogResult {
 				
 				FinScript();
 				
-				copiarCssImagenes(directoryEjecucion.toString());
+				copiarCssImagenes(directoryEjecucion.toString(),namecase);
 				
-				Desktop desktop;
+				/*Desktop desktop;
 				if (Desktop.isDesktopSupported()){// En caso que el host  esta API 
 		        desktop = Desktop.getDesktop();//Se obtiene una instancia del Desktop(Escritorio)de mi host 
 		        try {
@@ -1163,7 +1791,7 @@ public class LogResult {
 		        }
 		        else{ 
 		        	warningLog("Apertura Navegador", "Lo sentimos,no se puede abrir el archivo; esta Maquina no soporta la API Desktop", driverwarning);
-		        }
+		        }*/
 				
 				}catch(IOException e){
 		        	System.out.println(e);
@@ -1183,7 +1811,7 @@ public void crearLog(String nombreCaso, int Cods , int Idn , int Idsub){
 			idsub=Idsub;
 			//Directorio donde quedaran las imagenes guardadas
 			  File directory = new File(curDir+"\\log");
-			  File directoryEjecucion = new File(curDir+"\\log\\Ejecucion"+fecha_hora_Ejecucion);	
+			  File directoryEjecucion = new File(curDir+"\\log\\Ejecucion_"+namecase+fecha_hora_Ejecucion);	
 			  File f = new File(directoryEjecucion+"\\index.html");
 
 			//Escritura
