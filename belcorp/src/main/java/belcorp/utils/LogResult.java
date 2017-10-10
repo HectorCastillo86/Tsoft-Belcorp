@@ -38,7 +38,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class LogResult {
 
 	
-	//static Insertard in=new Insertard();
+	static Insertard in=new Insertard();
 	
 	
 	public static String curDir = System.getProperty("user.dir");
@@ -1173,6 +1173,58 @@ public class LogResult {
 				//} catch (SQLException e) {
 				//	System.out.println(e);					
 				//}			
+		}
+		
+public void crearLog(String nombreCaso, int Cods , int Idn , int Idsub){
+			
+			namecase = nombreCaso;
+			cods = Cods;
+			idn = Idn;
+			idsub=Idsub;
+			//Directorio donde quedaran las imagenes guardadas
+			  File directory = new File(curDir+"\\log");
+			  File directoryEjecucion = new File(curDir+"\\log\\Ejecucion"+fecha_hora_Ejecucion);	
+			  File f = new File(directoryEjecucion+"\\index.html");
+
+			//Escritura
+			try{
+				if (!directory.exists()) {
+			  		directory.mkdir();
+			  	}
+				
+				if (!directoryEjecucion.exists()) {
+					directoryEjecucion.mkdir();
+			  	}
+				
+				FinScript();
+				
+				copiarCssImagenes(directoryEjecucion.toString());
+				
+				Desktop desktop;
+				if (Desktop.isDesktopSupported()){// En caso que el host  esta API 
+		        desktop = Desktop.getDesktop();//Se obtiene una instancia del Desktop(Escritorio)de mi host 
+		        try {
+		            desktop.open(f);//Se abre el archivo con el programa predeterminado
+		            }
+		        catch (IOException ex){
+		        	System.out.println(ex);
+		        }	        	
+		        }
+		        else{ 
+		        	warningLog("Apertura Navegador", "Lo lamento,no se puede abrir el archivo; Esta Maquina no soporta la API Desktop", driverwarning);
+		        }
+				
+				}catch(IOException e){
+		        	System.out.println(e);
+				};			
+				/*try {
+					in.insertacaso(cods,namecase,total,passLogVPTotales,errorLogVPTotales,warningLogVPTotales,Hora_Ini,Fecha_Fin,Hora_Fin,Fecha_Fin,fecha_hora_Ejecucion,idn,idsub);
+				} catch (SQLException e) {
+					System.out.println(e);
+					
+				}*/
+	
+				
 		}
 
 }
