@@ -5,6 +5,7 @@ package belcorp.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -35,6 +36,10 @@ public class BolsaCompraPage {
 	@FindBy(how= How.XPATH, using =".//*[@id='navbar']/ul[2]/li[5]/a")
 	@CacheLookup
 	WebElement btnCarroCompra;
+	
+	@FindBy (how= How.XPATH, using = ".//*[@id='cantItemsCart']")
+	@CacheLookup
+	WebElement numCarroCompra;
 									
 	@FindBy(how= How.XPATH, using ="html/body/main/div[2]/div[2]/div[2]/div/ul/div/div/div")
 	@CacheLookup
@@ -72,9 +77,13 @@ public class BolsaCompraPage {
 	@CacheLookup
 	WebElement btnBuscar;
 	
-	@FindBy(how= How.XPATH, using="(//*[@class='js-site-search-input ui-autocomplete-input'])[2]")
+	@FindBy(how= How.XPATH, using="(.//*[@id='js-site-search-input'][2])")
 	//@CacheLookup
 	WebElement agregarSKU;
+	
+	@FindBy(how= How.XPATH, using="html/body/main/div[1]/header/div[1]/div/div/div/div[3]/div/form/input[2]")
+	//@CacheLookup
+	WebElement agregarSKUB;
 	
 	@FindBy(how= How.CLASS_NAME, using="btn-search-box")
 	@CacheLookup
@@ -84,7 +93,7 @@ public class BolsaCompraPage {
 	@CacheLookup
 	WebElement btnPagarCompra;
 	
-	@FindBy(how= How.CLASS_NAME, using ="descuentoTitle")
+	@FindBy(how= How.XPATH, using ="html/body/main/div[2]/div[6]/div/div[2]/div[3]/div[1]")
 	@CacheLookup
 	WebElement btnCuponDescuento;
 	
@@ -100,10 +109,35 @@ public class BolsaCompraPage {
 	@CacheLookup
 	WebElement btnEliminarProd;
 	
-	@FindBy(how= How.XPATH, using =".//*[@id='releaseVoucherButton']")
+	@FindBy(how= How.ID, using ="releaseVoucherButton")
 	@CacheLookup
 	WebElement BorrarCupon;
 	
+	@FindBy(how= How.XPATH, using =".//*[@id='updateCartForm0']/div[1]/button[2]")
+	//@CacheLookup
+	WebElement incrementarProd;
+	
+	
+	
+	public void incrementarProducto()
+	{
+		try {
+
+				Thread.sleep(500);
+				incrementarProd.click();
+				incrementarProd.sendKeys(org.openqa.selenium.Keys.ENTER);
+				Thread.sleep(1000);
+			
+
+			
+			//WebElement webElement = driver.findElement(By.xpath(""));
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 	
 	public void agregarUnArticulo()
@@ -119,6 +153,61 @@ public class BolsaCompraPage {
 				e.printStackTrace();
 			}
 	}
+	
+	public void buscarProducto(String sku)
+	{
+		try {
+			Thread.sleep(2000);
+			agregarSKUB.clear();
+			agregarSKUB.sendKeys(sku);
+			agregarSKUB.sendKeys(org.openqa.selenium.Keys.ENTER);
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void AgregarArticuloPorSKUB(String sku) throws InterruptedException {
+		try {
+			Thread.sleep(2000);
+			agregarSKUB.sendKeys(sku);
+			agregarSKUB.submit();
+			if (!driver.findElement(By.cssSelector(".headline")).isDisplayed())
+			{
+			
+				Actions act = new Actions(driver);
+				act.moveToElement(ImagenProd).perform();
+				Thread.sleep(500);
+				btnAgregarItem.submit();
+			
+			}
+			Thread.sleep(1000);
+			driver.navigate().back();
+			agregarSKUB.clear();
+
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void posicionarCarro()
+	{
+		try {
+			Thread.sleep(1000);
+			Actions act = new Actions(driver);
+			act.moveToElement(numCarroCompra).perform();
+			Thread.sleep(1000);
+		
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	
 	public void AgregarArticuloPorSKU(String sku) throws InterruptedException {
 		try {
@@ -169,7 +258,6 @@ public class BolsaCompraPage {
 			e.printStackTrace();
 		}
 
-		//driver.findElement(By.xpath("html/body/main/div[2]/div[6]/div/div[1]/div/div[2]/div[3]/button")).click();
 	}
 
 	public void irABolsaCompra()
@@ -200,17 +288,30 @@ public class BolsaCompraPage {
 		
 	}
 	
-	
-	public void CuponValido()
+
+		
+	public void CuponValido(String cupon)
 	{
 		try {
+			Thread.sleep(2000);
+			if(driver.findElement(By.xpath(".//*[@id='releaseVoucherButton']")).isDisplayed())
+			{
+				BorrarCupon.click();
+				Thread.sleep(2000);
+				txtCupon.click();
+				txtCupon.sendKeys(cupon);
+				btnCupon.click();
+				Thread.sleep(500);
+				
+			}else 
+			{
+				txtCupon.click();
+				txtCupon.sendKeys(cupon);
+				btnCupon.click();
+				Thread.sleep(500);
+				
+			}			
 			
-			btnCuponDescuento.click();
-			Thread.sleep(500);
-			txtCupon.click();
-			txtCupon.sendKeys("VPR-T38H-MAC8-C3F4-S");
-			btnCupon.click();
-			Thread.sleep(500);
 
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -218,30 +319,14 @@ public class BolsaCompraPage {
 		}	
 		
 	}
-	
-	public void CuponContinuaComprando()
+
+	public void ContinuaComprando()
 	{
 		try {
 			
 			Thread.sleep(2000);
-			if(driver.findElement(By.xpath(".//*[@id='releaseVoucherButton']")).isDisplayed())
-			{
-				BorrarCupon.click();
-				Thread.sleep(2000);
-				txtCupon.click();
-				txtCupon.sendKeys("VPR-T38H-MAC8-C3F4-S");
-				btnCupon.click();
-				Thread.sleep(500);
-				btnContinuarComprando.click();
-			}else 
-			{
-				txtCupon.click();
-				txtCupon.sendKeys("VPR-T38H-MAC8-C3F4-S");
-				btnCupon.click();
-				Thread.sleep(500);
-				btnContinuarComprando.click();
-			}
-				
+			btnContinuarComprando.click();
+			Thread.sleep(1000);					
 
 		} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
@@ -285,14 +370,11 @@ public class BolsaCompraPage {
 			Thread.sleep(500);
 			btnEliminarProd.click();
 			Thread.sleep(500);
-			Actions act = new Actions(driver);
-			act.moveToElement(btnPagarCompra).perform();
-			Thread.sleep(500);
-			btnPagarCompra.click();
 
 		} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 	}
+
 }

@@ -14,7 +14,7 @@ import belcorp.utils.BrowserFactory;
 public class CPA_022_Logear_AgregarNuevaDireccion_Comprar {
 	
 	@Test
-	public void CPA_022() 
+	public void Logear_AgregarNuevaDireccion_Comprar() 
 	{
 		
 		WebDriver driver = BrowserFactory.startBrowser("firefox","https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
@@ -39,6 +39,8 @@ public class CPA_022_Logear_AgregarNuevaDireccion_Comprar {
 		CkeckOutPagar.ContinuarOpcionesEnvio();
 		CkeckOutPagar.ContinuarMetodoPago();
 		CkeckOutPagar.MetodoPagoEfectivo();
+		CkeckOutPagar.RevisarPedido();
+		CkeckOutPagar.FinalizarPedido();
 		
 		// CERRAR DRIVER 
 		driver.close();

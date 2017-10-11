@@ -106,7 +106,7 @@ public class CheckOutPage {
 	@CacheLookup
 	WebElement btnReturnMethodDeliv;
 	
-	@FindBy(how=How.ID, using="paymentMethodBtn")
+	@FindBy(how=How.XPATH, using="html/body/main/div[2]/div[1]/div[1]/div[4]/button")
 	@CacheLookup
 	WebElement btnReviewOrder;
 	
@@ -235,11 +235,11 @@ public class CheckOutPage {
 			Thread.sleep(300);
 			pagoEfectivo.click();
 			Thread.sleep(300);
-			btnReviewOrder.click();
-			Thread.sleep(500);
-			optionTermns.click();
-			Thread.sleep(300);
-			btnEndShop.click();
+			//btnReviewOrder.click();
+			//Thread.sleep(500);
+			//optionTermns.click();
+			//Thread.sleep(300);
+			//btnEndShop.click();
 		}catch(InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -254,7 +254,16 @@ public class CheckOutPage {
 	 */
 	public void RevisarPedido() {
 		try{
+			Thread.sleep(500);
 			btnReviewOrder.click();
+			Thread.sleep(500);
+		}catch(InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void FinalizarPedido() {
+		try{
 			Thread.sleep(500);
 			btnEndShop.click();//Finaliza la compra
 			Thread.sleep(500);

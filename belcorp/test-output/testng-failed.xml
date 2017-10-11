@@ -3,7 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test verbose="2" name="Default test">
     <classes>
-      <class name="belcorp.test.Checkout.CPA_024_Registrar_AgregarNuevaDireccion_Comprar"/>
+      <class name="belcorp.test.Checkout.CPA_020_Registrar_AgregarNuevaDireccion_Comprar"/>
     </classes>
   </test> <!-- Default test -->
+  <test name="Default test(failed)">
+    <classes>
+      <class name="belcorp.test.Checkout.CPA_020_Registrar_AgregarNuevaDireccion_Comprar">
+        <methods>
+          <include name="Registrar_AgregarNuevaDireccion_Comprar"/>
+        </methods>
+      </class> <!-- belcorp.test.Checkout.CPA_020_Registrar_AgregarNuevaDireccion_Comprar -->
+    </classes>
+  </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
