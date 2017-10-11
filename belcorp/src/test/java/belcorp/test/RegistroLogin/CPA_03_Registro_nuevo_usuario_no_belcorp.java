@@ -18,12 +18,12 @@ import org.openqa.selenium.support.PageFactory;
 public class CPA_03_Registro_nuevo_usuario_no_belcorp {
 
 	// DATOS CPA_03
-	String nombre = "TESTG";
-	String apellido = "TestG";
-	String email = "Test_00G@yopmail.com";
+	String nombre = "TESTL";
+	String apellido = "TestL";
+	String email = "Test_00L@yopmail.com";
 	String pwd = "Tsoft1234";
 	String tipoDoc = "Cédula de extranjería"; // valores "Cédula de identidad" ; "Cédula de extranjería"; "NIT" ;
-	String checkNumDoc = "154450013";
+	String checkNumDoc = "154450017";
 
 	@Test
 	public void Registro_nuevo_usuario_no_belcorp() throws IOException {
@@ -72,12 +72,12 @@ public class CPA_03_Registro_nuevo_usuario_no_belcorp {
 				String username = driver.findElement(By.xpath("//span[@class='accountName']")).getText();
 				System.out.println("CPA_03: Usuario Registrado en Sistema para Ejecucion: " + username);
 
-				logResult.passLog("Validacion2", "Registro Exitoso", driver, nombreClase);
+				logResult.passLog("Validacion2", "Registro Exitoso: "+nombre+", "+pwd, driver, nombreClase);
 
 			} else {
 
 				System.out.println("CPA_03: Problema de Registro con los siguientes datos: " + email + ".");
-				logResult.errorLog("Validacion2", "Registro No Exitoso", driver, nombreClase);
+				logResult.errorLog("Validacion2", "Registro No Exitoso: "+nombre+", "+pwd, driver, nombreClase);
 				registro.close();
 				Assert.assertTrue(val2, "CPA_03: Problema de Registro con los siguientes datos: " + email + ".");
 			}
@@ -119,13 +119,13 @@ public class CPA_03_Registro_nuevo_usuario_no_belcorp {
 				Thread.sleep(2000);
 				String username = driver.findElement(By.xpath("//span[@class='accountName']")).getText();
 				System.out.println("CPA_03: Usuario logeado en Sistema para Ejecucion: " + username);
-				logResult.passLog("Validacion4", "Re-Login Exitoso", driver, nombreClase);
+				logResult.passLog("Validacion4", "Re-Login Exitoso: "+nombre+", "+pwd, driver, nombreClase);
 				logResult.crearLog(nombreClase);
 
 			} else {
 
 				System.out.println("CPA_03: Problema de login con los siguientes datos: " + email + ".");
-				logResult.errorLog("Validacion4", "Re-Login No Exitoso", driver, nombreClase);
+				logResult.errorLog("Validacion4", "Re-Login No Exitoso: "+nombre+", "+pwd, driver, nombreClase);
 				login_page.close();
 				logResult.crearLog(nombreClase);
 				Assert.assertTrue(val4, "CPA_03: Problema de Re-login con los siguientes datos: " + email + ".");

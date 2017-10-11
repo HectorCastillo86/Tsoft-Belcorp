@@ -50,13 +50,13 @@ public class CPA_01_Login_usuario_existente {
 				System.out.println("CPA_01: Usuario logeado en Sistema para Ejecucion: " + username);
 				//TakeScreenShot.takeScreenShot(driver, "CPA_01_val1_evidencia_OK_");
 
-				 logResult.passLog("Validacion1","Login Exitoso",driver,nombreClase);
+				 logResult.passLog("Validacion1","Login Exitoso: "+user+", "+pass,driver,nombreClase);
 				 logResult.crearLog(nombreClase);
 				 
 			} else {
 				//TakeScreenShot.takeScreenShot(driver, "CPA_01_val1_evidencia_NOK_");
 				System.out.println("CPA_01: Problema de login con los siguientes datos: " + user + ".");
-				logResult.errorLog("Validacion1","Login No Exitoso",driver,nombreClase);
+				logResult.errorLog("Validacion1","Login No Exitoso: "+user+", "+pass,driver,nombreClase);
 				login_page.close();
 				// logResult.errorLog("CPA_01"+user,"Se detecto correctamente'",driver);
 				logResult.crearLog(nombreClase);
