@@ -6,12 +6,13 @@ package belcorp.pages;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-
+import belcorp.utils.LogResult;
 /**
  * @author eduardo.araya
  *
@@ -19,6 +20,7 @@ import org.openqa.selenium.support.How;
 public class LoginPage {
 	
 	WebDriver driver;
+	
 	
 	public LoginPage (WebDriver ldriver)
 	{
@@ -96,6 +98,7 @@ public class LoginPage {
 	
 	public void loginFacebook(String username, String password)
 	{
+		
 		try {
 			loginButtonNav.click();
 			faceButton.click();
@@ -109,13 +112,12 @@ public class LoginPage {
 			}
 			driver.switchTo().window(subWindowHandler); // switch to popup window
 			// perform operations on popup
-			facemail.sendKeys(username);
-			facepass.sendKeys(password);
-			faceloginbtn.click();
-			Thread.sleep(2000);
-			
-			driver.switchTo().window(parentWindowHandler);  // switch back to parent window
-			
+				facemail.sendKeys(username);
+				facepass.sendKeys(password);
+				faceloginbtn.click();
+				Thread.sleep(2000);				
+				driver.switchTo().window(parentWindowHandler);  // switch back to parent window
+				
 			//loginButtonNav.click();
 			Thread.sleep(2000);
 			} catch (InterruptedException e) {
@@ -123,6 +125,53 @@ public class LoginPage {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public LogResult loginFacebook(String username, String password, String namecase)
+	{
+		LogResult logResult = new LogResult();
+		
+		try {
+			loginButtonNav.click();
+			faceButton.click();
+			String parentWindowHandler = driver.getWindowHandle(); // Store your parent window
+			String subWindowHandler = null;
+
+			Set<String> handles = driver.getWindowHandles(); // get all window handles
+			Iterator<String> iterator = handles.iterator();
+			while (iterator.hasNext()){
+			    subWindowHandler = iterator.next();
+			}
+			driver.switchTo().window(subWindowHandler); // switch to popup window
+			//validacion de Ventana de Facebook
+			String ventanaFacebook = driver.getTitle();
+			// Validacion 1: validar titulo de ventana
+			int intIndex = ventanaFacebook.indexOf("Facebook");
+			if (intIndex != -1) {
+				System.out.println("Ventana emergente de facebook, aparece correctamente");
+				// perform operations on popup
+				facemail.sendKeys(username);
+				facepass.sendKeys(password);
+				logResult.passLog("Validacion1", "Ventana emergente de facebook, aparece correctamente", driver, namecase);
+				faceloginbtn.click();
+				Thread.sleep(2000);				
+				driver.switchTo().window(parentWindowHandler);  // switch back to parent window
+							
+			} else {
+				System.out.println("Ventana emergente de Facebook no aparece");
+				logResult.errorLog("Validacion1", "Ventana emergente de facebook, No aparece correctamente", driver, namecase);
+								
+			}			 
+			
+			//loginButtonNav.click();
+			Thread.sleep(2000);
+			} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			logResult.errorLog("Error Inesperado", "Error exception: " + e, driver, namecase);
+			return logResult;
+		}
+				return logResult;		
 	}
 
 	public void close()
