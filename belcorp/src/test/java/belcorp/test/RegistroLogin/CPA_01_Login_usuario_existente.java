@@ -13,9 +13,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CPA_01_Login_usuario_existente {
 
-	//Inicializacion de Reporte
-	String nombreClase = getClass().getSimpleName();
-	LogResult logResult = new LogResult();
+	
 
 	// DATOS CPA_01
 	public static final String user = "tsoft@yopmail.com";
@@ -23,16 +21,19 @@ public class CPA_01_Login_usuario_existente {
 
 	@Test
 	public void Login_usuario_existente() {
+		
 		// Mostrar en Consola Datos de Ejecucion de Prueba
 		System.out.println("CPA_01: Datos para Ejecucion Usuario: " + user + " , Password : " + pass);
 		WebDriver driver = BrowserFactory.startBrowser("firefox",
 				"https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
 		LoginPage login_page = PageFactory.initElements(driver, LoginPage.class);
+		
+		//Inicializacion de Reporte
+		String nombreClase = getClass().getSimpleName();
+		LogResult logResult = new LogResult();
+		logResult.InicioScript(driver);
+		
 		try {
-
-			// Instancia declarada para que Desde aqui se considera tiempo de ejecución
-			// reflejado en el Reporte Log
-			logResult.InicioScript(driver);
 
 			login_page.loginBelcorp(user, pass);
 
