@@ -51,7 +51,6 @@ public class CPA_05_MiCuenta_Mis_Pedidos_Realizados {
 			Thread.sleep(2000);
 			String username = driver.findElement(By.xpath("//span[@class='accountName']")).getText();
 			System.out.println("CPA_05: Usuario logeado en Sistema para Ejecucion: " + username);
-			// TakeScreenShot.takeScreenShot(driver, "CPA_01_val1_evidencia_OK_");
 			logResult.passLog("Validacion1", "Login Exitoso: " + user + ", " + pass, driver, nombreClase);
 
 		} else {
@@ -78,10 +77,14 @@ public class CPA_05_MiCuenta_Mis_Pedidos_Realizados {
 			logResult.passLog("Validacion2", "Acceso a Mis Pedidos OK Titulo de Pantalla: "+val2, driver, nombreClase);
 			
 		} else {
+			boolean val =false;
 			System.out.println("Acceso a Mis Pedidos NOK: "+val2);
 			// Esperar 1.5 Seg
 			Thread.sleep(1500);
 			logResult.errorLog("Validacion2", "Problemas de acceso a Mis Pedidos URL: "+val2, driver,nombreClase);
+			login_page.close();
+			logResult.crearLog(nombreClase);
+			Assert.assertTrue(val, "CPA_05: Problemas de acceso a Mis Pedidos URL: "+val2);
 
 		}
 

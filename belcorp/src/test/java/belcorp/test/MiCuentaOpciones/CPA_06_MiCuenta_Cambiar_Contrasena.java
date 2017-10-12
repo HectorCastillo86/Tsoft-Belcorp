@@ -90,10 +90,14 @@ public class CPA_06_MiCuenta_Cambiar_Contrasena {
 					logResult.passLog("Validacion3", "Se cambia Contraseña de: "+pass+" a la Contraseña: "+nuevaContraseña, driver, nombreClase);
 					
 				} else {
+					boolean val =false;
 					System.out.println("Acceso a Cambio de Contraseña NOK. Titulo Pantalla: "+val2);
 					// Esperar 1.5 Seg
 					Thread.sleep(1500);
 					logResult.errorLog("Validacion2", "Problemas de acceso a Cambio de Contraseña. Titulo Pantalla: "+val2, driver,nombreClase);
+					login_page.close();
+					logResult.crearLog(nombreClase);
+					Assert.assertTrue(val, "CPA_06: Problemas de acceso a Cambio de Contraseña. Titulo Pantalla: "+val2);
 
 				}
 
