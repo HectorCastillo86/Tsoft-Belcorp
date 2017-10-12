@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="33270" started-at="2017-10-12T17:41:49Z" finished-at="2017-10-12T17:42:22Z">
+  <suite name="Default suite" duration-ms="37349" started-at="2017-10-12T19:24:46Z" finished-at="2017-10-12T19:25:24Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="33270" started-at="2017-10-12T17:41:49Z" finished-at="2017-10-12T17:42:22Z">
-      <class name="belcorp.test.MiCuentaOpciones.CPA_06_MiCuenta_Cambiar_Contrasena">
-        <test-method status="PASS" signature="MiCuenta_Cambiar_Contrasena()[pri:0, instance:belcorp.test.MiCuentaOpciones.CPA_06_MiCuenta_Cambiar_Contrasena@29774679]" name="MiCuenta_Cambiar_Contrasena" duration-ms="33255" started-at="2017-10-12T14:41:49Z" finished-at="2017-10-12T14:42:22Z">
+    <test name="Default test" duration-ms="37349" started-at="2017-10-12T19:24:46Z" finished-at="2017-10-12T19:25:24Z">
+      <class name="belcorp.test.AñadirProductosBolsa.CPA_12_Anadir_Un_Producto">
+        <test-method status="PASS" signature="Anadir_Un_Producto()[pri:0, instance:belcorp.test.AñadirProductosBolsa.CPA_12_Anadir_Un_Producto@29774679]" name="Anadir_Un_Producto" duration-ms="37334" started-at="2017-10-12T16:24:46Z" finished-at="2017-10-12T16:25:24Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- MiCuenta_Cambiar_Contrasena -->
-      </class> <!-- belcorp.test.MiCuentaOpciones.CPA_06_MiCuenta_Cambiar_Contrasena -->
+        </test-method> <!-- Anadir_Un_Producto -->
+      </class> <!-- belcorp.test.AñadirProductosBolsa.CPA_12_Anadir_Un_Producto -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

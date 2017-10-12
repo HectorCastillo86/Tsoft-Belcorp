@@ -1,12 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Prueba Automatizacion Belcorp">
-  <test name="Test Set - Regresion - 03102017">
-    <classes>
-       <class name="belcorp.test.RegistroLogin.CPA_01_Login_usuario_existente"/>
-       <class name="belcorp.test.LoginBusquedaProducto.CPA_09_Busqueda_Categoria"/>
-       <class name="belcorp.test.LoginBusquedaProducto.CPA_10_Busqueda_Cat_SubCategoria"/>
-    </classes>
-  </test>
+<suite name="Prueba Automatizacion Belcorp"  time-out="5000">
+
+	<test name="Test Set - RegistroLogin - 12102017">
+		<classes>
+			<class name="belcorp.test.RegistroLogin.CPA_01_Login_usuario_existente" />
+			<class
+				name="belcorp.test.RegistroLogin.CPA_02_Registro_nuevo_usuario_belcorp" />
+			<class
+				name="belcorp.test.RegistroLogin.CPA_03_Registro_nuevo_usuario_no_belcorp" />
+			<class
+				name="belcorp.test.RegistroLogin.CPA_04_Login_facebook_usuario_no_belcorp" />
+		</classes>
+	</test>
+
+	<test name="Test Set - MiCuentaOpciones - 12102017">
+		<classes>
+			<class
+				name="belcorp.test.MiCuentaOpciones.CPA_05_MiCuenta_Mis_Pedidos_Realizados" />
+			<class
+				name="belcorp.test.MiCuentaOpciones.CPA_06_MiCuenta_Cambiar_Contrasena" />
+			<class
+				name="belcorp.test.MiCuentaOpciones.CPA_07_MiCuenta_Agregar_Direccion" />
+			<class
+				name="belcorp.test.MiCuentaOpciones.CPA_08_MiCuenta_Direccion_Predeterminada" />
+		</classes>
+	</test>
+
+	<test name="Test Set - LoginBusquedaProducto - 12102017">
+		<classes>
+			<class name="belcorp.test.LoginBusquedaProducto.CPA_09_Busqueda_Categoria" />
+			<class name="belcorp.test.LoginBusquedaProducto.CPA_10_Busqueda_Cat_SubCategoria" />
+			<class name="belcorp.test.LoginBusquedaProducto.CPA_11_Busqueda_Barra_SKU" />
+		</classes>
+	</test>
+	
+	
+	<test name="Test Set - AñadirProductosBolsa - 12102017">
+		<classes>
+			<class name="belcorp.test.AñadirProductosBolsa.CPA_12_Anadir_Un_Producto" />
+			<class name="belcorp.test.AñadirProductosBolsa.CPA_13_Anadir_Varios_Productos" />
+			<class name="belcorp.test.AñadirProductosBolsa.CPA_14_Ver_Bolsa_No_Anadir_Producto" />
+		</classes>
+	</test>
+	
+	
+	<test name="Test Set - CarritoBolsaCompra - 12102017">
+		<classes>
+			<class
+				name="belcorp.test.CarritoBolsaCompra.CPA_15_Cupon_Valido_Bolsa_Productos" />
+			<class
+				name="belcorp.test.CarritoBolsaCompra.CPA_16_Cupon_Valido_Contiua_Comprando" />
+			<class
+				name="belcorp.test.CarritoBolsaCompra.CPA_17_Eliminar_Prod_A_Cupon_Valido_C_Comprando" />
+			<class
+				name="belcorp.test.CarritoBolsaCompra.CPA_18_Eliminar_Prod_Pagar_CheckOut" />
+			<class
+				name="belcorp.test.CarritoBolsaCompra.CPA_19_C_Compra_Agregar_Continua_Comprando" />
+		</classes>
+	</test>
+	
+	<test name="Test Set - Checkout - 12102017">
+		<classes>
+			<class
+				name="belcorp.test.Checkout.CPA_020_Registrar_AgregarNuevaDireccion_Comprar" />
+			<class
+				name="belcorp.test.Checkout.CPA_021_Registrar_DireccionDefecto_Comprar" />
+			<class
+				name="belcorp.test.Checkout.CPA_022_Logear_AgregarNuevaDireccion_Comprar" />
+			<class
+				name="belcorp.test.Checkout.CPA_023_Logear_DireccionDefecto_Comprar" />
+			<class
+				name="belcorp.test.Checkout.CPA_024_Registrar_AgregarNuevaDireccion_Comprar" />
+		</classes>
+	</test>
 </suite>
