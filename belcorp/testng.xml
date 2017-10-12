@@ -11,5 +11,14 @@
        
     </classes>
   </test>
+  
+  <test name="Test Set - MiCuentaOpciones - 06102017">
+    <classes>
+       <class name="belcorp.test.MiCuentaOpciones.CPA_05_MiCuenta_Mis_Pedidos_Realizados"/>
+       <class name="belcorp.test.MiCuentaOpciones.CPA_06_MiCuenta_Cambiar_Contrasena"/>
+       <class name="belcorp.test.MiCuentaOpciones.CPA_07_MiCuenta_Agregar_Direccion"/>
+       <class name="belcorp.test.MiCuentaOpciones.CPA_08_MiCuenta_Direccion_Predeterminada"/>
+    </classes>
+  </test>
 
 </suite>
