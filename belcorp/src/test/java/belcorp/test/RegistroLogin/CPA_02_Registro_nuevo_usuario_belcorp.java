@@ -20,7 +20,7 @@ public class CPA_02_Registro_nuevo_usuario_belcorp {
 	// DATOS CPA_02
 	String nombre = "TESTK";
 	String apellido = "TestK";
-	String email = "Test_00K@belcorp.biz";
+	String email = "test_00K@belcorp.biz";
 	String pwd = "Tsoft1234";
 	String tipoDoc = "Cédula de extranjería"; // valores "Cédula de identidad" ; "Cédula de extranjería"; "NIT" ;
 	String checkNumDoc = "154450016";
@@ -44,8 +44,11 @@ public class CPA_02_Registro_nuevo_usuario_belcorp {
 			System.out.println("Mail perteneciente a Belcorp");
 			logResult.passLog("Validacion1", "mail belcorp: " + email, driver, nombreClase);
 		} else {
+			boolean val = false;
 			System.out.println("Mail no perteneciente a Belcorp");
 			logResult.errorLog("Validacion1", "Mail no perteneciente a Belcorp: " + email, driver, nombreClase);
+			logResult.crearLog(nombreClase);
+			Assert.assertTrue(val, "CPA_02: Problema de login con los siguientes datos: " + email + ".");
 		}
 
 		// Mostrar en Consola Datos de Ejecucion de Prueba
@@ -71,7 +74,6 @@ public class CPA_02_Registro_nuevo_usuario_belcorp {
 				Thread.sleep(2000);
 				String username = driver.findElement(By.xpath("//span[@class='accountName']")).getText();
 				System.out.println("CPA_02: Usuario Registrado en Sistema para Ejecucion: " + username);
-
 				logResult.passLog("Validacion2", "Registro Exitoso: "+nombre+", "+pwd, driver, nombreClase);
 
 			} else {
@@ -79,6 +81,7 @@ public class CPA_02_Registro_nuevo_usuario_belcorp {
 				System.out.println("CPA_02: Problema de Registro con los siguientes datos: " + email + ".");
 				logResult.errorLog("Validacion2", "Registro No Exitoso: "+nombre+", "+pwd, driver, nombreClase);
 				registro.close();
+				logResult.crearLog(nombreClase);
 				Assert.assertTrue(val2, "CPA_02: Problema de Registro con los siguientes datos: " + email + ".");
 			}
 			
@@ -123,7 +126,7 @@ public class CPA_02_Registro_nuevo_usuario_belcorp {
 				String username = driver.findElement(By.xpath("//span[@class='accountName']")).getText();
 				System.out.println("CPA_02: Usuario logeado en Sistema para Ejecucion: " + username);
 				logResult.passLog("Validacion4", "Re-Login Exitoso: "+nombre+", "+pwd, driver, nombreClase);
-				logResult.crearLog(nombreClase);
+				
 
 			} else {
 
@@ -136,6 +139,9 @@ public class CPA_02_Registro_nuevo_usuario_belcorp {
 
 			// Cerrar Test
 			login_page.close();
+			
+			//Crear Reporte
+			logResult.crearLog(nombreClase);
 
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

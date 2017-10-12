@@ -44,8 +44,11 @@ public class CPA_03_Registro_nuevo_usuario_no_belcorp {
 			System.out.println("Mail no perteneciente a Belcorp");
 			logResult.passLog("Validacion1", "mail usuario: " + email, driver, nombreClase);
 		} else {
+			boolean val = false;
 			System.out.println("Mail perteneciente a Belcorp");
 			logResult.errorLog("Validacion1", "Mail perteneciente a Belcorp: " + email, driver, nombreClase);
+			logResult.crearLog(nombreClase);
+			Assert.assertTrue(val, "CPA_03: Problema de Registro con los siguientes datos: " + email + ".");
 		}
 
 		// Mostrar en Consola Datos de Ejecucion de Prueba
@@ -71,13 +74,13 @@ public class CPA_03_Registro_nuevo_usuario_no_belcorp {
 				Thread.sleep(2000);
 				String username = driver.findElement(By.xpath("//span[@class='accountName']")).getText();
 				System.out.println("CPA_03: Usuario Registrado en Sistema para Ejecucion: " + username);
-
 				logResult.passLog("Validacion2", "Registro Exitoso: "+nombre+", "+pwd, driver, nombreClase);
 
 			} else {
 
 				System.out.println("CPA_03: Problema de Registro con los siguientes datos: " + email + ".");
 				logResult.errorLog("Validacion2", "Registro No Exitoso: "+nombre+", "+pwd, driver, nombreClase);
+				logResult.crearLog(nombreClase);
 				registro.close();
 				Assert.assertTrue(val2, "CPA_03: Problema de Registro con los siguientes datos: " + email + ".");
 			}
@@ -120,8 +123,7 @@ public class CPA_03_Registro_nuevo_usuario_no_belcorp {
 				String username = driver.findElement(By.xpath("//span[@class='accountName']")).getText();
 				System.out.println("CPA_03: Usuario logeado en Sistema para Ejecucion: " + username);
 				logResult.passLog("Validacion4", "Re-Login Exitoso: "+nombre+", "+pwd, driver, nombreClase);
-				logResult.crearLog(nombreClase);
-
+				
 			} else {
 
 				System.out.println("CPA_03: Problema de login con los siguientes datos: " + email + ".");
@@ -133,6 +135,8 @@ public class CPA_03_Registro_nuevo_usuario_no_belcorp {
 
 			// Cerrar Test
 			login_page.close();
+			//Crear Reporte
+			logResult.crearLog(nombreClase);
 
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

@@ -41,7 +41,8 @@ public class CPA_04_Login_facebook_usuario_no_belcorp {
 			// Esperar 2 Seg
 			Thread.sleep(2000);
 
-			// *******************VALIDACION 2: verificar Registro de usuario logeado****************
+			// *******************VALIDACION 2: verificar Registro de usuario
+			// logeado****************
 
 			// Validar si existe AccountName Nombre de usuario Registrado
 			boolean val2 = !(driver.findElements(By.xpath("//span[@class='accountName']")).size() == 0); // Existe
@@ -52,16 +53,18 @@ public class CPA_04_Login_facebook_usuario_no_belcorp {
 				// Esperar 2 Seg
 				Thread.sleep(2000);
 				String username = driver.findElement(By.xpath("//span[@class='accountName']")).getText();
-				System.out.println("CPA_04: Ingreso exitoso con la cuenta de facebook: "+user+" "+username);
-				logResult.passLog("Validacion2", "Ingreso exitoso con la cuenta de facebook: "+user, driver, nombreClase);
+				System.out.println("CPA_04: Ingreso exitoso con la cuenta de facebook: " + user + " " + username);
+				logResult.passLog("Validacion2", "Ingreso exitoso con la cuenta de facebook: " + user, driver,
+						nombreClase);
 
 			} else {
 
-				System.out.println("CPA_04: Ingreso erroneo con la cuenta de facebook: "+user);
-				logResult.errorLog("Validacion2", "Ingreso erroneo con la cuenta de facebook: "+user, driver, nombreClase);
+				System.out.println("CPA_04: Ingreso erroneo con la cuenta de facebook: " + user);
+				logResult.errorLog("Validacion2", "Ingreso erroneo con la cuenta de facebook: " + user, driver,
+						nombreClase);
 				login_page.close();
 				logResult.crearLog(nombreClase);
-				Assert.assertTrue(val2, "Ingreso erroneo con la cuenta de facebook: "+user);
+				Assert.assertTrue(val2, "Ingreso erroneo con la cuenta de facebook: " + user);
 			}
 
 			// CERRAR DRIVER
