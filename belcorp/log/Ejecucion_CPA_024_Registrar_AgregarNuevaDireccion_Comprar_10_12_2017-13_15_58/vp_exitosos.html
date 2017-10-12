@@ -1,0 +1,343 @@
+
+<!--
+
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="charset" CONTENT="utf-8">
+<link rel="stylesheet" href="Formato/css/estilo.css"/>
+<link rel="shortcut icon" href="Formato/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="Formato/css/jquery.fancybox.css" >
+    <script src="Formato/js/jquery.js"></script>
+    <script src="Formato/js/jquery-migrate-1.1.1.js"></script>
+    <script src="Formato/js/bgstretcher.js"></script>
+    <script src="Formato/js/jquery.elastislide.js"></script>
+    <script src="Formato/js/jquery.fancybox.pack.js"></script>
+    <script>
+	$(document).ready(function() {	
+      //  Initialize Backgound Stretcher
+      $('BODY').bgStretcher({
+        //images: ['images/slide-1.jpg'], 
+		imageWidth: 1024, 
+		imageHeight: 768, 
+		resizeProportionally:true	
+       });
+	$('#carousel').elastislide({imageW :300,margin: 0,minItems: 1});   
+	$('.magnifier').fancybox();   
+		
+
+	$(".view").hover(
+	function(){$(this).find("img").stop().animate({opacity:0.5},"normal")},
+	function(){$(this).find("img").stop().animate({opacity:1},"normal")})
+	})  
+	     	
+    </script>
+<TITLE>Log de Resultados</TITLE>
+<STYLE TYPE="text/css">
+<!--
+  table caption {color: darkblue; font-size: x-large; font-weight: bold}
+  td {align: left; font-weight: bold}
+  td.fail {color: darkred; width: 10% }
+  td.warn {color: darkgoldenrod; width: 10% }
+  td.pass {color: darkgreen; width: 10% }
+  td.unkn {color: darkcyan; width: 10% }
+  td.time {width: 30%; font-weight: normal}
+  td.note {align: left; font-weight: bold}
+  li {font-weight: normal}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+ <table class="tabla_encabezado" border="1" WIDTH="100%" rules="all">
+	<tr>
+	<TD style="text-align:center" id="encabezados">
+	<div id="img1"><a href="resumen.html"><img width="48px" title="Volver Atras" src="Formato/images/btnatras.png"/></a></div>
+	<div id="text1">Descripci&oacuten de VP Exitosos</div></TD>
+	</tr>
+   </table>
+
+<table border="2" rules="all" width="100%">
+<tr>
+<td colspan="10">
+<div class="div_interna">
+<center>
+<table class="tabla_interna" align="center" cellpadding="40">
+<tr>
+<td>
+<table rules="all" border="2">
+<tr>
+<td id="fondo">Nombre VP</td><td id="info2">Validacion 1_1</td>
+</tr>
+<tr>
+<td id="fondo">Mensaje</td><td id="info2">artículo SKU: 200086396, se añadió a listado resumen</td>
+</tr>
+<tr>
+<td id="fondo">Evidencia</td><td id="info2">
+<a class="view magnifier" data-fancybox-group="gallery" href="Evidencia/VP-Validacion 1_1_12_10_2017_10_12-01_16_05.png"><img width="32px" src="Formato/images/Camera.png" /></a>
+</td>
+</tr>
+</table>
+</td><td>
+<table rules="all" border="2">
+<tr>
+<td id="fondo">Nombre VP</td><td id="info2">Validacion 1_2</td>
+</tr>
+<tr>
+<td id="fondo">Mensaje</td><td id="info2">artículo SKU: 200083436, se añadió a listado resumen</td>
+</tr>
+<tr>
+<td id="fondo">Evidencia</td><td id="info2">
+<a class="view magnifier" data-fancybox-group="gallery" href="Evidencia/VP-Validacion 1_2_12_10_2017_10_12-01_16_11.png"><img width="32px" src="Formato/images/Camera.png" /></a>
+</td>
+</tr>
+</table>
+</td></tr>
+<tr>
+<td>
+<table rules="all" border="2">
+<tr>
+<td id="fondo">Nombre VP</td><td id="info2">Validacion 1_3</td>
+</tr>
+<tr>
+<td id="fondo">Mensaje</td><td id="info2">artículo SKU: 200078916, se añadió a listado resumen</td>
+</tr>
+<tr>
+<td id="fondo">Evidencia</td><td id="info2">
+<a class="view magnifier" data-fancybox-group="gallery" href="Evidencia/VP-Validacion 1_3_12_10_2017_10_12-01_16_17.png"><img width="32px" src="Formato/images/Camera.png" /></a>
+</td>
+</tr>
+</table>
+</td><td>
+<table rules="all" border="2">
+<tr>
+<td id="fondo">Nombre VP</td><td id="info2">Validacion 1_4</td>
+</tr>
+<tr>
+<td id="fondo">Mensaje</td><td id="info2">artículo SKU: 200085864, se añadió a listado resumen</td>
+</tr>
+<tr>
+<td id="fondo">Evidencia</td><td id="info2">
+<a class="view magnifier" data-fancybox-group="gallery" href="Evidencia/VP-Validacion 1_4_12_10_2017_10_12-01_16_22.png"><img width="32px" src="Formato/images/Camera.png" /></a>
+</td>
+</tr>
+</table>
+</td></tr>
+<tr>
+<td>
+<table rules="all" border="2">
+<tr>
+<td id="fondo">Nombre VP</td><td id="info2">Validacion 1_5</td>
+</tr>
+<tr>
+<td id="fondo">Mensaje</td><td id="info2">artículo SKU: 200086403, se añadió a listado resumen</td>
+</tr>
+<tr>
+<td id="fondo">Evidencia</td><td id="info2">
+<a class="view magnifier" data-fancybox-group="gallery" href="Evidencia/VP-Validacion 1_5_12_10_2017_10_12-01_16_29.png"><img width="32px" src="Formato/images/Camera.png" /></a>
+</td>
+</tr>
+</table>
+</td><td>
+<table rules="all" border="2">
+<tr>
+<td id="fondo">Nombre VP</td><td id="info2">Validacion 1_6</td>
+</tr>
+<tr>
+<td id="fondo">Mensaje</td><td id="info2">artículo SKU: 200084602, se añadió a listado resumen</td>
+</tr>
+<tr>
+<td id="fondo">Evidencia</td><td id="info2">
+<a class="view magnifier" data-fancybox-group="gallery" href="Evidencia/VP-Validacion 1_6_12_10_2017_10_12-01_16_33.png"><img width="32px" src="Formato/images/Camera.png" /></a>
+</td>
+</tr>
+</table>
+</td></tr>
+<tr>
+<td>
+<table rules="all" border="2">
+<tr>
+<td id="fondo">Nombre VP</td><td id="info2">Validacion 1_7</td>
+</tr>
+<tr>
+<td id="fondo">Mensaje</td><td id="info2">artículo SKU: 200088132, se añadió a listado resumen</td>
+</tr>
+<tr>
+<td id="fondo">Evidencia</td><td id="info2">
+<a class="view magnifier" data-fancybox-group="gallery" href="Evidencia/VP-Validacion 1_7_12_10_2017_10_12-01_16_41.png"><img width="32px" src="Formato/images/Camera.png" /></a>
+</td>
+</tr>
+</table>
+</td><td>
+<table rules="all" border="2">
+<tr>
+<td id="fondo">Nombre VP</td><td id="info2">Validacion 1_8</td>
+</tr>
+<tr>
+<td id="fondo">Mensaje</td><td id="info2">artículo SKU: 200089311, se añadió a listado resumen</td>
+</tr>
+<tr>
+<td id="fondo">Evidencia</td><td id="info2">
+<a class="view magnifier" data-fancybox-group="gallery" href="Evidencia/VP-Validacion 1_8_12_10_2017_10_12-01_16_46.png"><img width="32px" src="Formato/images/Camera.png" /></a>
+</td>
+</tr>
+</table>
+</td></tr>
+<tr>
+<td>
+<table rules="all" border="2">
+<tr>
+<td id="fondo">Nombre VP</td><td id="info2">Validacion 1_9</td>
+</tr>
+<tr>
+<td id="fondo">Mensaje</td><td id="info2">artículo SKU: 200079595, se añadió a listado resumen</td>
+</tr>
+<tr>
+<td id="fondo">Evidencia</td><td id="info2">
+<a class="view magnifier" data-fancybox-group="gallery" href="Evidencia/VP-Validacion 1_9_12_10_2017_10_12-01_16_54.png"><img width="32px" src="Formato/images/Camera.png" /></a>
+</td>
+</tr>
+</table>
+</td><td>
+<table rules="all" border="2">
+<tr>
+<td id="fondo">Nombre VP</td><td id="info2">Validacion 2</td>
+</tr>
+<tr>
+<td id="fondo">Mensaje</td><td id="info2">Carga de página de bolsa de compras_OK</td>
+</tr>
+<tr>
+<td id="fondo">Evidencia</td><td id="info2">
+<a class="view magnifier" data-fancybox-group="gallery" href="Evidencia/VP-Validacion 2_12_10_2017_10_12-01_17_07.png"><img width="32px" src="Formato/images/Camera.png" /></a>
+</td>
+</tr>
+</table>
+</td></tr>
+<tr>
+<td>
+<table rules="all" border="2">
+<tr>
+<td id="fondo">Nombre VP</td><td id="info2">Validacion 3</td>
+</tr>
+<tr>
+<td id="fondo">Mensaje</td><td id="info2">Carga de página proced-CheckOut_OK</td>
+</tr>
+<tr>
+<td id="fondo">Evidencia</td><td id="info2">
+<a class="view magnifier" data-fancybox-group="gallery" href="Evidencia/VP-Validacion 3_12_10_2017_10_12-01_17_28.png"><img width="32px" src="Formato/images/Camera.png" /></a>
+</td>
+</tr>
+</table>
+</td><td>
+<table rules="all" border="2">
+<tr>
+<td id="fondo">Nombre VP</td><td id="info2">Validacion 4</td>
+</tr>
+<tr>
+<td id="fondo">Mensaje</td><td id="info2">Verificar que nos redirige a página CheckOut_OK</td>
+</tr>
+<tr>
+<td id="fondo">Evidencia</td><td id="info2">
+<a class="view magnifier" data-fancybox-group="gallery" href="Evidencia/VP-Validacion 4_12_10_2017_10_12-01_17_40.png"><img width="32px" src="Formato/images/Camera.png" /></a>
+</td>
+</tr>
+</table>
+</td></tr>
+<tr>
+<td>
+<table rules="all" border="2">
+<tr>
+<td id="fondo">Nombre VP</td><td id="info2">Validacion 5</td>
+</tr>
+<tr>
+<td id="fondo">Mensaje</td><td id="info2">Crea nuevo registro_OK</td>
+</tr>
+<tr>
+<td id="fondo">Evidencia</td><td id="info2">
+<a class="view magnifier" data-fancybox-group="gallery" href="Evidencia/VP-Validacion 5_12_10_2017_10_12-01_17_50.png"><img width="32px" src="Formato/images/Camera.png" /></a>
+</td>
+</tr>
+</table>
+</td><td>
+<table rules="all" border="2">
+<tr>
+<td id="fondo">Nombre VP</td><td id="info2">Validacion 6</td>
+</tr>
+<tr>
+<td id="fondo">Mensaje</td><td id="info2">Nueva direción fue añadida_OK</td>
+</tr>
+<tr>
+<td id="fondo">Evidencia</td><td id="info2">
+<a class="view magnifier" data-fancybox-group="gallery" href="Evidencia/VP-Validacion 6_12_10_2017_10_12-01_18_16.png"><img width="32px" src="Formato/images/Camera.png" /></a>
+</td>
+</tr>
+</table>
+</td></tr>
+<tr>
+<td>
+<table rules="all" border="2">
+<tr>
+<td id="fondo">Nombre VP</td><td id="info2">Validacion 8</td>
+</tr>
+<tr>
+<td id="fondo">Mensaje</td><td id="info2">Despliegue de página de opciones de pago_OK</td>
+</tr>
+<tr>
+<td id="fondo">Evidencia</td><td id="info2">
+<a class="view magnifier" data-fancybox-group="gallery" href="Evidencia/VP-Validacion 8_12_10_2017_10_12-01_18_33.png"><img width="32px" src="Formato/images/Camera.png" /></a>
+</td>
+</tr>
+</table>
+</td><td>
+<table rules="all" border="2">
+<tr>
+<td id="fondo">Nombre VP</td><td id="info2">Validacion 9</td>
+</tr>
+<tr>
+<td id="fondo">Mensaje</td><td id="info2">Despliegue de opción pago en efectivo_OK</td>
+</tr>
+<tr>
+<td id="fondo">Evidencia</td><td id="info2">
+<a class="view magnifier" data-fancybox-group="gallery" href="Evidencia/VP-Validacion 9_12_10_2017_10_12-01_18_37.png"><img width="32px" src="Formato/images/Camera.png" /></a>
+</td>
+</tr>
+</table>
+</td></tr>
+<tr>
+<td>
+<table rules="all" border="2">
+<tr>
+<td id="fondo">Nombre VP</td><td id="info2">Validacion 10</td>
+</tr>
+<tr>
+<td id="fondo">Mensaje</td><td id="info2">Verificar revisión del pedido_OK</td>
+</tr>
+<tr>
+<td id="fondo">Evidencia</td><td id="info2">
+<a class="view magnifier" data-fancybox-group="gallery" href="Evidencia/VP-Validacion 10_12_10_2017_10_12-01_18_44.png"><img width="32px" src="Formato/images/Camera.png" /></a>
+</td>
+</tr>
+</table>
+</td><td>
+<table rules="all" border="2">
+<tr>
+<td id="fondo">Nombre VP</td><td id="info2">Validacion 11</td>
+</tr>
+<tr>
+<td id="fondo">Mensaje</td><td id="info2">Verificar compra reservada_OK</td>
+</tr>
+<tr>
+<td id="fondo">Evidencia</td><td id="info2">
+<a class="view magnifier" data-fancybox-group="gallery" href="Evidencia/VP-Validacion 11_12_10_2017_10_12-01_18_56.png"><img width="32px" src="Formato/images/Camera.png" /></a>
+</td>
+</tr>
+</table>
+</td></tr>
+</table>
+</div></td></tr>
+</table>
+</center>
+
+
+</BODY>
+</HTML>
