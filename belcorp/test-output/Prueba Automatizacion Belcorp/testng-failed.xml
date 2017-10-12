@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Prueba Automatizacion Belcorp]">
+  <test name="Test Set - RegistroLogin - 12102017">
+    <classes>
+      <class name="belcorp.test.RegistroLogin.CPA_01_Login_usuario_existente"/>
+      <class name="belcorp.test.RegistroLogin.CPA_02_Registro_nuevo_usuario_belcorp"/>
+      <class name="belcorp.test.RegistroLogin.CPA_03_Registro_nuevo_usuario_no_belcorp"/>
+      <class name="belcorp.test.RegistroLogin.CPA_04_Login_facebook_usuario_no_belcorp"/>
+    </classes>
+  </test> <!-- Test Set - RegistroLogin - 12102017 -->
+  <test name="Test Set - MiCuentaOpciones - 12102017">
+    <classes>
+      <class name="belcorp.test.MiCuentaOpciones.CPA_05_MiCuenta_Mis_Pedidos_Realizados"/>
+      <class name="belcorp.test.MiCuentaOpciones.CPA_06_MiCuenta_Cambiar_Contrasena"/>
+      <class name="belcorp.test.MiCuentaOpciones.CPA_07_MiCuenta_Agregar_Direccion"/>
+      <class name="belcorp.test.MiCuentaOpciones.CPA_08_MiCuenta_Direccion_Predeterminada"/>
+    </classes>
+  </test> <!-- Test Set - MiCuentaOpciones - 12102017 -->
+  <test name="Test Set - LoginBusquedaProducto - 12102017">
+    <classes>
+      <class name="belcorp.test.LoginBusquedaProducto.CPA_09_Busqueda_Categoria"/>
+      <class name="belcorp.test.LoginBusquedaProducto.CPA_10_Busqueda_Cat_SubCategoria"/>
+      <class name="belcorp.test.LoginBusquedaProducto.CPA_11_Busqueda_Barra_SKU"/>
+    </classes>
+  </test> <!-- Test Set - LoginBusquedaProducto - 12102017 -->
+  <test name="Test Set - AñadirProductosBolsa - 12102017">
+    <classes>
+      <class name="belcorp.test.AñadirProductosBolsa.CPA_12_Anadir_Un_Producto"/>
+      <class name="belcorp.test.AñadirProductosBolsa.CPA_13_Anadir_Varios_Productos"/>
+      <class name="belcorp.test.AñadirProductosBolsa.CPA_14_Ver_Bolsa_No_Anadir_Producto"/>
+    </classes>
+  </test> <!-- Test Set - AñadirProductosBolsa - 12102017 -->
+  <test name="Test Set - CarritoBolsaCompra - 12102017">
+    <classes>
+      <class name="belcorp.test.CarritoBolsaCompra.CPA_15_Cupon_Valido_Bolsa_Productos"/>
+      <class name="belcorp.test.CarritoBolsaCompra.CPA_16_Cupon_Valido_Contiua_Comprando"/>
+      <class name="belcorp.test.CarritoBolsaCompra.CPA_17_Eliminar_Prod_A_Cupon_Valido_C_Comprando"/>
+      <class name="belcorp.test.CarritoBolsaCompra.CPA_18_Eliminar_Prod_Pagar_CheckOut"/>
+      <class name="belcorp.test.CarritoBolsaCompra.CPA_19_C_Compra_Agregar_Continua_Comprando"/>
+    </classes>
+  </test> <!-- Test Set - CarritoBolsaCompra - 12102017 -->
+  <test name="Test Set - Checkout - 12102017">
+    <classes>
+      <class name="belcorp.test.Checkout.CPA_020_Registrar_AgregarNuevaDireccion_Comprar"/>
+      <class name="belcorp.test.Checkout.CPA_021_Registrar_DireccionDefecto_Comprar"/>
+      <class name="belcorp.test.Checkout.CPA_022_Logear_AgregarNuevaDireccion_Comprar"/>
+      <class name="belcorp.test.Checkout.CPA_023_Logear_DireccionDefecto_Comprar"/>
+      <class name="belcorp.test.Checkout.CPA_024_Registrar_AgregarNuevaDireccion_Comprar"/>
+    </classes>
+  </test> <!-- Test Set - Checkout - 12102017 -->
+  <test name="Test Set - RegistroLogin - 12102017(failed)">
+    <classes>
+      <class name="belcorp.test.RegistroLogin.CPA_01_Login_usuario_existente">
+        <methods>
+          <include name="Login_usuario_existente"/>
+        </methods>
+      </class> <!-- belcorp.test.RegistroLogin.CPA_01_Login_usuario_existente -->
+      <class name="belcorp.test.RegistroLogin.CPA_04_Login_facebook_usuario_no_belcorp">
+        <methods>
+          <include name="Login_usuario_facebook"/>
+        </methods>
+      </class> <!-- belcorp.test.RegistroLogin.CPA_04_Login_facebook_usuario_no_belcorp -->
+      <class name="belcorp.test.RegistroLogin.CPA_02_Registro_nuevo_usuario_belcorp">
+        <methods>
+          <include name="Registro_nuevo_usuario_belcorp"/>
+        </methods>
+      </class> <!-- belcorp.test.RegistroLogin.CPA_02_Registro_nuevo_usuario_belcorp -->
+      <class name="belcorp.test.RegistroLogin.CPA_03_Registro_nuevo_usuario_no_belcorp">
+        <methods>
+          <include name="Registro_nuevo_usuario_no_belcorp"/>
+        </methods>
+      </class> <!-- belcorp.test.RegistroLogin.CPA_03_Registro_nuevo_usuario_no_belcorp -->
+    </classes>
+  </test> <!-- Test Set - RegistroLogin - 12102017(failed) -->
+  <test name="Test Set - MiCuentaOpciones - 12102017(failed)">
+    <classes>
+      <class name="belcorp.test.MiCuentaOpciones.CPA_06_MiCuenta_Cambiar_Contrasena">
+        <methods>
+          <include name="MiCuenta_Cambiar_Contrasena"/>
+        </methods>
+      </class> <!-- belcorp.test.MiCuentaOpciones.CPA_06_MiCuenta_Cambiar_Contrasena -->
+      <class name="belcorp.test.MiCuentaOpciones.CPA_08_MiCuenta_Direccion_Predeterminada">
+        <methods>
+          <include name="MiCuenta_Direccion_Predeterminada"/>
+        </methods>
+      </class> <!-- belcorp.test.MiCuentaOpciones.CPA_08_MiCuenta_Direccion_Predeterminada -->
+      <class name="belcorp.test.MiCuentaOpciones.CPA_07_MiCuenta_Agregar_Direccion">
+        <methods>
+          <include name="MiCuenta_Agregar_Direccion"/>
+        </methods>
+      </class> <!-- belcorp.test.MiCuentaOpciones.CPA_07_MiCuenta_Agregar_Direccion -->
+      <class name="belcorp.test.MiCuentaOpciones.CPA_05_MiCuenta_Mis_Pedidos_Realizados">
+        <methods>
+          <include name="MiCuenta_Mis_Pedidos_Realizados"/>
+        </methods>
+      </class> <!-- belcorp.test.MiCuentaOpciones.CPA_05_MiCuenta_Mis_Pedidos_Realizados -->
+    </classes>
+  </test> <!-- Test Set - MiCuentaOpciones - 12102017(failed) -->
+  <test name="Test Set - LoginBusquedaProducto - 12102017(failed)">
+    <classes>
+      <class name="belcorp.test.LoginBusquedaProducto.CPA_10_Busqueda_Cat_SubCategoria">
+        <methods>
+          <include name="Busqueda_Cat_SubCategoria"/>
+        </methods>
+      </class> <!-- belcorp.test.LoginBusquedaProducto.CPA_10_Busqueda_Cat_SubCategoria -->
+      <class name="belcorp.test.LoginBusquedaProducto.CPA_11_Busqueda_Barra_SKU">
+        <methods>
+          <include name="Busqueda_Barra_SKU"/>
+        </methods>
+      </class> <!-- belcorp.test.LoginBusquedaProducto.CPA_11_Busqueda_Barra_SKU -->
+      <class name="belcorp.test.LoginBusquedaProducto.CPA_09_Busqueda_Categoria">
+        <methods>
+          <include name="Busqueda_Categoria"/>
+        </methods>
+      </class> <!-- belcorp.test.LoginBusquedaProducto.CPA_09_Busqueda_Categoria -->
+    </classes>
+  </test> <!-- Test Set - LoginBusquedaProducto - 12102017(failed) -->
+  <test name="Test Set - AñadirProductosBolsa - 12102017(failed)">
+    <classes>
+      <class name="belcorp.test.AñadirProductosBolsa.CPA_14_Ver_Bolsa_No_Anadir_Producto">
+        <methods>
+          <include name="Ver_Bolsa_No_Añadir_Producto"/>
+        </methods>
+      </class> <!-- belcorp.test.AñadirProductosBolsa.CPA_14_Ver_Bolsa_No_Anadir_Producto -->
+      <class name="belcorp.test.AñadirProductosBolsa.CPA_12_Anadir_Un_Producto">
+        <methods>
+          <include name="Anadir_Un_Producto"/>
+        </methods>
+      </class> <!-- belcorp.test.AñadirProductosBolsa.CPA_12_Anadir_Un_Producto -->
+      <class name="belcorp.test.AñadirProductosBolsa.CPA_13_Anadir_Varios_Productos">
+        <methods>
+          <include name="Anadir_Varios_Productos"/>
+        </methods>
+      </class> <!-- belcorp.test.AñadirProductosBolsa.CPA_13_Anadir_Varios_Productos -->
+    </classes>
+  </test> <!-- Test Set - AñadirProductosBolsa - 12102017(failed) -->
+  <test name="Test Set - CarritoBolsaCompra - 12102017(failed)">
+    <classes>
+      <class name="belcorp.test.CarritoBolsaCompra.CPA_19_C_Compra_Agregar_Continua_Comprando">
+        <methods>
+          <include name="C_Compra_Agregar_Continua_Comprando"/>
+        </methods>
+      </class> <!-- belcorp.test.CarritoBolsaCompra.CPA_19_C_Compra_Agregar_Continua_Comprando -->
+      <class name="belcorp.test.CarritoBolsaCompra.CPA_16_Cupon_Valido_Contiua_Comprando">
+        <methods>
+          <include name="Cupon_Valido_Contiua_Comprando"/>
+        </methods>
+      </class> <!-- belcorp.test.CarritoBolsaCompra.CPA_16_Cupon_Valido_Contiua_Comprando -->
+      <class name="belcorp.test.CarritoBolsaCompra.CPA_15_Cupon_Valido_Bolsa_Productos">
+        <methods>
+          <include name="Cupon_Valido_Bolsa_Productos"/>
+        </methods>
+      </class> <!-- belcorp.test.CarritoBolsaCompra.CPA_15_Cupon_Valido_Bolsa_Productos -->
+      <class name="belcorp.test.CarritoBolsaCompra.CPA_17_Eliminar_Prod_A_Cupon_Valido_C_Comprando">
+        <methods>
+          <include name="Eliminar_Prod_A_Cupon_Valido_C_Comprando"/>
+        </methods>
+      </class> <!-- belcorp.test.CarritoBolsaCompra.CPA_17_Eliminar_Prod_A_Cupon_Valido_C_Comprando -->
+      <class name="belcorp.test.CarritoBolsaCompra.CPA_18_Eliminar_Prod_Pagar_CheckOut">
+        <methods>
+          <include name="CPA_18"/>
+        </methods>
+      </class> <!-- belcorp.test.CarritoBolsaCompra.CPA_18_Eliminar_Prod_Pagar_CheckOut -->
+    </classes>
+  </test> <!-- Test Set - CarritoBolsaCompra - 12102017(failed) -->
+  <test name="Test Set - Checkout - 12102017(failed)">
+    <classes>
+      <class name="belcorp.test.Checkout.CPA_022_Logear_AgregarNuevaDireccion_Comprar">
+        <methods>
+          <include name="Logear_AgregarNuevaDireccion_Comprar"/>
+        </methods>
+      </class> <!-- belcorp.test.Checkout.CPA_022_Logear_AgregarNuevaDireccion_Comprar -->
+      <class name="belcorp.test.Checkout.CPA_023_Logear_DireccionDefecto_Comprar">
+        <methods>
+          <include name="CPA_023_Logear_DireccionDefecto_Comprar"/>
+        </methods>
+      </class> <!-- belcorp.test.Checkout.CPA_023_Logear_DireccionDefecto_Comprar -->
+      <class name="belcorp.test.Checkout.CPA_024_Registrar_AgregarNuevaDireccion_Comprar">
+        <methods>
+          <include name="CPA_024_Registrar_AgregarNuevaDireccion_Comprar"/>
+        </methods>
+      </class> <!-- belcorp.test.Checkout.CPA_024_Registrar_AgregarNuevaDireccion_Comprar -->
+      <class name="belcorp.test.Checkout.CPA_020_Registrar_AgregarNuevaDireccion_Comprar">
+        <methods>
+          <include name="Registrar_AgregarNuevaDireccion_Comprar"/>
+        </methods>
+      </class> <!-- belcorp.test.Checkout.CPA_020_Registrar_AgregarNuevaDireccion_Comprar -->
+      <class name="belcorp.test.Checkout.CPA_021_Registrar_DireccionDefecto_Comprar">
+        <methods>
+          <include name="Registrar_DireccionDefecto_Comprar"/>
+        </methods>
+      </class> <!-- belcorp.test.Checkout.CPA_021_Registrar_DireccionDefecto_Comprar -->
+    </classes>
+  </test> <!-- Test Set - Checkout - 12102017(failed) -->
+</suite> <!-- Failed suite [Prueba Automatizacion Belcorp] -->

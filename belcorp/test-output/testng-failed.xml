@@ -6,4 +6,13 @@
       <class name="belcorp.test.AñadirProductosBolsa.CPA_12_Anadir_Un_Producto"/>
     </classes>
   </test> <!-- Default test -->
+  <test name="Default test(failed)">
+    <classes>
+      <class name="belcorp.test.AñadirProductosBolsa.CPA_12_Anadir_Un_Producto">
+        <methods>
+          <include name="Anadir_Un_Producto"/>
+        </methods>
+      </class> <!-- belcorp.test.AñadirProductosBolsa.CPA_12_Anadir_Un_Producto -->
+    </classes>
+  </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
