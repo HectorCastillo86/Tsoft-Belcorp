@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="37349" started-at="2017-10-12T19:24:46Z" finished-at="2017-10-12T19:25:24Z">
+  <suite name="Default suite" duration-ms="56455" started-at="2017-10-12T20:43:03Z" finished-at="2017-10-12T20:44:00Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="37349" started-at="2017-10-12T19:24:46Z" finished-at="2017-10-12T19:25:24Z">
+    <test name="Default test" duration-ms="56455" started-at="2017-10-12T20:43:03Z" finished-at="2017-10-12T20:44:00Z">
       <class name="belcorp.test.AñadirProductosBolsa.CPA_12_Anadir_Un_Producto">
-        <test-method status="PASS" signature="Anadir_Un_Producto()[pri:0, instance:belcorp.test.AñadirProductosBolsa.CPA_12_Anadir_Un_Producto@29774679]" name="Anadir_Un_Producto" duration-ms="37334" started-at="2017-10-12T16:24:46Z" finished-at="2017-10-12T16:25:24Z">
+        <test-method status="PASS" signature="Anadir_Un_Producto()[pri:0, instance:belcorp.test.AñadirProductosBolsa.CPA_12_Anadir_Un_Producto@26653222]" name="Anadir_Un_Producto" duration-ms="56440" started-at="2017-10-12T17:43:03Z" finished-at="2017-10-12T17:44:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Anadir_Un_Producto -->

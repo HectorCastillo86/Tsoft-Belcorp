@@ -14,6 +14,8 @@
     <script src="Formato/js/jquery.elastislide.js"></script>
     <script src="Formato/js/jquery.fancybox.pack.js"></script>
     <script>
+	
+	
 	$(document).ready(function() {	
       $('BODY').bgStretcher({
 		imageWidth: 1024, 
@@ -55,7 +57,7 @@ function comparator(logDir,base,exp,act)
 		alert("CRFCN0309E: Error al crear la visualización del punto de verificación:\nCRFCN0310E: Para ver los resultados de los puntos de verificación, se debe asociar con el navegador un JRE habilitado (1.3.1_02 o posterior)");
 	}
 }
-//-->
+
 </SCRIPT>
 </HEAD>
 <BODY>
@@ -67,16 +69,16 @@ function comparator(logDir,base,exp,act)
 	
 <SCRIPT>
 	var doc = document.open("text/html","replace");	
-	var nombre_navegador = "Internet Explorer";
+	var nombre_navegador = "";
 	var hora_inicial_resumen = "12:00";
 	var fecha_inicial_resumen = "30-06-2014";
 	var hora_termino_resumen = "13:00";
 	var fecha_termino_resumen = "30-06-2014";
 
 	doc.write('<table id="tbl1" rules="all" border="2">');
-	doc.write('<tr>');
-	doc.write('<td id="fondo">Navegador</td><td id="info2">'+nombre_navegador+'</td>');
-	doc.write('</tr>');
+	//doc.write('<tr>');
+	//doc.write('<td id="fondo">Navegador</td><td id="info2">'+nombre_navegador+'</td>');
+	//doc.write('</tr>');
 	doc.write('<tr>');
 	doc.write('<td id="fondo">Hora Inicio</td><td id="info2">'+hora_inicial_resumen+'</td>');
 	doc.write('</tr>');

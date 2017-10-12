@@ -16,6 +16,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
  */
 public class BrowserFactory {
 	
+	public static String curDir = System.getProperty("user.dir");
+	
 	static WebDriver driver;
 	
 	public static WebDriver startBrowser(String browserName, String url)
@@ -26,6 +28,7 @@ public class BrowserFactory {
 		}
 		else if (browserName.equalsIgnoreCase("chrome"))
 		{
+			System.setProperty("webdriver.chrome.driver", curDir+"/src/main/resources/chromedriver.exe");
 			driver = new ChromeDriver ();
 		}
 		else if (browserName.equalsIgnoreCase("IE"))

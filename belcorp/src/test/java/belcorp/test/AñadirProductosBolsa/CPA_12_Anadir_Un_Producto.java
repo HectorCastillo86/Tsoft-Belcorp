@@ -19,7 +19,7 @@ public class CPA_12_Anadir_Un_Producto {
 	public void Anadir_Un_Producto() throws InterruptedException
 	{
 		// Mostrar en Consola Datos de Ejecucion de Prueba
-		WebDriver driver = BrowserFactory.startBrowser("firefox",
+		WebDriver driver = BrowserFactory.startBrowser("chrome",
 				"https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
 		BolsaCompraPage AgregarABolsa = PageFactory.initElements(driver, BolsaCompraPage.class);
 		//Inicializacion de Reporte
