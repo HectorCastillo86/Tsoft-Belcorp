@@ -21,15 +21,16 @@ public class CPA_06_MiCuenta_Cambiar_Contrasena {
 	// Datos CPA_06
 	String user = "tsoft@yopmail.com";
 	String pass = "Hola123";
-	public static String nuevaContraseña = "Hola123";
+	String nuevaContraseña = "Hola123";
 	String repetirConraseña = "Hola123";
+	String urlBase = "https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03";
 
 	@Test
 	public void MiCuenta_Cambiar_Contrasena() throws InterruptedException {
 
 		// Inicilaizar Variables
 		WebDriver driver = BrowserFactory.startBrowser("firefox",
-				"https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
+				urlBase);
 		MiCuentaCambiarContraseñaPage cambiarContraseña = PageFactory.initElements(driver,
 				MiCuentaCambiarContraseñaPage.class);
 		LoginPage login_page = PageFactory.initElements(driver, LoginPage.class);

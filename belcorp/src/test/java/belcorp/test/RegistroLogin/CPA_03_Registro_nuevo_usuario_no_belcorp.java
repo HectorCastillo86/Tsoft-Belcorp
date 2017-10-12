@@ -24,13 +24,14 @@ public class CPA_03_Registro_nuevo_usuario_no_belcorp {
 	String pwd = "Tsoft1234";
 	String tipoDoc = "Cédula de extranjería"; // valores "Cédula de identidad" ; "Cédula de extranjería"; "NIT" ;
 	String checkNumDoc = "154450017";
+	String urlBase = "https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03";
 
 	@Test
 	public void Registro_nuevo_usuario_no_belcorp() throws IOException {
 
 		// Inicializar Driver y Page
 		WebDriver driver = BrowserFactory.startBrowser("firefox",
-				"https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
+				urlBase);
 		RegistroPage registro = PageFactory.initElements(driver, RegistroPage.class);
 
 		// Inicializacion de Reporte

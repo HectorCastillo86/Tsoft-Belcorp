@@ -18,19 +18,20 @@ import org.openqa.selenium.support.PageFactory;
 public class CPA_02_Registro_nuevo_usuario_belcorp {
 
 	// DATOS CPA_02
-	String nombre = "TESTK";
-	String apellido = "TestK";
-	String email = "test_00K@belcorp.biz";
-	String pwd = "Tsoft1234";
+	String nombre = "userbelcorp";
+	String apellido = "esika";
+	String email = "userbelcorp_01@belcorp.biz";
+	String pwd = "tsoft1234";
 	String tipoDoc = "Cédula de extranjería"; // valores "Cédula de identidad" ; "Cédula de extranjería"; "NIT" ;
-	String checkNumDoc = "154450016";
+	String checkNumDoc = "154450020";
+	String urlBase = "https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03";
 
 	@Test
 	public void Registro_nuevo_usuario_belcorp() throws IOException {
 
 		// Inicializar Driver y Page
 		WebDriver driver = BrowserFactory.startBrowser("firefox",
-				"https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
+				urlBase);
 		RegistroPage registro = PageFactory.initElements(driver, RegistroPage.class);
 
 		// Inicializacion de Reporte

@@ -19,12 +19,13 @@ public class CPA_04_Login_facebook_usuario_no_belcorp {
 	// DATOS CPA
 	String user = "john_fdtbmaw_dos@tfbnw.net";
 	String pass = "Belcorp2017";
+	String urlBase = "https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03";
 
 	@Test
 	public void Login_usuario_facebook() throws IOException {
 		// Inicializar CARGA URL Y PAGE
 		WebDriver driver = BrowserFactory.startBrowser("firefox",
-				"https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
+				urlBase);
 		LoginPage login_page = PageFactory.initElements(driver, LoginPage.class);
 
 		// Inicializacion de Reporte

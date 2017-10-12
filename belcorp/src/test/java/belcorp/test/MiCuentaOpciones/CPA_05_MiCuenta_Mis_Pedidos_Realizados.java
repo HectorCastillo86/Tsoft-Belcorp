@@ -16,14 +16,16 @@ import org.openqa.selenium.support.PageFactory;
 public class CPA_05_MiCuenta_Mis_Pedidos_Realizados {
 
 	// Ingreso de Datos CPA_05
-	public static final String user = "tsoft@yopmail.com";
-	public static final String pass = "Hola123";
+	String user = "tsoft@yopmail.com";
+	String pass = "Hola123";
+	String urlBase = "https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03";
+	
 
 	@Test
 	public void MiCuenta_Mis_Pedidos_Realizados() throws InterruptedException {
 
 		// Inicializar CARGA URL Y PAGE
-		WebDriver driver = BrowserFactory.startBrowser("firefox","https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
+		WebDriver driver = BrowserFactory.startBrowser("firefox",urlBase);
 		MiCuentaMisPedidosPage misPedidos = PageFactory.initElements(driver, MiCuentaMisPedidosPage.class);
 		LoginPage login_page = PageFactory.initElements(driver, LoginPage.class);
 

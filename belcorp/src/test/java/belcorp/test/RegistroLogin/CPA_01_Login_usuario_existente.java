@@ -16,8 +16,9 @@ public class CPA_01_Login_usuario_existente {
 	
 
 	// DATOS CPA_01
-	public static final String user = "tsoft@yopmail.com";
-	public static final String pass = "Hola123";
+	String user = "tsoft@yopmail.com";
+	String pass = "Hola123";
+	String urlBase = "https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03";
 
 	@Test
 	public void Login_usuario_existente() {
@@ -25,7 +26,7 @@ public class CPA_01_Login_usuario_existente {
 		// Mostrar en Consola Datos de Ejecucion de Prueba
 		System.out.println("CPA_01: Datos para Ejecucion Usuario: " + user + " , Password : " + pass);
 		WebDriver driver = BrowserFactory.startBrowser("firefox",
-				"https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
+				urlBase);
 		LoginPage login_page = PageFactory.initElements(driver, LoginPage.class);
 		
 		//Inicializacion de Reporte
