@@ -215,6 +215,76 @@ public class SearchPage {
 		
 	}
 	
+	public String BuscarSubCategoriaStr(String categoria)
+	{
+		Actions act = new Actions(driver);
+		WebElement subCat_Aleatoria = null;
+		String text = null;
+		
+		try {
+			Thread.sleep(1000);
+			switch(categoria)
+			{
+			case "maquillaje":
+				//arreglo de subcategoria -- maquillaje
+				WebElement[ ] subCat_Maquillaje = {subc_Labios, subc_Ojos,subc_Uñas,subc_accesorios,subc_rostro};
+				subCat_Aleatoria = subCat_Maquillaje[ new Random().nextInt(4)];
+				text = subCat_Aleatoria.getAttribute("data-title");
+				act.moveToElement(cat_maquillaje).perform();
+				act.moveToElement(subCat_Aleatoria).perform();
+				subCat_Aleatoria.click();
+				System.out.println("SubCategoria utilizada en ejecucion: " + text);
+				Thread.sleep(500);
+				break;
+			case "perfume":
+				//arreglo de subcategoria -- perfume
+				WebElement[ ] subCat_perfume = {subc_mujer, subc_hombre};
+				subCat_Aleatoria = subCat_perfume[ new Random().nextInt(1)];
+				text = subCat_Aleatoria.getAttribute("data-title");
+				act.moveToElement(cat_perfume).perform();
+				act.moveToElement(subCat_Aleatoria).perform();
+				subCat_Aleatoria.click();
+				System.out.println("SubCategoria utilizada en ejecucion: " + text);
+				Thread.sleep(500);
+				break;
+			case "piel":
+				//arreglo de subcategoria -- piel
+				WebElement[ ] subCat_piel = {subc_limpDesmaquilla, subc_cuidadoEspecial};
+				subCat_Aleatoria = subCat_piel[ new Random().nextInt(1)];
+				text = subCat_Aleatoria.getAttribute("data-title");
+				act.moveToElement(cat_piel).perform();
+				act.moveToElement(subCat_Aleatoria).perform();
+				subCat_Aleatoria.click();
+				System.out.println("SubCategoria utilizada en ejecucion: " + text);
+				Thread.sleep(500);
+				break;
+			case "cuidado":
+				//arreglo de subcategoria -- cuidado personal
+				WebElement[ ] subCat_CuidadoPersonal = {subc_cuerpo, subc_cabello,subc_NiñosBebe,subc_ManosPies};
+				subCat_Aleatoria = subCat_CuidadoPersonal[ new Random().nextInt(3)];
+				text = subCat_Aleatoria.getAttribute("data-title");
+				act.moveToElement(cat_cuidado).perform();
+				act.moveToElement(subCat_Aleatoria).perform();
+				subCat_Aleatoria.click();
+				System.out.println("SubCategoria utilizada en ejecucion: " + text);
+				Thread.sleep(500);
+				break;
+			case "":
+				cat_oferta.click();
+				break;
+			default:
+				break;
+			}
+			Thread.sleep(500);
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return text;
+		
+	}
+	
 	public void BarraBusquedaSKU(String valor) 
 	{
 		try {
