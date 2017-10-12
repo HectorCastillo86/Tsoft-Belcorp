@@ -1,5 +1,9 @@
 package belcorp.test.Checkout;
 
+import java.io.IOException;
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
@@ -11,30 +15,123 @@ import belcorp.pages.ProcedToCheckOutPage;
 import belcorp.pages.RegistroPage;
 import belcorp.test.RegistroLogin.CPA_01_Login_usuario_existente;
 import belcorp.utils.BrowserFactory;
+import belcorp.utils.LogResult;
 
 public class CPA_024_Registrar_AgregarNuevaDireccion_Comprar {
+	
+	  //Ingreso de Datos CPA_01
+	  public static final String user = "tsoft@yopmail.com";
+	  public static final String pass = "Hola123";
 
 	@Test
-	public void CPA_024_Registrar_AgregarNuevaDireccion_Comprar() {
-		WebDriver driver = BrowserFactory.startBrowser("firefox","https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
+	public void CPA_024_Registrar_AgregarNuevaDireccion_Comprar() throws IOException {
+		
+		String sku = null;
+		// Mostrar en Consola Datos de Ejecucion de Prueba
+		System.out.println("CPA_01: Datos para Ejecucion Usuario: " + user + " , Password : " + pass);
+		WebDriver driver = BrowserFactory.startBrowser("firefox",
+				"https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
 		LoginPage login_page = PageFactory.initElements(driver, LoginPage.class);
 		BolsaCompraPage AgregarABolsa = PageFactory.initElements(driver, BolsaCompraPage.class);
 		CheckOutPage CkeckOutPagar = PageFactory.initElements(driver, CheckOutPage.class);
+		List<List<String>> excelDatos = belcorp.utils.Excel.leerArchivoXLSX("Datos.xlsx", 0);
+		
+		//Inicializacion de Reporte
+		String nombreClase = getClass().getSimpleName();
+		LogResult logResult = new LogResult();
+		logResult.InicioScript(driver);
 		ProcedToCheckOutPage ContRegistrar = PageFactory.initElements(driver, ProcedToCheckOutPage.class);
 		RegistroPage registro = PageFactory.initElements(driver, RegistroPage.class);
 		
-		AgregarABolsa.agregarUnArticulo();
-		AgregarABolsa.BotonIrAPagar();
+		try {
+		
+	////********Validación 1: Verificar que el artículo se añadio a listado resumen****************  
+	  Thread.sleep(500);
+	  //Función para agregar varios artículos.
+	  for (int i = 1; i < excelDatos.size(); i++) {
+      List<?> list = (List<?>) excelDatos.get(i);
+      sku = list.get(0).toString();
+      BolsaCompraPage AgregarABolsaB = PageFactory.initElements(driver, BolsaCompraPage.class);
+      AgregarABolsaB.AgregarArticuloPorSKUB(sku);
+    
+      //TakeScreenShot.takeScreenShot(driver, "CPA_20_val2_evidencia_OK_");  
+    ///verificar que contador de productos cambie por consola
+      //System.out.println("SKU en la posición "+i+" es:"+sku);
+      logResult.passLog("Validacion 1_"+i,"artículo SKU: "+sku+", se añadió a listado resumen",driver,nombreClase);
+      
+		}
+	  
+      //Ir a bolsa de compra
+      AgregarABolsa.irABolsaCompra(); 
+
+      ////********Validación 2: Verificar que nos redirige a bolsa de compra  
+        
+		String val2 = driver.getCurrentUrl();
+		
+		//System.out.println("CPA_16: Se valida Url de Bolsa de Compra URL: "+val2);
+	    //Esperar 2 Seg
+		Thread.sleep(2000);
+		// Validacion Visual
+		//TakeScreenShot.takeScreenShot(driver, "CPA_16_val2_evidencia_OK_");
+		logResult.passLog("Validacion 2","Carga de página de bolsa de compras_OK",driver,nombreClase);
+		
+		////********Validación 3: Verificar que nos redirige a página proced to checkout
+		driver.navigate().refresh();
+		Thread.sleep(2000);
+		if(!driver.findElement(By.className("pageBagSubTitle")).getText().equals("No tienes productos en tu bolsa"))
+		{
+			Thread.sleep(2000);
+			driver.findElement(By.xpath("//button[@class='btn btn-block checkoutButton continueCheckout']")).click();
+			Thread.sleep(1000);
+			
+			String val7 = driver.getCurrentUrl();
+			
+			//System.out.println("CPA_18: Se valida Url de página CheckOut URL: "+val6);
+		    //Esperar 2 Seg
+			Thread.sleep(2000);
+			// Validacion Visual
+			//TakeScreenShot.takeScreenShot(driver, "CPA_18_val7_evidencia_OK_");
+			logResult.passLog("Validacion 3","Carga de página proced-CheckOut_OK",driver,nombreClase);
+		}
+		else 
+		{
+			//Esperar 2 Seg
+			Thread.sleep(2000);
+			logResult.errorLog("Validacion 3","Carga de página proced-CheckOut_NOK",driver,nombreClase);
+			
+		
+		}
+		
+ 		////********Validación 4: Verificar que nos redirige a página CheckOut		
+		//actualizar página
+		driver.navigate().refresh();
+		Thread.sleep(2000);
+		logResult.passLog("Validacion 4","Verificar que nos redirige a página CheckOut_OK",driver,nombreClase);
+		
+		
+	    ////********Validación 5: Verificar que nos crea un nuevo registro
+		//Presiona botón registrar
 		ContRegistrar.Registrarse();
-    	// DATOS CPA
+		Thread.sleep(1000);
+    	
+		
+		// DATOS CPA
     	String nombre = "juan";
     	String apellido= "juanes";
-    	String email = "carlos.juanes10@yopmail.com";
-    	String pwd = "Tsoft123";
+    	String email = "carlos.juanes29@yopmail.com";
+    	String pwd = "Tsoft1234";
     	String tipoDoc = "Cédula de extranjería"; // valores "Cédula de identidad" ; "Cédula de extranjería"; "NIT" ; "Pasaporte"
-    	String checkNumDoc= "174372009";
+    	String checkNumDoc= "174374520";
     	
 		registro.NuevoRegistro(nombre, apellido, email, pwd, tipoDoc, checkNumDoc);
+	    //Esperar 2 Seg
+		Thread.sleep(2000);
+		// Validacion Visual
+		//TakeScreenShot.takeScreenShot(driver, "CPA_18_val7_evidencia_OK_");
+		logResult.passLog("Validacion 5","Crea nuevo registro_OK",driver,nombreClase);
+		
+		Thread.sleep(1000);
+		
 		
 		String ciudad = "BOGOTA";
 		String pais = "Colombia";
@@ -45,11 +142,63 @@ public class CPA_024_Registrar_AgregarNuevaDireccion_Comprar {
 		String telefono = "091919191";
 		
 		CkeckOutPagar.DireccionCheckOut(pais, depar, ciudad, direccion, nrodep, infoAdicional, telefono);
-		CkeckOutPagar.ContinuarMetodoPago();
-		CkeckOutPagar.MetodoPagoEfectivo();
+		////********Validación 6: Verificar que nueva direción fue añadida
+	    //Esperar 2 Seg
+		Thread.sleep(3000);
+		// Validacion Visual
+		logResult.passLog("Validacion 6","Nueva direción fue añadida_OK",driver,nombreClase);
+		//TakeScreenShot.takeScreenShot(driver, "CPA_20_val5_evidencia_OK_");
 		
-		// CERRAR DRIVER 
+
+			////********Validación 8: Verificar despliegue de página de opciones de pago
+			CkeckOutPagar.ContinuarMetodoPago();
+		    //Esperar 2 Seg
+			Thread.sleep(2000);
+			// Validacion Visual
+			//TakeScreenShot.takeScreenShot(driver, "CPA_20_val7_evidencia_OK_");
+			logResult.passLog("Validacion 8","Despliegue de página de opciones de pago_OK",driver,nombreClase);
+			
+			
+		    ////********Validación 9: Verificar despliegue de opción pago en efectivo
+			CkeckOutPagar.MetodoPagoEfectivo();
+		    //Esperar 2 Seg
+			Thread.sleep(2000);
+			// Validacion Visual
+			//TakeScreenShot.takeScreenShot(driver, "CPA_20_val8_evidencia_OK_");
+			logResult.passLog("Validacion 9","Despliegue de opción pago en efectivo_OK",driver,nombreClase);
+			
+			
+		    ////********Validación 10: Verificar revisión del pedido
+			CkeckOutPagar.RevisarPedido();
+		    //Esperar 2 Seg
+			Thread.sleep(2000);
+			// Validacion Visual
+			//TakeScreenShot.takeScreenShot(driver, "CPA_20_val9_evidencia_OK_");
+			logResult.passLog("Validacion 10","Verificar revisión del pedido_OK",driver,nombreClase);
+			
+			
+			
+		    ////********Validación 11: Verificar compra reservada mediante mensaje generado
+			Thread.sleep(1000);
+			CkeckOutPagar.FinalizarPedido();
+		    //Esperar 2 Seg
+			Thread.sleep(2000);
+			// Validacion Visual
+			//TakeScreenShot.takeScreenShot(driver, "CPA_20_val10_evidencia_OK_");
+			logResult.passLog("Validacion 11","Verificar compra reservada_OK",driver,nombreClase);
+		
+		// Cerrar Test
 		driver.close();
+		logResult.crearLog(nombreClase);
+	
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			logResult.errorLog("Error Inesperado", "Error exception: "+e, driver, nombreClase);
+			driver.close();
+			logResult.crearLog(nombreClase);
+	
+		}
 	}
 
 }

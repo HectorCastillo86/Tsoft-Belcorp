@@ -78,7 +78,7 @@ public class CheckOutPage {
 	@CacheLookup
 	WebElement btnContDelivery;
 	
-	@FindBy(how=How.XPATH, using="html/body/main/div[2]/div[2]/div[1]/div[4]/div/button")
+	@FindBy(how=How.CSS, using=".btn.js-address-book")
 	@CacheLookup
 	WebElement btnNewAddress;
 	
@@ -106,7 +106,7 @@ public class CheckOutPage {
 	@CacheLookup
 	WebElement btnReturnMethodDeliv;
 	
-	@FindBy(how=How.XPATH, using="html/body/main/div[2]/div[1]/div[1]/div[4]/button")
+	@FindBy(how=How.ID, using="paymentMethodBtn")
 	@CacheLookup
 	WebElement btnReviewOrder;
 	
@@ -255,8 +255,12 @@ public class CheckOutPage {
 	public void RevisarPedido() {
 		try{
 			Thread.sleep(500);
-			btnReviewOrder.click();
+			Actions act = new Actions(driver);
+			act.moveToElement(btnReviewOrder).perform();
 			Thread.sleep(500);
+			btnReviewOrder.click();
+			Thread.sleep(1000);
+			//optionTermns.click();
 		}catch(InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -264,8 +268,11 @@ public class CheckOutPage {
 	
 	public void FinalizarPedido() {
 		try{
-			Thread.sleep(500);
-			btnEndShop.click();//Finaliza la compra
+			//driver.navigate().refresh();
+			Thread.sleep(2000);
+			optionTermns.click();
+			Thread.sleep(2000);
+			btnEndShop.submit();//Finaliza la compra
 			Thread.sleep(500);
 		}catch(InterruptedException e) {
 			e.printStackTrace();
@@ -327,6 +334,7 @@ public class CheckOutPage {
 	public void ContinuarOpcionesEnvio()
 	{
 		try {
+			Thread.sleep(2000);
 			btnContDelivery.click();
 			Thread.sleep(500);
 		} catch (InterruptedException e) {

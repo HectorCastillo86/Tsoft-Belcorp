@@ -10,44 +10,29 @@ import org.testng.annotations.Test;
 import belcorp.pages.BolsaCompraPage;
 import belcorp.pages.LoginPage;
 import belcorp.utils.BrowserFactory;
+import belcorp.utils.LogResult;
 import belcorp.utils.TakeScreenShot;
 
 public class CPA_19_C_Compra_Agregar_Continua_Comprando {
-	
-	  //Ingreso de Datos CPA_01
-	  public static final String user = "tsoft@yopmail.com";
-	  public static final String pass = "Hola123";
+
 
 	@Test
 	public void C_Compra_Agregar_Continua_Comprando() throws InterruptedException
 	{
-		WebDriver driver = BrowserFactory.startBrowser("firefox","https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
+		// Mostrar en Consola Datos de Ejecucion de Prueba
+		WebDriver driver = BrowserFactory.startBrowser("firefox",
+				"https://aws-esika.esika.com:9002/co/co/tratamiento-piel/c/esika-03");
+		
+		//Inicializacion de Reporte
+		String nombreClase = getClass().getSimpleName();
+		LogResult logResult = new LogResult();
+		logResult.InicioScript(driver);
 		BolsaCompraPage AgregarABolsa = PageFactory.initElements(driver, BolsaCompraPage.class);
-		LoginPage login_page = PageFactory.initElements(driver, LoginPage.class);
 		
-		// Login Belcorp
-		login_page.loginBelcorp(user, pass);
-		
-		//Validar si existe AccountName Nombre de usuario Registrado
-		  boolean val1 = !(driver.findElements(By.xpath("//span[@class='accountName']")).size() == 0);
-		  if (val1) {
-			  Actions act1 = new Actions(driver);
-			  act1.moveToElement(driver.findElement(By.xpath(".//*[@class='accountLi']"))).perform();
-			  //Esperar 1.5 Seg
-			  Thread.sleep(1500);
-			  String username = driver.findElement(By.xpath("//span[@class='accountName']")).getText();
-			  System.out.println("CPA_19: Usuario logeado en Sistema para Ejecucion: " +username);		 
-			  TakeScreenShot.takeScreenShot(driver, "CPA_19_val1_evidencia_OK_");
-		  }	 
-		  else {
-			  TakeScreenShot.takeScreenShot(driver, "CPA_19_val1_evidencia_NOK_");
-			  System.out.println("CPA_19: Problema de login con los siguientes datos: " +user+".");
-			  login_page.close();
-			  Assert.assertTrue(val1, "CPA_19: Problema de login con los siguientes datos: " +user+".");
-	  	  }
-		  
-		//Función para agregar un artículo. 
-		AgregarABolsa.agregarUnArticulo();
+		try {
+
+			//Función para agregar un artículo. 
+			AgregarABolsa.agregarUnArticulo();
 				
 		////************** VALIDACION 1 y 2 :  Verificar Carga de página de bolsa de compras y Verificar 
 		///que el artículo se encuentra en la bolsa de compra*****************
@@ -58,7 +43,9 @@ public class CPA_19_C_Compra_Agregar_Continua_Comprando {
 	    //Esperar 2 Seg
 		Thread.sleep(2000);
 		// Validacion Visual
-		TakeScreenShot.takeScreenShot(driver, "CPA_19_val2_evidencia_OK_");
+		//TakeScreenShot.takeScreenShot(driver, "CPA_19_val2_evidencia_OK_");
+		logResult.passLog("Validacion 1 y 2","Carga de página y artículo se encuenra_OK",driver,nombreClase);
+		
 		
 	    ////************** VALIDACION 3 :  Verificar Carga de página de bolsa de compras*****************
 		//Valor para repetir el agregar más artículos del mismo tipo
@@ -71,25 +58,38 @@ public class CPA_19_C_Compra_Agregar_Continua_Comprando {
 		    //Esperar 2 Seg
 			Thread.sleep(2000);
 			// Validacion Visual
-			TakeScreenShot.takeScreenShot(driver, "CPA_19_val3_evidencia_OK_");
+			//TakeScreenShot.takeScreenShot(driver, "CPA_19_val3_evidencia_OK_");
+			logResult.passLog("Validacion 3_"+i,"Carga de página y Valor para repetir el agregar más artículos_OK",driver,nombreClase);
 		    //Esperar 1 Seg
 			Thread.sleep(1000);
 			i++;
 		}
-
+		driver.navigate().refresh();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("html/body/main/div[2]/div[6]/div/div/div/div[2]/div[3]/button")).click();
 		///************** VALIDACION 4 : Verificar que se encuentra en la página listado de productos
-		String val6 = driver.getCurrentUrl();
+		String val4 = driver.getCurrentUrl();
 		
-		System.out.println("CPA_19: Se valida Url de página listado de productos URL: "+val6);
+		System.out.println("CPA_19: Se valida Url de página listado de productos URL: "+val4);
 	    //Esperar 2 Seg
 		Thread.sleep(2000);
 		// Validacion Visual
-		TakeScreenShot.takeScreenShot(driver, "CPA_19_val4_evidencia_OK_");
+		//TakeScreenShot.takeScreenShot(driver, "CPA_19_val4_evidencia_OK_");
+		logResult.passLog("Validacion 4","Se valida Url de página listado de productos_OK",driver,nombreClase);
 		
-		
-   
-		// CERRAR DRIVER 
+		// Cerrar Test
 		driver.close();
+		logResult.crearLog(nombreClase);
+		
+		
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			logResult.errorLog("Error Inesperado", "Error exception: "+e, driver, nombreClase);
+			driver.close();
+			logResult.crearLog(nombreClase);
+			
+		}
 	}
 
 

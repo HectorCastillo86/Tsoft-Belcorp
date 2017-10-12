@@ -34,7 +34,7 @@ public class BolsaCompraPage {
 	}
 	
 	@FindBy(how= How.XPATH, using =".//*[@id='navbar']/ul[2]/li[5]/a")
-	@CacheLookup
+	//@CacheLookup
 	WebElement btnCarroCompra;
 	
 	@FindBy (how= How.XPATH, using = ".//*[@id='cantItemsCart']")
@@ -53,7 +53,7 @@ public class BolsaCompraPage {
 	@CacheLookup
 	WebElement btnAgregarItem;
 	
-	@FindBy(how= How.XPATH, using ="//div[3]/button")
+	@FindBy(how= How.XPATH, using ="html/body/main/div[2]/div[6]/div/div/div/div[2]/div[3]/button")
 	@CacheLookup
 	WebElement btnContinuarComprando;
 	
@@ -89,7 +89,7 @@ public class BolsaCompraPage {
 	@CacheLookup
 	WebElement buscarSKU;
 	
-	@FindBy(how= How.XPATH, using ="//button[@class='btn btn-block checkoutButton continueCheckout']")
+	@FindBy(how= How.CSS, using ="//button[@class='btn btn-block checkoutButton continueCheckout']")
 	@CacheLookup
 	WebElement btnPagarCompra;
 	
@@ -117,7 +117,9 @@ public class BolsaCompraPage {
 	//@CacheLookup
 	WebElement incrementarProd;
 	
-	
+	@FindBy(how= How.XPATH, using ="html/body/main/div[2]/div[6]/div/div[2]/div[3]/div[1]")
+	//@CacheLookup
+	WebElement btnDescuento;
 	
 	public void incrementarProducto()
 	{
@@ -172,6 +174,7 @@ public class BolsaCompraPage {
 	public void AgregarArticuloPorSKUB(String sku) throws InterruptedException {
 		try {
 			Thread.sleep(2000);
+			agregarSKUB.clear();
 			agregarSKUB.sendKeys(sku);
 			agregarSKUB.submit();
 			if (!driver.findElement(By.cssSelector(".headline")).isDisplayed())
@@ -179,13 +182,13 @@ public class BolsaCompraPage {
 			
 				Actions act = new Actions(driver);
 				act.moveToElement(ImagenProd).perform();
-				Thread.sleep(500);
+				Thread.sleep(1000);
 				btnAgregarItem.submit();
 			
 			}
 			Thread.sleep(1000);
-			driver.navigate().back();
-			agregarSKUB.clear();
+			
+			//agregarSKUB.clear();
 
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -264,7 +267,7 @@ public class BolsaCompraPage {
 	{
 		try {
 			Thread.sleep(500);
-			btnCarroCompra.click();
+			btnIrBolsa.click();
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -275,12 +278,23 @@ public class BolsaCompraPage {
 	public void BotonIrAPagar()
 	{
 		try {
-			Thread.sleep(500);
-			Actions act = new Actions(driver);
-			act.moveToElement(btnPagarCompra).perform();
-			Thread.sleep(500);
-			btnPagarCompra.click();
-			Thread.sleep(500);
+			Thread.sleep(2000);
+			if (btnPagarCompra.isDisplayed())
+			{
+				Thread.sleep(500);
+				Actions act = new Actions(driver);
+				act.moveToElement(btnPagarCompra).perform();
+				Thread.sleep(500);
+				btnPagarCompra.click();
+				Thread.sleep(500);
+			}
+			else 
+			{
+				//driver.navigate().refresh();
+				Thread.sleep(2000);
+				btnContinuarComprando.click();
+	
+			}			
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -293,8 +307,8 @@ public class BolsaCompraPage {
 	public void CuponValido(String cupon)
 	{
 		try {
-			Thread.sleep(2000);
-			if(driver.findElement(By.xpath(".//*[@id='releaseVoucherButton']")).isDisplayed())
+			Thread.sleep(3000);
+			if(driver.findElement(By.xpath(".//*[@id='voucherCode']")).isDisplayed())
 			{
 				BorrarCupon.click();
 				Thread.sleep(2000);
@@ -305,6 +319,9 @@ public class BolsaCompraPage {
 				
 			}else 
 			{
+				Thread.sleep(2000);
+				btnDescuento.click();
+				Thread.sleep(1000);
 				txtCupon.click();
 				txtCupon.sendKeys(cupon);
 				btnCupon.click();
