@@ -33,6 +33,7 @@ public class BrowserFactory {
 		}
 		else if (browserName.equalsIgnoreCase("IE"))
 		{
+			//System.setProperty("webdriver.ie.driver", curDir+"/src/main/resources/IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
 		}
 		
