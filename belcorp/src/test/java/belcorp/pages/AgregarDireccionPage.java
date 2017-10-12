@@ -91,6 +91,37 @@ public class AgregarDireccionPage {
 
 	}
 	
+	public void AgregarDireccionPredeterminada (String direccion, String deptoDetalle, String infoDireccion, String numTelefono)
+	{
+		try {
+				loginButtonNav.click();
+				Thread.sleep(1000);
+				driver.navigate().to("https://aws-esika.esika.com:9002/co/my-account/address-book");
+				driver.navigate().refresh();
+				Thread.sleep(1000);
+				btnAgregarNewDireccion.click();
+				driver.findElement(By.id("address.country")).click();
+				Thread.sleep(500);
+				Select dropdown = new Select(driver.findElement(By.id("address.regionIsoParent1")));
+				dropdown.selectByVisibleText("BOLIVAR");
+				Thread.sleep(500);
+				Select dropdownB = new Select(driver.findElement(By.id("address.regionIso")));
+				dropdownB.selectByVisibleText("CALAMAR");
+				newDireccion.sendKeys(direccion);
+				depto.sendKeys(deptoDetalle);
+				infoAdicional.sendKeys(infoDireccion);
+				telefono.sendKeys(numTelefono);
+				driver.findElement(By.xpath(".//*[@id='defaultAddress']")).click(); //Check agregar como direccion predeterminada
+				btnGuardarDireccion.click();
+		} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+		}
+
+	}
+	
+	
+	
 	public void ObtenerDireccionNombre()
 	{
 		try {
