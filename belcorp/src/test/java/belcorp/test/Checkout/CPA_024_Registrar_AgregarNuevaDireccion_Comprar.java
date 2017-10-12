@@ -150,42 +150,42 @@ public class CPA_024_Registrar_AgregarNuevaDireccion_Comprar {
 		//TakeScreenShot.takeScreenShot(driver, "CPA_20_val5_evidencia_OK_");
 		
 
-			////********Validación 8: Verificar despliegue de página de opciones de pago
+			////********Validación 7: Verificar despliegue de página de opciones de pago
 			CkeckOutPagar.ContinuarMetodoPago();
 		    //Esperar 2 Seg
 			Thread.sleep(2000);
 			// Validacion Visual
 			//TakeScreenShot.takeScreenShot(driver, "CPA_20_val7_evidencia_OK_");
-			logResult.passLog("Validacion 8","Despliegue de página de opciones de pago_OK",driver,nombreClase);
+			logResult.passLog("Validacion 7","Despliegue de página de opciones de pago_OK",driver,nombreClase);
 			
 			
-		    ////********Validación 9: Verificar despliegue de opción pago en efectivo
+		    ////********Validación 8: Verificar despliegue de opción pago en efectivo
 			CkeckOutPagar.MetodoPagoEfectivo();
 		    //Esperar 2 Seg
 			Thread.sleep(2000);
 			// Validacion Visual
 			//TakeScreenShot.takeScreenShot(driver, "CPA_20_val8_evidencia_OK_");
-			logResult.passLog("Validacion 9","Despliegue de opción pago en efectivo_OK",driver,nombreClase);
+			logResult.passLog("Validacion 8","Despliegue de opción pago en efectivo_OK",driver,nombreClase);
 			
 			
-		    ////********Validación 10: Verificar revisión del pedido
+		    ////********Validación 9: Verificar revisión del pedido
 			CkeckOutPagar.RevisarPedido();
 		    //Esperar 2 Seg
 			Thread.sleep(2000);
 			// Validacion Visual
 			//TakeScreenShot.takeScreenShot(driver, "CPA_20_val9_evidencia_OK_");
-			logResult.passLog("Validacion 10","Verificar revisión del pedido_OK",driver,nombreClase);
+			logResult.passLog("Validacion 9","Verificar revisión del pedido_OK",driver,nombreClase);
 			
 			
 			
-		    ////********Validación 11: Verificar compra reservada mediante mensaje generado
+		    ////********Validación 10: Verificar compra reservada mediante mensaje generado
 			Thread.sleep(1000);
 			CkeckOutPagar.FinalizarPedido();
 		    //Esperar 2 Seg
 			Thread.sleep(2000);
 			// Validacion Visual
 			//TakeScreenShot.takeScreenShot(driver, "CPA_20_val10_evidencia_OK_");
-			logResult.passLog("Validacion 11","Verificar compra reservada_OK",driver,nombreClase);
+			logResult.passLog("Validacion 10","Verificar compra reservada_OK",driver,nombreClase);
 		
 		// Cerrar Test
 		driver.close();
